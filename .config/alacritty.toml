@@ -1,0 +1,8 @@
+[font]
+normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
+size = 12.5
+
+[window]
+dimensions = { columns = 100, lines = 40 }
+opacity = 0.98
+startup_mode = "SimpleFullscreen"
