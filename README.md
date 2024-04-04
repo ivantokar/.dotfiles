@@ -15,7 +15,15 @@ This repository contains my dotfiles. I use [GNU Stow](https://www.gnu.org/softw
 
 ## Materials
 
+### tmux
+
+- [Tmux for Newbs. FREE TMUX COURSE](https://www.youtube.com/playlist?list=PLsz00TDipIfdrJDjpULKY7mQlIFi4HjdR)
+
+### dotfiles
+
 - [Stow has forever changed the way I manage my dotfiles (YouTube)](https://www.youtube.com/watch?v=y6XCebnB9gs)
+
+### neovim
 
 
 ## Installation
