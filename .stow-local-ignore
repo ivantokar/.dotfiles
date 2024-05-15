@@ -22,3 +22,5 @@ _darcs
 ^/COPYING
 
 .DS_Store
+
+\.tmux
