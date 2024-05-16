@@ -28,7 +28,7 @@ return {
             },
             view = {
                 side = "left",
-                width = 40,
+                width = 60,
                 float = {
                     enable = false,
                     open_win_config = {
