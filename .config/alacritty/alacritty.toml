@@ -12,5 +12,5 @@ opacity = 0.98
 startup_mode = "SimpleFullscreen"
 
 [env]
- TERM = "xterm-256color"
+TERM = "xterm-256color"
 
