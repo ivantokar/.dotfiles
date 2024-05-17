@@ -6,6 +6,9 @@ import = [
 normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
 size = 12.5
 
+[colors]
+cursor = { text = "#000000", cursor = "#ffffff" }
+
 [window]
 dimensions = { columns = 100, lines = 40 }
 opacity = 0.98
