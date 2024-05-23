@@ -21,8 +21,8 @@ vim.opt.updatetime = 50
 vim.opt.colorcolumn = "120"
 vim.opt.cursorline = true
 vim.opt.showmode = true
-vim.opt.listchars = "tab:»·,trail:·,extends:→,precedes:←,nbsp:␣"
-vim.opt.list = true
+-- vim.opt.listchars = "tab:|·,trail:·,extends:→,precedes:←,nbsp:␣"
+-- vim.opt.list = true
 
 -- Set leader key
 vim.g.mapleader = " "
@@ -35,25 +35,25 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 
 vim.keymap.set("n", "J", "mzJ`z")
+
+-- Move up and down and set line in the middle of the screen
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
+
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
 -- Vim with me
-vim.keymap.set("n", "<leader>vwm", function()
-    require("vim-with-me").StartVimWithMe()
-end)
-
-vim.keymap.set("n", "<leader>svwm", function()
-    require("vim-with-me").StopVimWithMe()
-end)
+-- vim.keymap.set("n", "<leader>vwm", function()
+-- 	require("vim-with-me").StartVimWithMe()
+-- end)
+--
+-- vim.keymap.set("n", "<leader>svwm", function()
+-- 	require("vim-with-me").StopVimWithMe()
+-- end)
 
 -- Paste from system clipboard multiple times
 vim.keymap.set("x", "<leader>p", [["_dP]])
-
--- Format code
-vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
 vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
@@ -61,5 +61,5 @@ vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 vim.keymap.set("n", "<leader><leader>", function()
-    vim.cmd("so")
+	vim.cmd("so")
 end)

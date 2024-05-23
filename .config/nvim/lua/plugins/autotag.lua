@@ -1,8 +1,8 @@
 return {
-    "windwp/nvim-ts-autotag",
+	"windwp/nvim-ts-autotag",
 
-    opts = {
-        event = "BufWritePre",
-        enable = true,
-    },
+	opts = {
+		event = "BufWritePre",
+		enable = true,
+	},
 }
