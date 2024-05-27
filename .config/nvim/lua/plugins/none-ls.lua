@@ -1,18 +1,22 @@
 return {
-    "nvimtools/none-ls.nvim",
+	"nvimtools/none-ls.nvim",
 
-    config = function()
-        local null_ls = require("null-ls")
+	dependencies = {
+		"nvimtools/none-ls-extras.nvim",
+	},
 
-        null_ls.setup({
-            sources = {
-                null_ls.builtins.formatting.stylua,
-                null_ls.builtins.formatting.prettier,
-                null_ls.builtins.diagnostics.eslint_d,
-            },
-        })
+	config = function()
+		local null_ls = require("null-ls")
 
-        -- Format code
-        vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, {})
-    end,
+		null_ls.setup({
+			sources = {
+				-- require("none-ls.diagnostics.eslint_d"),
+				null_ls.builtins.formatting.stylua,
+				null_ls.builtins.formatting.prettier,
+			},
+		})
+
+		-- Format code
+		vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, {})
+	end,
 }

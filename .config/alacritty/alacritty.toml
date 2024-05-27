@@ -1,5 +1,5 @@
 import = [
-  "~/.config/alacritty/rose-pine.toml"
+  "~/.config/alacritty/catppuccin-mocha.toml"
 ]
 
 [font]
@@ -9,7 +9,7 @@ size = 12.5
 [window]
 dimensions = { columns = 100, lines = 40 }
 opacity = 0.98
-startup_mode = "SimpleFullscreen"
+startup_mode = "Maximized"
 
 [env]
 TERM = "xterm-256color"
