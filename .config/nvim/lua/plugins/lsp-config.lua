@@ -50,21 +50,37 @@ return {
 					},
 				},
 			})
+            
+            lspconfig.sourcekit.setup({
+                capabilities = capabilities,
+            })
+
+			lspconfig.graphql.setup({
+				capabilities = capabilities,
+                cmd = { "graphql-lsp", "server", "-m", "stream" },
+                filetypes = { "graphql", "javascriptreact", "typescriptreact" },
+				root_dir = lspconfig.util.root_pattern('.git', '.graphqlrc*', '.graphql.config.*', 'graphql.config.*'),
+				-- flags = {
+				-- 	debounce_text_changes = 150,
+				-- },
+			})
 
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
-			-- vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
+
 			vim.keymap.set("n", "<leader>gd", function()
 				require("telescope.builtin").lsp_definitions()
 			end, {
 				noremap = true,
 				silent = true,
 			})
+
 			vim.keymap.set("n", "<leader>gr", function()
 				require("telescope.builtin").lsp_references()
 			end, {
 				noremap = true,
 				silent = true,
 			})
+
 			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
 		end,
 	},

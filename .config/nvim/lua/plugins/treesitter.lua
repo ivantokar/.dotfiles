@@ -12,6 +12,8 @@ return {
 				"lua",
 				"jsdoc",
 				"bash",
+                "graphql",
+                "swift",
 			},
 
 			-- Install parsers synchronously (only applied to `ensure_installed`)
