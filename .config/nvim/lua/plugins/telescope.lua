@@ -2,6 +2,8 @@ return {
 	{
 		"nvim-telescope/telescope.nvim",
 
+		tag = "0.1.6",
+
 		dependencies = {
 			{
 				"nvim-telescope/telescope-live-grep-args.nvim",
@@ -10,8 +12,6 @@ return {
 				version = "^1.0.0",
 			},
 		},
-
-		tag = "0.1.5",
 
 		config = function()
 			local telescope = require("telescope")
@@ -75,5 +75,5 @@ return {
 
 			require("telescope").load_extension("ui-select")
 		end,
-	},
+	}
 }

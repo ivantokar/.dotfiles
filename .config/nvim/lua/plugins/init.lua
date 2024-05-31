@@ -4,7 +4,6 @@ return {
 		name = "plenary",
 	},
 
-	"github/copilot.vim",
 	"nvim-tree/nvim-web-devicons",
-	"theprimeagen/vim-be-good",
+    "github/copilot.vim",
 }

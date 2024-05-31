@@ -9,7 +9,7 @@ size = 12.5
 [window]
 decorations = "None"
 dimensions = { columns = 80, lines = 24 }
-opacity = 0.99
+opacity = 0.98
 startup_mode = "SimpleFullscreen"
 
 [colors.primary]
