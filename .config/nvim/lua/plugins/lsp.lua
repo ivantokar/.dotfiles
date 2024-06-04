@@ -12,14 +12,6 @@ return {
 		opts = {
 			auto_install = true,
 		},
-		-- config = function()
-		-- 	require("mason-lspconfig").setup({
-		-- 		ensure_installed = {
-		-- 			"lua_ls",
-		-- 			"tsserver",
-		-- 		},
-		-- 	})
-		-- end,
 	},
 	{
 		"neovim/nvim-lspconfig",
@@ -27,6 +19,8 @@ return {
 		config = function()
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 			local lspconfig = require("lspconfig")
+
+			-- Organize imports for typescript
 			local function organize_imports()
 				local params = {
 					command = "_typescript.organizeImports",
@@ -41,7 +35,6 @@ return {
 			})
 
 			lspconfig.tsserver.setup({
-				-- on_attach = on_attach,
 				capabilities = capabilities,
 				commands = {
 					OrganizeImports = {
@@ -50,16 +43,13 @@ return {
 					},
 				},
 			})
-            
-            lspconfig.sourcekit.setup({
-                capabilities = capabilities,
-            })
 
 			lspconfig.graphql.setup({
 				capabilities = capabilities,
-                cmd = { "graphql-lsp", "server", "-m", "stream" },
-                filetypes = { "graphql", "javascriptreact", "typescriptreact" },
-				root_dir = lspconfig.util.root_pattern('.git', '.graphqlrc*', '.graphql.config.*', 'graphql.config.*'),
+				-- filetypes = { "graphql", "gql", "typescriptreact", "typescript" },
+				-- root_dir = lspconfig.util.root_pattern(
+				-- 	".graphqlrc",
+				-- ),
 				-- flags = {
 				-- 	debounce_text_changes = 150,
 				-- },
@@ -67,6 +57,7 @@ return {
 
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 
+			-- Go to definition
 			vim.keymap.set("n", "<leader>gd", function()
 				require("telescope.builtin").lsp_definitions()
 			end, {
@@ -74,6 +65,7 @@ return {
 				silent = true,
 			})
 
+			-- Go to references
 			vim.keymap.set("n", "<leader>gr", function()
 				require("telescope.builtin").lsp_references()
 			end, {
@@ -81,6 +73,7 @@ return {
 				silent = true,
 			})
 
+			-- Code action
 			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
 		end,
 	},
