@@ -15,6 +15,7 @@ return {
                 null_ls.builtins.formatting.prettier,
             },
         })
+
         -- Format code
         vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, {})
     end,
