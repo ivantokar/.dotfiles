@@ -1,15 +1,21 @@
 return {
     {
+        -- Multicursors
+
         "mg979/vim-visual-multi",
         branch = "master",
     },
     {
+        -- Auto pairs {} [] () '' "" ``
 
         "windwp/nvim-autopairs",
+
         event = "InsertEnter",
         opts = {}, -- this is equalent to setup({}) function
     },
     {
+        -- Autotag for html, jsx, tsx, xml, xhtml
+
         "windwp/nvim-ts-autotag",
 
         opts = {
@@ -29,6 +35,8 @@ return {
         end,
     },
     {
+        -- Undotree for undo history
+
         "mbbill/undotree",
 
         config = function()
