@@ -53,4 +53,3 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 -- Move to next and previous buffer
 vim.keymap.set("n", "<leader><tab>", "<cmd>bnext<CR>")
---
