@@ -1,5 +1,28 @@
 return {
 	{
+		-- TMUX Navigator keybindings
+
+		"christoomey/vim-tmux-navigator",
+
+		cmd = {
+			"TmuxNavigateLeft",
+			"TmuxNavigateDown",
+			"TmuxNavigateUp",
+			"TmuxNavigateRight",
+			"TmuxNavigatePrevious",
+		},
+
+		keys = {
+			{ "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
+			{ "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
+			{ "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
+			{ "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
+			{ "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
+		},
+	},
+	{
+		-- Oil for opening parent directory in a file buffer
+
 		"stevearc/oil.nvim",
 
 		config = function()
@@ -30,6 +53,8 @@ return {
 		end,
 	},
 	{
+		-- Harpoon for quick file navigation
+
 		"ThePrimeagen/harpoon",
 		branch = "harpoon2",
 		dependencies = { "nvim-lua/plenary.nvim" },
@@ -43,6 +68,9 @@ return {
 			end, {
 				desc = "Add file to Harpoon list",
 			})
+
+			-- Set <leader>h to toggle Harpoon
+
 			-- vim.keymap.set("n", "<leader>h", function()
 			-- 	harpoon.ui:toggle_quick_menu(harpoon:list())
 			-- end, {

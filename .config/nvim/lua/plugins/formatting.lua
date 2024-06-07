@@ -1,5 +1,29 @@
 return {
 	{
+		-- LSP Formatter
+
+		"nvimtools/none-ls.nvim",
+
+		dependencies = {
+			"nvimtools/none-ls-extras.nvim",
+		},
+
+		config = function()
+			local null_ls = require("null-ls")
+
+			null_ls.setup({
+				sources = {
+					-- require("none-ls.diagnostics.eslint_d"),
+					null_ls.builtins.formatting.stylua,
+					null_ls.builtins.formatting.prettier,
+				},
+			})
+
+			-- Format code
+			vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, {})
+		end,
+	},
+	{
 		-- Multicursors
 
 		"mg979/vim-visual-multi",
@@ -35,20 +59,8 @@ return {
 		end,
 	},
 	{
-		-- Undotree for undo history
+		-- Autoformat on save
 
-		"mbbill/undotree",
-
-		config = function()
-			vim.g.undotree_WindowLayout = 2
-			vim.g.undotree_SplitWidth = 40
-			vim.g.undotree_SetFocusWhenToggle = 1
-			vim.g.undotree_HighlightChangedWithSign = 1
-
-			vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
-		end,
-	},
-	{
 		"stevearc/conform.nvim",
 
 		opts = {},
@@ -65,6 +77,34 @@ return {
 					timeout_ms = 500,
 					lsp_fallback = true,
 				},
+			})
+		end,
+	},
+	{
+		-- Commenting
+
+		"numToStr/Comment.nvim",
+
+		opts = {
+			-- add any options here
+		},
+
+		lazy = false,
+
+		config = function()
+			require("Comment").setup({
+				pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
+			})
+		end,
+	},
+	{
+		-- Commenting for JSX, TSX, etc.
+
+		"JoosepAlviste/nvim-ts-context-commentstring",
+
+		config = function()
+			require("ts_context_commentstring").setup({
+				enable_autocmd = false,
 			})
 		end,
 	},
