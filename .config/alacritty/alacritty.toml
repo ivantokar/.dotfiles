@@ -10,10 +10,11 @@ size = 12.5
 decorations = "None"
 dimensions = { columns = 80, lines = 24 }
 opacity = 0.98
+# blur = true
 startup_mode = "SimpleFullscreen"
 
 [colors.primary]
-background = "#121212"
+# background = "#121212"
 
 # [env]
 # TERM = "xterm-256color"

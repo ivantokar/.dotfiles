@@ -13,9 +13,10 @@ return {
 
 			null_ls.setup({
 				sources = {
-					-- require("none-ls.diagnostics.eslint_d"),
 					null_ls.builtins.formatting.stylua,
 					null_ls.builtins.formatting.prettier,
+					null_ls.builtins.formatting.swiftformat,
+					null_ls.builtins.formatting.swiftlint,
 				},
 			})
 
@@ -38,27 +39,6 @@ return {
 		opts = {}, -- this is equalent to setup({}) function
 	},
 	{
-		-- Autotag for html, jsx, tsx, xml, xhtml
-
-		"windwp/nvim-ts-autotag",
-
-		opts = {
-			event = "BufWritePre",
-			enable = true,
-		},
-
-		config = function()
-			require("nvim-ts-autotag").setup({
-				opts = {
-					-- Defaults
-					enable_close = true, -- Auto close tags
-					enable_rename = true, -- Auto rename pairs of tags
-					enable_close_on_slash = false, -- Auto close on trailing </
-				},
-			})
-		end,
-	},
-	{
 		-- Autoformat on save
 
 		"stevearc/conform.nvim",
@@ -69,8 +49,9 @@ return {
 			require("conform").setup({
 				formatters_by_ft = {
 					lua = { "stylua" },
-					-- python = { "isort", "black" },
-					javascript = { { "prettier" } },
+					javascript = { "prettier" },
+					typescript = { "prettier" },
+					swift = { "swiftformat" },
 				},
 				format_on_save = {
 					-- These options will be passed to conform.format()
