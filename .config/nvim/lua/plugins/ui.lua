@@ -1,26 +1,12 @@
 return {
 	{
-		-- Grovebox Material
+		-- Rose Pine
 
-		-- "sainnhe/gruvbox-material",
 		"rose-pine/neovim",
 
-		-- lazy = false,
-		-- priority = 1000,
 		name = "rose-pine",
 
 		config = function()
-			-- Gruvbox Material
-			-- vim.g.gruvbox_material_enable_italic = true
-			-- vim.g.gruvbox_material_enable_bold = true
-			-- vim.g.gruvbox_material_better_performance = true
-			-- vim.g.gruvbox_material_transparent_background = true
-			-- vim.g.gruvbox_material_palette = "mix"
-			-- vim.g.gruvbox_material_current_word = "bold"
-			-- vim.g.gruvbox_material_enable_italic_comment = true
-			-- vim.g.gruvbox_material_enable_italic_string = true
-
-			-- Rose Pine
 			require("rose-pine").setup({
 				variant = "auto", -- auto, main, moon, or dawn
 				dark_variant = "main", -- main, moon, or dawn
@@ -89,7 +75,6 @@ return {
 			})
 
 			vim.cmd("colorscheme rose-pine")
-			-- vim.cmd.colorscheme("gruvbox-material")
 		end,
 	},
 	{
@@ -254,24 +239,4 @@ return {
 			})
 		end,
 	},
-	-- {
-	-- 	-- Zen Mode
-	--
-	-- 	"folke/zen-mode.nvim",
-	-- 	cmd = "ZenMode",
-	-- 	keys = { { "<leader>z", "<cmd>ZenMode<cr>", desc = "Zen Mode" } },
-	--
-	-- 	config = function()
-	-- 		require("zen-mode").setup({
-	-- 			window = {
-	-- 				backdrop = 0.95,
-	-- 				width = 120, -- width of the Zen window
-	-- 				height = 1, -- height of the Zen window
-	-- 			},
-	-- 			plugins = {
-	-- 				tmux = { enabled = false },
-	-- 			},
-	-- 		})
-	-- 	end,
-	-- },
 }
