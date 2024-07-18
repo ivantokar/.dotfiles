@@ -77,7 +77,7 @@ return {
 			-- GraphQL
 			lspconfig.graphql.setup({
 				capabilities = capabilities,
-				filetypes = { "graphql", "gql", "typescriptreact", "typescript" },
+				filetypes = { "graphql", "gql", "typescriptreact", "typescript", "typescriptreact", "javascript" },
 				-- root_dir = lspconfig.util.root_pattern(
 				-- 	".graphqlrc",
 				-- ),
