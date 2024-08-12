@@ -53,3 +53,63 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 -- Move to next and previous buffer
 vim.keymap.set("n", "<leader><tab>", "<cmd>bnext<CR>")
+
+-- Toggle Undotree (plugins/misc.lua)
+vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
+
+-- Open parent directory in Oil (plugins/navigation.lua)
+vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+
+-- Toggle NeoTree (plugins/navigation.lua)
+-- vim.keymap.set("n", "<leader>t", ":Neotree toggle filesystem float<CR>", {})
+vim.keymap.set("n", "<leader>t", ":Neotree toggle filesystem float<CR>", {})
+
+-- Format code
+vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, {})
+
+-- Toggle Gitsigns preview hunk (plugins/git.lua)
+vim.keymap.set("n", "<leader>gp", ":Gitsigns preview_hunk<CR>", {})
+vim.keymap.set("n", "<leader>gt", ":Gitsigns toggle_current_line_blame<CR>", {})
+
+-- LSP keybindings
+-- Show documentation on hover
+vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
+
+-- Go to definition
+vim.keymap.set("n", "<leader>gd", function()
+	require("telescope.builtin").lsp_definitions()
+end, {
+	noremap = true,
+	silent = true,
+})
+
+-- Go to references
+vim.keymap.set("n", "<leader>gr", function()
+	require("telescope.builtin").lsp_references()
+end, {
+	noremap = true,
+	silent = true,
+})
+
+-- Code action
+vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
+-- Persistence keymap
+-- load the session for the current directory
+vim.keymap.set("n", "<leader>qs", function()
+	require("persistence").load()
+end)
+
+-- select a session to load
+vim.keymap.set("n", "<leader>qS", function()
+	require("persistence").select()
+end)
+
+-- load the last session
+vim.keymap.set("n", "<leader>ql", function()
+	require("persistence").load({ last = true })
+end)
+
+-- stop Persistence => session won't be saved on exit
+vim.keymap.set("n", "<leader>qd", function()
+	require("persistence").stop()
+end)

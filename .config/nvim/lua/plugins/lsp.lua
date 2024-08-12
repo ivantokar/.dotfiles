@@ -15,10 +15,22 @@ return {
 	},
 	{
 		"neovim/nvim-lspconfig",
+
 		lazy = false,
+
 		config = function()
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 			local lspconfig = require("lspconfig")
+
+			-- Override the LspInfo window configuration
+			require("lspconfig.ui.windows").default_options = {
+				border = "rounded",
+			}
+			-- Set up the hover window configuration
+			vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+				border = "rounded",
+				max_width = 80,
+			})
 
 			-- Organize imports for typescript
 			local function organize_imports()
@@ -78,40 +90,12 @@ return {
 			lspconfig.graphql.setup({
 				capabilities = capabilities,
 				filetypes = { "graphql", "gql", "typescriptreact", "typescript", "typescriptreact", "javascript" },
-				-- root_dir = lspconfig.util.root_pattern(
-				-- 	".graphqlrc",
-				-- ),
-				-- flags = {
-				-- 	debounce_text_changes = 150,
-				-- },
 			})
 
 			-- Swift
 			lspconfig.sourcekit.setup({
 				capabilities = capabilities,
 			})
-
-			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
-
-			-- Go to definition
-			vim.keymap.set("n", "<leader>gd", function()
-				require("telescope.builtin").lsp_definitions()
-			end, {
-				noremap = true,
-				silent = true,
-			})
-
-			-- Go to references
-			vim.keymap.set("n", "<leader>gr", function()
-				require("telescope.builtin").lsp_references()
-			end, {
-				noremap = true,
-				silent = true,
-			})
-
-			-- Code action
-			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
-			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
 		end,
 	},
 }
