@@ -24,4 +24,25 @@ return {
             vim.cmd("colorscheme rose-pine")
         end,
     },
+    {
+
+        -- Catppuccino
+
+        "catppuccin/nvim",
+        name = "catppuccin",
+        priority = 1000,
+
+        config = function()
+            require("catppuccin").setup({
+                flavour = "auto", -- latte, frappe, macchiato, mocha
+                background = { -- :h background
+                    light = "latte",
+                    dark = "mocha",
+                    transparent = true,
+                },
+            })
+
+            -- vim.cmd.colorscheme("catppuccin-mocha")
+        end,
+    },
 }
