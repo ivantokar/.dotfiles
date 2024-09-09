@@ -24,7 +24,7 @@
 #:     italic_font      Operator Mono Book Italic
 #:     bold_italic_font Operator Mono Medium Italic
 
-font_size 12.4
+font_size 12.2
 #: Font size (in pts).
 
 # force_ltr no
@@ -166,7 +166,7 @@ font_size 12.4
 #: placed in the cell. For example::
 
 #:     modify_font cell_width 80%
-     modify_font cell_height 120%
+#:     modify_font cell_height -2px
 #:     modify_font baseline 3
 
 #: Note that modifying the baseline will automatically adjust the
