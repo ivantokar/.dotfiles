@@ -29,6 +29,13 @@ zinit light Aloxaf/fzf-tab
 # Add in snippets
 zinit snippet OMZP::git
 zinit snippet OMZP::sudo
+# zinit snippet OMZP::archlinux
+zinit snippet OMZP::aws
+zinit snippet OMZP::docker
+zinit snippet OMZP::docker-compose
+zinit snippet OMZP::swiftpm
+# zinit snippet OMZP::kubectl
+# zinit snippet OMZP::kubectx
 zinit snippet OMZP::command-not-found
 
 # Load completions
@@ -69,6 +76,7 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 alias ls='ls --color'
 alias vim='nvim'
 alias c='clear'
+alias rr='exec zsh'
 
 # Shell integrations
 eval "$(fzf --zsh)"

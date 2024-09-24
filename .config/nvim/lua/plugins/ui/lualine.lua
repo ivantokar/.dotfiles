@@ -3,7 +3,7 @@ return {
 
 	"nvim-lualine/lualine.nvim",
 
-	dependencies = { "nvim-tree/nvim-web-devicons", "otavioschwanck/arrow.nvim" },
+	dependencies = { "nvim-tree/nvim-web-devicons" },
 
 	config = function()
 		local function xcodebuild_device()
