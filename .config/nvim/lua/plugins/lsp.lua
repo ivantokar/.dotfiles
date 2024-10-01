@@ -10,25 +10,7 @@ return {
 	{
 		"williamboman/mason-lspconfig.nvim",
 		lazy = false,
-		-- opts = {
-		-- 	auto_install = true,
-		-- },
 	},
-	-- {
-	-- 	"kabouzeid/nvim-lspinstall",
-	--
-	-- 	config = function()
-	-- 		local lspconfig = require("lspconfig")
-	-- 		local lspinstall = require("lspinstall")
-	--
-	-- 		lspinstall.setup()
-	--
-	-- 		local servers = lspinstall.installed_servers()
-	-- 		for _, server in pairs(servers) do
-	-- 			lspconfig[server].setup({})
-	-- 		end
-	-- 	end,
-	-- },
 	{
 		"neovim/nvim-lspconfig",
 
@@ -58,9 +40,28 @@ return {
 
 			lspconfig.lua_ls.setup({
 				capabilities = capabilities,
+				settings = {
+					Lua = {
+						hint = {
+							enable = true,
+						},
+					},
+				},
 			})
 
 			-- TypeScript
+			-- ts_ls settings
+			local inlayHints = {
+				includeInlayParameterNameHints = "all",
+				includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+				includeInlayFunctionParameterTypeHints = true,
+				includeInlayVariableTypeHints = true,
+				includeInlayVariableTypeHintsWhenTypeMatchesName = false,
+				includeInlayPropertyDeclarationTypeHints = true,
+				includeInlayFunctionLikeReturnTypeHints = true,
+				includeInlayEnumMemberValueHints = true,
+			}
+
 			lspconfig.ts_ls.setup({
 				capabilities = capabilities,
 				commands = {
@@ -69,12 +70,60 @@ return {
 						description = "Organize Imports",
 					},
 				},
+				settings = {
+					typescript = {
+						inlayHints = inlayHints,
+					},
+					javascript = {
+						inlayHints = inlayHints,
+					},
+				},
 			})
 
 			-- Swift
 			lspconfig.sourcekit.setup({
 				capabilities = capabilities,
-				filetypes = { "swift" },
+				settings = {
+					sourcekit = {
+						inlayHints = {
+							enabled = false,
+							-- showVariableTypes = true,
+							-- showFunctionParameterNames = true,
+							-- showFullyQualifiedNames = false,
+							-- parameterNamesPrefix = ":",
+							-- parameterTypesPrefix = ":",
+							-- variableTypesPrefix = ":",
+							-- typeDecorationStyle = "prefix", -- can be "none", "prefix", or "postfix"
+							-- placeholderDecoration = true,
+							-- suppressWhenLineBreaks = false,
+							-- suppressForParametersThatMatchMethodName = true,
+							-- excludeTypeFromVariableType = true,
+							-- maxLength = nil, -- nil means no limit
+						},
+					},
+				},
+
+				-- filetypes = { "swift", "cpp" },
+				-- settings = {
+				--     sourcekit = {
+				--         suggestImports = true,
+				--         inlayHints = {
+				--             enabled = true,
+				--             showVariableTypes = true,
+				--             showFunctionParameterNames = true,
+				--             showFullyQualifiedNames = false,
+				--         },
+				--     },
+				--     clangd = {
+				--         InlayHints = {
+				--             Designators = true,
+				--             Enabled = true,
+				--             ParameterNames = true,
+				--             DeducedTypes = true,
+				--         },
+				--         fallbackFlags = { "-std=c++20" },
+				--     },
+				-- },
 			})
 
 			-- Emmet
@@ -89,21 +138,6 @@ return {
 				capabilities = capabilities,
 				filetypes = { "typescriptreact", "typescript" },
 			})
-
-			-- TailwindCSS
-			-- lspconfig.tailwindcss.setup({
-			--     capabilities = capabilities,
-			--     filetypes = {
-			--         "html",
-			--         "css",
-			--         "scss",
-			--         "javascript",
-			--         "typescript",
-			--         "typescriptreact",
-			--         "javascriptreact",
-			--         "swift",
-			--     },
-			-- })
 
 			-- LSP keybindings
 
@@ -130,32 +164,8 @@ return {
 			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
 		end,
 	},
-	-- {
-	-- 	"luckasRanarison/tailwind-tools.nvim",
-	-- 	name = "tailwind-tools",
-	-- 	build = ":UpdateRemotePlugins",
-	-- 	dependencies = {
-	-- 		"nvim-treesitter/nvim-treesitter",
-	-- 		"nvim-telescope/telescope.nvim", -- optional
-	-- 		"neovim/nvim-lspconfig", -- optional
-	-- 	},
-	--
-	-- 	config = function()
-	-- 		require("tailwind-tools").setup({
-	-- 			extension = {
-	-- 				queries = {}, -- a list of filetypes having custom `class` queries
-	-- 				patterns = { -- a map of filetypes to Lua pattern lists
-	-- 					swift = {
-	-- 						-- Matches `.class("...")` or `.class('...')`
-	-- 						"%.class%((['\"])(.-)%1%)",
-	-- 					},
-	-- 				},
-	-- 			},
-	-- 		})
-	-- 	end,
-	-- },
-	-- Completion
 	{
+		-- Completion
 		"hrsh7th/nvim-cmp",
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",

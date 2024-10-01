@@ -19,12 +19,12 @@ return {
             })
         end,
     },
-    -- {
-    --     -- Multicursors
-    --
-    --     "mg979/vim-visual-multi",
-    --     branch = "master",
-    -- },
+    {
+        -- Multicursors
+
+        "mg979/vim-visual-multi",
+        branch = "master",
+    },
     {
         -- Auto pairs {} [] () '' "" ``
 
