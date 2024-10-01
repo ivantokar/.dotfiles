@@ -80,7 +80,8 @@ return {
 				},
 			})
 
-			-- Swift
+			-- Swift / C++
+			-- TODO: Fix inlay hints, make settings according to https://www.swift.org/documentation/articles/zero-to-swift-nvim.html
 			lspconfig.sourcekit.setup({
 				capabilities = capabilities,
 				settings = {
