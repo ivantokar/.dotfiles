@@ -26,7 +26,7 @@ vim.opt.showmode = true                                -- Show the current mode
 vim.opt.spell = true        -- Enable spell check
 vim.opt.spelllang = "en_us" -- Set spell check language
 -- Inline hints
-vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+-- vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
 -- vim.lsp.buf.inlay_hint = vim.lsp.buf.inlay_hint or {}
 -- vim.lsp.buf.inlay_hint.timeout = 5000 -- 5 seconds
 

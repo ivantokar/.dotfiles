@@ -1,5 +1,6 @@
 return {
     { import = "plugins.navigation" },
+    { import = "plugins.formatting" },
     { import = "plugins.ui" },
     { import = "plugins.git" },
     { import = "plugins.ai" },
