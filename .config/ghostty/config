@@ -1,0 +1,4 @@
+theme = rose-pine
+background-opacity = 0.95
+gtk-titlebar = false
+
