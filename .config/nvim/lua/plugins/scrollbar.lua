@@ -1,4 +1,4 @@
-require("plugins.git.gitsigns")
+require("plugins.gitsigns")
 
 return {
 	"petertriho/nvim-scrollbar",

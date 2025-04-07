@@ -46,6 +46,8 @@ zinit cdreplay -q
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+
 # Keybindings
 bindkey -e
 bindkey '^p' history-search-backward
@@ -84,3 +86,4 @@ eval "$(zoxide init --cmd cd zsh)"
 
 export PATH=/opt/homebrew/bin:$HOME/.local/share/zinit/polaris/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin
 if which swiftenv > /dev/null; then eval "$(swiftenv init -)"; fi
+export PATH="/opt/homebrew/opt/node@22/bin:$PATH"

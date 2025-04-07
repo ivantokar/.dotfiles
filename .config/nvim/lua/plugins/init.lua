@@ -1,9 +1,9 @@
 return {
-    { import = "plugins.navigation" },
-    { import = "plugins.formatting" },
-    { import = "plugins.ui" },
-    { import = "plugins.git" },
-    { import = "plugins.ai" },
+    { import = "plugins.snacks" },
+    -- { import = "plugins.formatting" },
+    -- { import = "plugins.ui" },
+    -- { import = "plugins.git" },
+    -- { import = "plugins.ai" },
 
     {
         "nvim-lua/plenary.nvim",
