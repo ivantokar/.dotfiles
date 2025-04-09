@@ -5,7 +5,7 @@ return {
         "nvim-lua/plenary.nvim",
         "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
         "MunifTanjim/nui.nvim",
-        -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+        -- "3rd/image.nvim",        -- Optional image support in preview window: See `# Preview Mode` for more information
     },
     config = function()
         require("neo-tree").setup({
@@ -35,7 +35,7 @@ return {
             },
         })
 
-        -- vim.keymap.set("n", "<leader>t", ":Neotree toggle filesystem left<CR>", {})
-        vim.keymap.set("n", "<leader>t", ":Neotree toggle filesystem float<CR>", {})
+        vim.keymap.set("n", "<leader>E", ":Neotree toggle filesystem left<CR>", {})
+        vim.keymap.set("n", "<leader>e", ":Neotree toggle filesystem float<CR>", {})
     end,
 }

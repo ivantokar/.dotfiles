@@ -21,14 +21,8 @@ vim.opt.updatetime = 50                                -- Faster completion
 vim.opt.colorcolumn = "80"                             -- Show a column at 80 characters
 vim.opt.cursorline = true                              -- Highlight the current line
 vim.opt.showmode = true                                -- Show the current mode
--- vim.opt.listchars = "tab:|·,trail:·,extends:→,precedes:←,nbsp:␣" -- Show special characters
--- vim.opt.list = true -- Show special characters
-vim.opt.spell = true        -- Enable spell check
-vim.opt.spelllang = "en_us" -- Set spell check language
--- Inline hints
--- vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
--- vim.lsp.buf.inlay_hint = vim.lsp.buf.inlay_hint or {}
--- vim.lsp.buf.inlay_hint.timeout = 5000 -- 5 seconds
+vim.opt.spell = true                                   -- Enable spell check
+vim.opt.spelllang = "en_us"                            -- Set spell check language
 
 -- Set leader key
 vim.g.mapleader = " "
@@ -37,33 +31,6 @@ vim.g.mapleader = " "
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 
--- Move lines up and down and set line in the middle of the screen
-vim.keymap.set("n", "J", "mzJ`z")
-
 -- Move up and down and set line in the middle of the screen
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
-
--- Paste from system clipboard multiple times
-vim.keymap.set("x", "<leader>p", [["_dP]])
-
--- Move to next and previous location in quickfix list
-vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
-vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
-
--- Move to next and previous location in quickfix list
-vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
-vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
-
--- Move to next and previous buffer
-vim.keymap.set("n", "<leader><tab>", "<cmd>bnext<CR>")
-
--- Toggle Undotree (plugins/misc.lua)
-vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
-
--- Format code
-vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, {})
-
--- Toggle Gitsigns preview hunk (plugins/git.lua)
-vim.keymap.set("n", "<leader>gp", ":Gitsigns preview_hunk<CR>", {})
-vim.keymap.set("n", "<leader>gt", ":Gitsigns toggle_current_line_blame<CR>", {})

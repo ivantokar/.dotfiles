@@ -1,4 +1,5 @@
 theme = rose-pine
 background-opacity = 0.98
-gtk-titlebar = false
+macos-titlebar-style = hidden
 cursor-color = #ffffff
+
