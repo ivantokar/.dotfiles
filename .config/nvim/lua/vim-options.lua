@@ -34,3 +34,6 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 -- Move up and down and set line in the middle of the screen
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
+
+-- Paste from system clipboard multiple times
+vim.keymap.set("x", "<leader>p", [["_dP]])
