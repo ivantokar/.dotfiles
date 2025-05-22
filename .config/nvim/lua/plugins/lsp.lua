@@ -80,7 +80,6 @@ return {
 				},
 			})
 
-<<<<<<< HEAD
             -- Swift / C++
             -- TODO: Fix inlay hints, make settings according to https://www.swift.org/documentation/articles/zero-to-swift-nvim.html
             lspconfig.sourcekit.setup({
@@ -104,32 +103,6 @@ return {
                         },
                     },
                 },
-=======
-			-- Swift / C++
-			-- TODO: Fix inlay hints, make settings according to https://www.swift.org/documentation/articles/zero-to-swift-nvim.html
-			lspconfig.sourcekit.setup({
-				capabilities = capabilities,
-				settings = {
-					sourcekit = {
-						inlayHints = {
-							enabled = false,
-							-- showVariableTypes = true,
-							-- showFunctionParameterNames = true,
-							-- showFullyQualifiedNames = false,
-							-- parameterNamesPrefix = ":",
-							-- parameterTypesPrefix = ":",
-							-- variableTypesPrefix = ":",
-							-- typeDecorationStyle = "prefix", -- can be "none", "prefix", or "postfix"
-							-- placeholderDecoration = true,
-							-- suppressWhenLineBreaks = false,
-							-- suppressForParametersThatMatchMethodName = true,
-							-- excludeTypeFromVariableType = true,
-							-- maxLength = nil, -- nil means no limit
-						},
-					},
-				},
->>>>>>> d26398d2152baf0f825be4b2dfc9f2ddfbe01fab
-
 				-- filetypes = { "swift", "cpp" },
 				-- settings = {
 				--     sourcekit = {
@@ -166,16 +139,6 @@ return {
 				filetypes = { "typescriptreact", "typescript" },
 			})
 
-<<<<<<< HEAD
-            lspconfig.kulala.setup({
-                capabilities = capabilities,
-                filetypes = { "http", "rest" },
-            })
-
-            -- LSP keybindings
-=======
-			-- LSP keybindings
->>>>>>> d26398d2152baf0f825be4b2dfc9f2ddfbe01fab
 
 			-- Show documentation on hover
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, { noremap = true, silent = true })

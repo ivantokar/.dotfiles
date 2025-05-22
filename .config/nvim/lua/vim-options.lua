@@ -31,37 +31,7 @@ vim.g.mapleader = " "
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 
-<<<<<<< HEAD
-=======
--- Move lines up and down and set line in the middle of the screen
--- vim.keymap.set("n", "J", "mzJ`z")
-
->>>>>>> d26398d2152baf0f825be4b2dfc9f2ddfbe01fab
--- Move up and down and set line in the middle of the screen
--- vim.keymap.set("n", "<C-d>", "<C-d>zz")
--- vim.keymap.set("n", "<C-u>", "<C-u>zz")
-
 -- Paste from system clipboard multiple times
-<<<<<<< HEAD
 vim.keymap.set("x", "<leader>p", [["_dP]])
-=======
--- vim.keymap.set("x", "<leader>p", [["_dP]])
-
--- Move to next and previous location in quickfix list
--- vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
--- vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
-
--- Move to next and previous location in quickfix list
--- vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
--- vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
-
--- Move to next and previous buffer
--- vim.keymap.set("n", "<leader><tab>", "<cmd>bnext<CR>")
-
--- Format code
-vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, {})
-
--- Toggle Gitsigns preview hunk (plugins/git.lua)
-vim.keymap.set("n", "<leader>gp", ":Gitsigns preview_hunk<CR>", {})
-vim.keymap.set("n", "<leader>gt", ":Gitsigns toggle_current_line_blame<CR>", {})
->>>>>>> d26398d2152baf0f825be4b2dfc9f2ddfbe01fab
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
