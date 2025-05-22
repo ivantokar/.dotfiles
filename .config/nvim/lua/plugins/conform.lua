@@ -12,7 +12,12 @@ return {
 			formatters_by_ft = {
 				lua = { "stylua" },
 				typescript = { "prettierd" },
+<<<<<<< HEAD
 				swift = { "swiftformat" },
+=======
+				swift = { "swiftformat", "swiftlint" },
+
+>>>>>>> d26398d2152baf0f825be4b2dfc9f2ddfbe01fab
 			},
 
 			format_on_save = {
