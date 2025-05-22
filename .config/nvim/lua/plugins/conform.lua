@@ -1,24 +1,24 @@
 return {
-	-- Autoformat on save
+    -- Autoformat on save
 
-	"stevearc/conform.nvim",
+    "stevearc/conform.nvim",
 
-	opts = {},
+    opts = {},
 
-	config = function()
-		local conform = require("conform")
+    config = function()
+        local conform = require("conform")
 
-		conform.setup({
-			formatters = {
-				lua = { "stylua" },
-				typescript = { "prettierd" },
-				swift = { "swiftformat" },
-			},
-			format_on_save = {
-				-- These options will be passed to conform.format()
-				timeout_ms = 500,
-				lsp_fallback = true,
-			},
-		})
-	end,
+        conform.setup({
+            formatters = {
+                lua = { "stylua" },
+                typescript = { "prettierd" },
+                swift = { "swiftformat" },
+            },
+            format_on_save = {
+                -- These options will be passed to conform.format()
+                timeout_ms = 500,
+                lsp_fallback = true,
+            },
+        })
+    end,
 }

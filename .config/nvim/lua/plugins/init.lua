@@ -1,5 +1,6 @@
 return {
-    { import = "plugins.snacks" },
+
+    -- { import = "plugins.snacks" },
     -- { import = "plugins.formatting" },
     -- { import = "plugins.ui" },
     -- { import = "plugins.git" },
