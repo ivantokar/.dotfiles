@@ -29,7 +29,6 @@ return {
         },
         bigfile = { enabled = true },
         dashboard = { enabled = true },
-        explorer = {},
         indent = { enabled = true },
         input = {
             enabled = true,
@@ -38,22 +37,26 @@ return {
             enabled = true,
             timeout = 3000,
         },
+        rename = {
+            enabled = true,
+            prompt = true,
+        },
         picker = { enabled = true },
         quickfile = { enabled = true },
         scope = { enabled = true },
         scroll = { enabled = true },
-        statuscolumn = { enabled = true },
+        statuscolumn = {
+            enabled = true,
+        },
         words = { enabled = true },
         styles = {
             notification = {
-                -- wo = { wrap = true } -- Wrap notifications
+                wo = { wrap = true }, -- Wrap notifications
             },
         },
     },
     config = function(_, opts)
         require("snacks").setup(opts)
-        vim.ui.input = require("snacks").input
-        vim.ui.select = require("snacks").picker.select
     end,
     keys = {
         -- Top Pickers & Explorer
