@@ -12,7 +12,7 @@ return {
             formatters = {
                 lua = { "stylua" },
                 typescript = { "prettierd" },
-                swift = { "swiftformat" },
+                swift = { "swift-format" },
             },
             format_on_save = {
                 -- These options will be passed to conform.format()

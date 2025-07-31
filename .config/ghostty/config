@@ -1,6 +1,6 @@
 # General settings
 theme = rose-pine
 background-opacity = 0.98
-macos-titlebar-style = hidden
-cursor-color = #ffffff
+# macos-titlebar-style = hidden
+# cursor-color = #ffffff
 
