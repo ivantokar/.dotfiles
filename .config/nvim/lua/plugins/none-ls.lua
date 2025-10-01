@@ -10,12 +10,7 @@ return {
             sources = {
                 null_ls.builtins.formatting.stylua,
                 null_ls.builtins.formatting.prettierd,
-                null_ls.builtins.formatting.swift_format.with({
-                    command = "swift-format",
-                    args = { "format", "--stdin", "--assume-filename", "$FILENAME" },
-                    filetypes = { "swift" },
-                }),
-                null_ls.builtins.formatting.swiftlint,
+                -- Swift formatting removed - handled by xcodebuild.nvim or sourcekit-lsp
             },
         })
     end,

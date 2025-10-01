@@ -2,3 +2,4 @@
 theme = Rose Pine
 background-opacity = 0.98
 
+keybind = shift+enter=text:\x1b\r

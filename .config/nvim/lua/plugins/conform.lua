@@ -9,13 +9,15 @@ return {
         local conform = require("conform")
 
         conform.setup({
-            formatters = {
+            formatters_by_ft = {
                 lua = { "stylua" },
                 typescript = { "prettierd" },
-                swift = { "swift-format" },
+                typescriptreact = { "prettierd" },
+                javascript = { "prettierd" },
+                javascriptreact = { "prettierd" },
+                -- Swift formatting handled by xcodebuild.nvim or sourcekit-lsp
             },
             format_on_save = {
-                -- These options will be passed to conform.format()
                 timeout_ms = 500,
                 lsp_fallback = true,
             },
