@@ -22,7 +22,7 @@ vim.opt.colorcolumn = "80"                             -- Show a column at 80 ch
 vim.opt.cursorline = true                              -- Highlight the current line
 vim.opt.showmode = true                                -- Show the current mode
 vim.opt.spell = true                                   -- Enable spell check
-vim.opt.spelllang = "en_us"                            -- Set spell check language
+vim.opt.spelllang = { "en_us" }                        -- Set spell check language
 
 -- Set leader key
 vim.g.mapleader = " "
@@ -33,5 +33,3 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 
 -- Paste from system clipboard multiple times
 vim.keymap.set("x", "<leader>p", [["_dP]])
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")

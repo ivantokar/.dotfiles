@@ -1,6 +1,18 @@
-.config/btop
 .DS_Store
 
-.config/gh
-.config/github-copilot
-.config/deezer-desktop
+# GitHub CLI credentials and tokens
+.config/gh/hosts.yml
+
+# btop config (may contain system info)
+.config/btop/
+
+# Environment files
+.env
+.env.*
+*.pem
+*.key
+
+# API keys and secrets
+*secret*
+*credential*
+

@@ -41,11 +41,11 @@ return {
         require("trouble").setup(opts)
     end,
     keys = {
-        { "<leader>xx", "<cmd>Trouble<cr>",                       desc = "Toggle Trouble" },
-        { "<leader>xw", "<cmd>Trouble workspace_diagnostics<cr>", desc = "Workspace Diagnostics" },
-        { "<leader>xd", "<cmd>Trouble document_diagnostics<cr>",  desc = "Document Diagnostics" },
-        { "<leader>xl", "<cmd>Trouble loclist<cr>",               desc = "Location List" },
-        { "<leader>xq", "<cmd>Trouble quickfix<cr>",              desc = "Quickfix List" },
+        { "<leader>tt", "<cmd>Trouble<cr>",                       desc = "Toggle Trouble" },
+        { "<leader>tw", "<cmd>Trouble workspace_diagnostics<cr>", desc = "Workspace Diagnostics" },
+        { "<leader>td", "<cmd>Trouble document_diagnostics<cr>",  desc = "Document Diagnostics" },
+        { "<leader>tl", "<cmd>Trouble loclist<cr>",               desc = "Location List" },
+        { "<leader>tq", "<cmd>Trouble quickfix<cr>",              desc = "Quickfix List" },
         { "gR",         "<cmd>Trouble lsp_references<cr>",        desc = "LSP References" },
     },
 }
