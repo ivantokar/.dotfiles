@@ -347,6 +347,6 @@ Built with these amazing tools:
 - [zinit](https://github.com/zdharma-continuum/zinit)
 - [Powerlevel10k](https://github.com/romkatv/powerlevel10k)
 - [xcodebuild.nvim](https://github.com/wojciech-kulik/xcodebuild.nvim)
-- [Claude Code](https://claude.ai/code) - AI assistant for coding
+- [my R2-D2](https://claude.ai/code)
 
 And many more plugins and tools!
