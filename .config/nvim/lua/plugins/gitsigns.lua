@@ -69,12 +69,12 @@ return {
 				map("n", "<leader>hb", function()
 					gs.blame_line({ full = true })
 				end, { desc = "Git: Blame line" })
-				map("n", "<leader>tb", gs.toggle_current_line_blame, { desc = "Git: Toggle line blame" })
+				map("n", "<leader>htb", gs.toggle_current_line_blame, { desc = "Git: Toggle line blame" })
 				map("n", "<leader>hd", gs.diffthis, { desc = "Git: Diff this" })
 				map("n", "<leader>hD", function()
 					gs.diffthis("~")
 				end, { desc = "Git: Diff this ~" })
-				map("n", "<leader>td", gs.toggle_deleted, { desc = "Git: Toggle deleted" })
+				map("n", "<leader>htd", gs.toggle_deleted, { desc = "Git: Toggle deleted" })
 
 				-- Text object
 				map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", { desc = "Git: Select hunk" })

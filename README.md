@@ -197,9 +197,9 @@ If you prefer to run the OS-specific script directly:
 - `<leader>hR` - Reset buffer
 - `<leader>hu` - Undo stage hunk
 - `<leader>hb` - Blame line
-- `<leader>tb` - Toggle line blame
+- `<leader>htb` - Toggle line blame
 - `<leader>hd` - Diff this file
-- `<leader>td` - Toggle deleted lines
+- `<leader>htd` - Toggle deleted lines
 
 #### Trouble (Diagnostics)
 
