@@ -1,10 +1,13 @@
 .DS_Store
 
 # GitHub CLI credentials and tokens
-.config/gh/hosts.yml
+.config/gh/
 
 # btop config (may contain system info)
 .config/btop/
+
+# Tmux plugins (installed by TPM)
+.config/tmux/plugins/
 
 # Environment files
 .env
