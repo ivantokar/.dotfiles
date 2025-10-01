@@ -94,8 +94,14 @@ info "Installing Python and pip..."
 sudo apt install -y python3 python3-pip python3-venv pipx
 pipx ensurepath
 
+info "Installing Node.js packages..."
+npm install -g neovim typescript typescript-language-server
+
+info "Installing language servers..."
+npm install -g @tailwindcss/language-server @astrojs/language-server
+
 info "Installing formatters and linters..."
-npm install -g neovim typescript typescript-language-server prettierd
+npm install -g prettierd
 
 info "Installing stylua..."
 if ! command -v stylua &> /dev/null; then

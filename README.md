@@ -5,10 +5,11 @@ Personal dotfiles for macOS and Linux (Ubuntu/Mint/Arch), featuring Neovim, Tmux
 ## ✨ Features
 
 - **Neovim**: Fully configured with LSP, DAP, Treesitter, and lazy.nvim
+- **AI Assistant**: Avante.nvim for Cursor-like AI coding experience
 - **Tmux**: Custom configuration with plugins (TPM, resurrect, continuum)
 - **Zsh**: Enhanced shell with zinit, Powerlevel10k, and useful plugins
 - **Terminal**: Ghostty configuration with Rose Pine theme
-- **Development**: Support for TypeScript/JavaScript, Lua, Swift/iOS, and more
+- **Development**: Support for TypeScript/JavaScript, Lua, Swift/iOS, Tailwind CSS, Astro, and more
 
 ## 🚀 Quick Start
 
@@ -83,6 +84,8 @@ If you prefer to run the OS-specific script directly:
 
 - **typescript-language-server** - TypeScript/JavaScript LSP
 - **lua-language-server** - Lua LSP
+- **tailwindcss-language-server** - Tailwind CSS LSP
+- **astro-language-server** - Astro framework LSP
 - **sourcekit-lsp** - Swift/iOS LSP (macOS only)
 - **prettierd** - Fast Prettier formatter
 - **stylua** - Lua formatter
@@ -225,6 +228,36 @@ If you prefer to run the OS-specific script directly:
 - `<leader>xX` - Clean project
 - `<leader>xx` - Show all Xcode commands
 
+#### AI Assistant (Avante.nvim)
+
+**Chat & Code Generation:**
+- Open any file and Avante will be available in the sidebar
+- `<CR>` - Submit prompt (Normal mode)
+- `<C-s>` - Submit prompt (Insert mode)
+
+**Diff Navigation:**
+- `]]` / `[[` - Next/Previous suggestion
+- `]x` / `[x` - Next/Previous conflict
+
+**Apply Changes:**
+- `a` - Apply suggestion at cursor
+- `A` - Apply all suggestions
+- `co` - Choose ours (in conflict)
+- `ct` - Choose theirs (in conflict)
+- `ca` - Choose all theirs
+- `cb` - Choose both
+- `cc` - Choose at cursor
+
+**Window Management:**
+- `<Tab>` - Switch windows
+- `<S-Tab>` - Reverse switch windows
+
+**Auto-suggestions (experimental):**
+- `<M-l>` - Accept suggestion
+- `<M-]>` - Next suggestion
+- `<M-[>` - Previous suggestion
+- `<C-]>` - Dismiss suggestion
+
 #### Visual Mode
 
 - `J` - Move selected lines down
@@ -299,7 +332,21 @@ If you prefer to run the OS-specific script directly:
    nvim +checkhealth
    ```
 
-5. **For Swift/iOS development** (macOS only):
+5. **Configure AI Assistant (Avante.nvim)** (optional):
+
+   Edit `~/.zshrc.local` and add your OpenAI API key:
+   ```bash
+   export OPENAI_API_KEY="sk-your-key-here"
+   ```
+
+   Then reload your shell:
+   ```bash
+   source ~/.zshrc
+   ```
+
+   Get your API key from: https://platform.openai.com/api-keys
+
+6. **For Swift/iOS development** (macOS only):
    - Install Xcode from App Store
    - Configure your project:
      ```bash
@@ -348,9 +395,24 @@ After making changes:
 
 This repository contains no API keys, tokens, or personal credentials. The following are excluded via `.gitignore`:
 
-- GitHub CLI authentication (`.config/gh/hosts.yml`)
-- System-specific configs (`.config/btop/`)
-- Environment files (`.env*`, `*.pem`, `*.key`)
+- **Local secrets** (`.zshrc.local`) - For API keys and machine-specific settings
+- **GitHub CLI authentication** (`.config/gh/`)
+- **System-specific configs** (`.config/btop/`)
+- **Tmux plugins** (`.config/tmux/plugins/`)
+- **Environment files** (`.env*`, `*.pem`, `*.key`)
+- **Secrets and credentials** (`*secret*`, `*credential*`)
+
+### Adding API Keys
+
+For AI tools (Avante.nvim, etc.), create a `~/.zshrc.local` file (gitignored):
+
+```bash
+# ~/.zshrc.local
+export OPENAI_API_KEY="sk-your-key-here"
+export ANTHROPIC_API_KEY="sk-ant-your-key-here"
+```
+
+This file is automatically sourced by `.zshrc` but never committed to the repository.
 
 ## 🤝 Contributing
 

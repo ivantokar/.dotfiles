@@ -167,12 +167,67 @@ return {
 				},
 			})
 
+			-- Tailwind CSS LSP
+			vim.lsp.config("tailwindcss", {
+				filetypes = {
+					"html",
+					"css",
+					"scss",
+					"sass",
+					"postcss",
+					"javascript",
+					"javascriptreact",
+					"typescript",
+					"typescriptreact",
+					"vue",
+					"svelte",
+					"astro",
+				},
+				root_markers = {
+					"tailwind.config.js",
+					"tailwind.config.cjs",
+					"tailwind.config.mjs",
+					"tailwind.config.ts",
+					"postcss.config.js",
+					"postcss.config.cjs",
+					"postcss.config.mjs",
+					"postcss.config.ts",
+					".git",
+				},
+				settings = {
+					tailwindCSS = {
+						classAttributes = { "class", "className", "class:list", "classList", "ngClass" },
+						experimental = {
+							classRegex = {
+								{ "cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
+								{ "cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)" },
+							},
+						},
+					},
+				},
+			})
+
+			-- Astro LSP
+			vim.lsp.config("astro", {
+				filetypes = { "astro" },
+				root_markers = {
+					"astro.config.js",
+					"astro.config.mjs",
+					"astro.config.cjs",
+					"astro.config.ts",
+					"package.json",
+					".git",
+				},
+			})
+
 			-- Enable all configured LSP servers
 			vim.lsp.enable("lua_ls")
 			vim.lsp.enable("ts_ls")
 			vim.lsp.enable("sourcekit")
 			vim.lsp.enable("emmet_language_server")
 			vim.lsp.enable("graphql")
+			vim.lsp.enable("tailwindcss")
+			vim.lsp.enable("astro")
 
 			-- LspAttach autocmd for buffer-local keymaps and settings
 			vim.api.nvim_create_autocmd("LspAttach", {

@@ -65,6 +65,9 @@ pipx install pymobiledevice3
 info "Installing Node.js packages..."
 npm install -g neovim typescript typescript-language-server
 
+info "Installing language servers..."
+npm install -g @tailwindcss/language-server @astrojs/language-server
+
 info "Installing formatters and linters..."
 npm install -g prettierd
 brew install stylua

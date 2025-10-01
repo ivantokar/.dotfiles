@@ -51,6 +51,7 @@ return {
 					"markdown",
 					"scss",
 					"typst",
+					"astro",
 				},
 
 				-- Install parsers synchronously (only applied to `ensure_installed`)

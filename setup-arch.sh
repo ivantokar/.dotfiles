@@ -74,8 +74,14 @@ sudo pacman -S --needed --noconfirm \
 info "Ensuring pipx path..."
 pipx ensurepath
 
+info "Installing Node.js packages..."
+npm install -g neovim typescript typescript-language-server
+
+info "Installing language servers..."
+npm install -g @tailwindcss/language-server @astrojs/language-server
+
 info "Installing formatters and linters..."
-npm install -g neovim typescript typescript-language-server prettierd
+npm install -g prettierd
 sudo pacman -S --needed --noconfirm stylua
 
 info "Checking for yay (AUR helper)..."
