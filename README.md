@@ -230,8 +230,25 @@ If you prefer to run the OS-specific script directly:
 
 #### AI Assistant (Avante.nvim)
 
+**Leader Keymaps:**
+- `<leader>aa` - Ask Avante (opens AI assistant)
+- `<leader>ar` - Refresh Avante response
+- `<leader>ae` - Edit selection with Avante (Visual mode)
+- `<leader>at` - Toggle Avante sidebar
+
+**Commands:**
+- `:AvanteAsk` - Ask AI for code suggestions
+- `:AvanteChat` - Open chat with codebase
+- `:AvanteEdit` - Edit selection with AI (Visual mode)
+- `:AvanteToggle` - Toggle Avante sidebar
+- `:AvanteFocus` - Focus on Avante window
+- `:AvanteRefresh` - Refresh current response
+- `:AvanteClear` - Clear chat history
+- `:AvanteStop` - Stop current generation
+- `:AvanteSwitchProvider` - Switch AI provider
+- `:AvanteShowRepoMap` - Show repository map
+
 **Chat & Code Generation:**
-- Open any file and Avante will be available in the sidebar
 - `<CR>` - Submit prompt (Normal mode)
 - `<C-s>` - Submit prompt (Insert mode)
 

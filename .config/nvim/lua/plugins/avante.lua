@@ -84,6 +84,36 @@ return {
 	},
 	-- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
 	build = "make",
+	keys = {
+		{
+			"<leader>aa",
+			function()
+				require("avante.api").ask()
+			end,
+			desc = "Avante: Ask",
+			mode = { "n", "v" },
+		},
+		{
+			"<leader>ar",
+			function()
+				require("avante.api").refresh()
+			end,
+			desc = "Avante: Refresh",
+		},
+		{
+			"<leader>ae",
+			function()
+				require("avante.api").edit()
+			end,
+			desc = "Avante: Edit",
+			mode = "v",
+		},
+		{
+			"<leader>at",
+			"<cmd>AvanteToggle<cr>",
+			desc = "Avante: Toggle",
+		},
+	},
 	dependencies = {
 		"nvim-treesitter/nvim-treesitter",
 		"stevearc/dressing.nvim",
