@@ -21,6 +21,7 @@ git clone https://github.com/ivantokar/.dotfiles.git ~/.dotfiles && cd ~/.dotfil
 ### Manual Install
 
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/ivantokar/.dotfiles.git ~/.dotfiles
    cd ~/.dotfiles
@@ -38,16 +39,19 @@ The setup script will automatically detect your OS and run the appropriate insta
 If you prefer to run the OS-specific script directly:
 
 **macOS:**
+
 ```bash
 ./setup-macos.sh
 ```
 
 **Ubuntu/Linux Mint:**
+
 ```bash
 ./setup-ubuntu.sh
 ```
 
 **Arch Linux:**
+
 ```bash
 ./setup-arch.sh
 ```
@@ -55,24 +59,28 @@ If you prefer to run the OS-specific script directly:
 ## 📦 What Gets Installed
 
 ### Core Tools
+
 - **Neovim** (0.11+) - Modern text editor
 - **Tmux** - Terminal multiplexer
 - **Zsh** - Shell with zinit plugin manager
 - **Stow** - Dotfiles symlink manager
 
 ### Terminal Utilities
+
 - **fzf** - Fuzzy finder
 - **ripgrep** - Fast grep alternative
 - **fd** - Fast find alternative
 - **zoxide** - Smart cd replacement
 
 ### Development Tools
+
 - **Node.js** - JavaScript runtime
 - **Ruby** - For gem packages
 - **Python** - For pip packages
 - **Git** - Version control
 
 ### Language Servers & Formatters
+
 - **typescript-language-server** - TypeScript/JavaScript LSP
 - **lua-language-server** - Lua LSP
 - **sourcekit-lsp** - Swift/iOS LSP (macOS only)
@@ -80,6 +88,7 @@ If you prefer to run the OS-specific script directly:
 - **stylua** - Lua formatter
 
 ### Debugging
+
 - **codelldb** - LLDB-based debugger for Swift/C/C++/Rust
 - **vscode-js-debug** - JavaScript/TypeScript debugger (auto-installed)
 
@@ -90,6 +99,7 @@ If you prefer to run the OS-specific script directly:
 **Leader key:** `Space`
 
 #### File Navigation
+
 - `<leader>ff` - Find files (Telescope)
 - `<leader>fg` - Live grep with args (Telescope)
 - `<leader>fb` - Find buffers (Telescope)
@@ -98,7 +108,9 @@ If you prefer to run the OS-specific script directly:
 - `<leader>e` - Toggle file explorer (floating, Neo-tree)
 
 #### LSP Navigation & Actions
+
 **Built-in Neovim 0.11+ keymaps:**
+
 - `grn` - Rename symbol
 - `grr` - Show references
 - `gri` - Go to implementation
@@ -110,6 +122,7 @@ If you prefer to run the OS-specific script directly:
 - `<C-W>d` - Show diagnostics in floating window
 
 **Custom LSP keymaps:**
+
 - `K` - Hover documentation
 - `gd` - Go to definition
 - `gD` - Go to declaration
@@ -126,6 +139,7 @@ If you prefer to run the OS-specific script directly:
 - `<leader>th` - Toggle inlay hints
 
 #### Completion (Insert Mode)
+
 - `<C-Space>` - Trigger completion
 - `<Tab>` - Next completion item / expand snippet
 - `<S-Tab>` - Previous completion item / jump back in snippet
@@ -134,7 +148,9 @@ If you prefer to run the OS-specific script directly:
 - `<C-e>` - Abort completion
 
 #### Debugging (DAP)
+
 **General debugging:**
+
 - `<leader>db` - Toggle breakpoint
 - `<leader>dB` - Set conditional breakpoint
 - `<leader>dc` - Continue/Start debugging
@@ -149,15 +165,18 @@ If you prefer to run the OS-specific script directly:
 - `<leader>dp` - Preview variable
 
 **Swift/iOS debugging (macOS only):**
+
 - `<leader>dd` - Build & debug (Xcode)
 - `<leader>dR` - Debug without building (Xcode)
 - `<leader>dt` - Debug tests (Xcode)
 - `<leader>dT` - Debug class tests (Xcode)
 
 #### Git
+
 - `<leader>lg` - Open LazyGit
 
 #### Trouble (Diagnostics)
+
 - `<leader>tt` - Toggle Trouble
 - `<leader>tw` - Workspace diagnostics
 - `<leader>td` - Document diagnostics
@@ -166,6 +185,7 @@ If you prefer to run the OS-specific script directly:
 - `gR` - LSP references (Trouble)
 
 #### Xcode/iOS Development (macOS only)
+
 - `<leader>xb` - Build project
 - `<leader>xr` - Build & run project
 - `<leader>xt` - Run tests
@@ -183,6 +203,7 @@ If you prefer to run the OS-specific script directly:
 - `<leader>xx` - Show all Xcode commands
 
 #### Visual Mode
+
 - `J` - Move selected lines down
 - `K` - Move selected lines up
 - `<leader>p` - Paste without yanking (preserves clipboard)
@@ -192,11 +213,13 @@ If you prefer to run the OS-specific script directly:
 **Prefix key:** `Ctrl+s` (not default Ctrl+b)
 
 ### Key Bindings
+
 - `Ctrl+s |` - Split horizontally
 - `Ctrl+s -` - Split vertically
 - `Ctrl+s r` - Reload configuration
 
 ### Plugins
+
 - **vim-tmux-navigator** - Seamless Vim/Tmux navigation
 - **tmux-resurrect** - Save/restore sessions
 - **tmux-continuum** - Auto-save sessions
@@ -204,12 +227,14 @@ If you prefer to run the OS-specific script directly:
 ## 🐚 Shell Configuration
 
 ### Zsh Plugins (via zinit)
+
 - **Powerlevel10k** - Beautiful prompt
 - **zsh-syntax-highlighting** - Command syntax highlighting
 - **zsh-autosuggestions** - Fish-like autosuggestions
 - **fzf-tab** - Tab completion with fzf
 
 ### Aliases
+
 - `vim` → `nvim`
 - `c` → `clear`
 - `rr` → `exec zsh` (reload shell)
@@ -217,14 +242,17 @@ If you prefer to run the OS-specific script directly:
 ## 📋 Prerequisites
 
 ### macOS
+
 - macOS 14+ (earlier versions may work but untested)
 - Xcode Command Line Tools: `xcode-select --install`
 
 ### Ubuntu/Mint
+
 - Ubuntu 20.04+ or Linux Mint 20+
 - `sudo` access
 
 ### Arch Linux
+
 - Arch Linux, Manjaro, or EndeavourOS
 - `sudo` access
 
@@ -233,6 +261,7 @@ If you prefer to run the OS-specific script directly:
 1. **Restart your terminal** or run: `exec zsh`
 
 2. **Configure Powerlevel10k** (first run):
+
    ```bash
    p10k configure
    ```
@@ -242,6 +271,7 @@ If you prefer to run the OS-specific script directly:
    - Press `Ctrl+s` then `I` (capital i)
 
 4. **Check Neovim health**:
+
    ```bash
    nvim +checkhealth
    ```
@@ -264,6 +294,7 @@ All configurations are in `~/.dotfiles/.config/`:
 - **Ghostty**: `.config/ghostty/config`
 
 After making changes:
+
 - Zsh: Run `rr` or `exec zsh`
 - Tmux: Press `Ctrl+s` then `r`
 - Neovim: Restart or `:source $MYVIMRC`
@@ -294,6 +325,7 @@ After making changes:
 ## 🔒 Privacy
 
 This repository contains no API keys, tokens, or personal credentials. The following are excluded via `.gitignore`:
+
 - GitHub CLI authentication (`.config/gh/hosts.yml`)
 - System-specific configs (`.config/btop/`)
 - Environment files (`.env*`, `*.pem`, `*.key`)
@@ -309,6 +341,7 @@ MIT License - feel free to use and modify as you wish.
 ## 🙏 Acknowledgments
 
 Built with these amazing tools:
+
 - [lazy.nvim](https://github.com/folke/lazy.nvim)
 - [tmux](https://github.com/tmux/tmux)
 - [zinit](https://github.com/zdharma-continuum/zinit)
