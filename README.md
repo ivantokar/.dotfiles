@@ -404,15 +404,27 @@ This repository contains no API keys, tokens, or personal credentials. The follo
 
 ### Adding API Keys
 
-For AI tools (Avante.nvim, etc.), create a `~/.zshrc.local` file (gitignored):
+For AI tools (Avante.nvim, etc.), create a `~/.zshrc.local` file in your **home directory** (not in `.dotfiles/`):
 
+```bash
+# Create the file in your HOME directory
+touch ~/.zshrc.local
+
+# Edit it and add your API keys
+vim ~/.zshrc.local
+```
+
+Add your keys:
 ```bash
 # ~/.zshrc.local
 export OPENAI_API_KEY="sk-your-key-here"
 export ANTHROPIC_API_KEY="sk-ant-your-key-here"
 ```
 
-This file is automatically sourced by `.zshrc` but never committed to the repository.
+**Important:**
+- The file must be at `~/.zshrc.local` (in your home directory)
+- **NOT** at `~/.dotfiles/.zshrc.local` (don't put it inside the dotfiles repo)
+- This file is automatically sourced by `.zshrc` but never committed to git
 
 ## 🤝 Contributing
 
