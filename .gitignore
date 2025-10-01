@@ -1,5 +1,8 @@
 .DS_Store
 
+# AI assistant configuration (local only)
+CLAUDE.md
+
 # GitHub CLI credentials and tokens
 .config/gh/
 

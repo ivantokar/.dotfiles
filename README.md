@@ -173,7 +173,30 @@ If you prefer to run the OS-specific script directly:
 
 #### Git
 
+**LazyGit:**
 - `<leader>lg` - Open LazyGit
+
+**Diffview:**
+- `<leader>gdo` - Open diff view (uncommitted changes)
+- `<leader>gdc` - Close diff view
+- `<leader>gdh` - File history (all files)
+- `<leader>gdH` - Current file history
+- `<leader>gdf` - Toggle file panel
+- `<leader>gdr` - Refresh diff
+
+**Gitsigns (Hunk operations):**
+- `]c` - Next hunk
+- `[c` - Previous hunk
+- `<leader>hp` - Preview hunk
+- `<leader>hs` - Stage hunk
+- `<leader>hr` - Reset hunk
+- `<leader>hS` - Stage buffer
+- `<leader>hR` - Reset buffer
+- `<leader>hu` - Undo stage hunk
+- `<leader>hb` - Blame line
+- `<leader>tb` - Toggle line blame
+- `<leader>hd` - Diff this file
+- `<leader>td` - Toggle deleted lines
 
 #### Trouble (Diagnostics)
 
@@ -301,8 +324,8 @@ After making changes:
 
 ## 📚 Documentation
 
-- **[CLAUDE.md](CLAUDE.md)** - Complete configuration guide for AI assistants
 - **Plugin docs**: Use `:help <plugin-name>` in Neovim
+- **Keybindings**: Press `<leader>?` or `:Telescope keymaps` in Neovim
 
 ## 🗂️ Structure
 
@@ -318,7 +341,6 @@ After making changes:
 ├── setup-macos.sh     # macOS-specific setup
 ├── setup-ubuntu.sh    # Ubuntu/Mint setup
 ├── setup-arch.sh      # Arch Linux setup
-├── CLAUDE.md          # Detailed documentation
 └── README.md          # This file
 ```
 
