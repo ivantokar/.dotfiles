@@ -5,7 +5,6 @@ Personal dotfiles for macOS and Linux (Ubuntu/Mint/Arch), featuring Neovim, Tmux
 ## ✨ Features
 
 - **Neovim**: Fully configured with LSP, DAP, Treesitter, and lazy.nvim
-- **AI Assistant**: Avante.nvim for Cursor-like AI coding experience
 - **Tmux**: Custom configuration with plugins (TPM, resurrect, continuum)
 - **Zsh**: Enhanced shell with zinit, Powerlevel10k, and useful plugins
 - **Terminal**: Ghostty configuration with Rose Pine theme
@@ -144,11 +143,21 @@ If you prefer to run the OS-specific script directly:
 #### Completion (Insert Mode)
 
 - `<C-Space>` - Trigger completion
-- `<Tab>` - Next completion item / expand snippet
+- `<Tab>` - Accept AI suggestion (Supermaven) → Navigate completion menu → Expand snippet
 - `<S-Tab>` - Previous completion item / jump back in snippet
 - `<CR>` - Confirm completion
 - `<C-b>` / `<C-f>` - Scroll documentation up/down
 - `<C-e>` - Abort completion
+
+**Note:** Supermaven suggestions appear both as **inline ghost text** (accept with Tab) and in the **completion menu** (highest priority).
+
+#### AI-Powered Completions (Supermaven - Alternative Keymaps)
+
+- `<M-a>` - Accept full suggestion (alternative to Tab)
+- `<M-c>` - Clear suggestion
+- `<M-w>` - Accept next word
+- `<M-n>` - Next suggestion
+- `<M-p>` - Previous suggestion
 
 #### Debugging (DAP)
 
@@ -228,53 +237,6 @@ If you prefer to run the OS-specific script directly:
 - `<leader>xX` - Clean project
 - `<leader>xx` - Show all Xcode commands
 
-#### AI Assistant (Avante.nvim)
-
-**Leader Keymaps:**
-- `<leader>aa` - Ask Avante (opens AI assistant)
-- `<leader>ar` - Refresh Avante response
-- `<leader>ae` - Edit selection with Avante (Visual mode)
-- `<leader>at` - Toggle Avante sidebar
-
-**Commands:**
-- `:AvanteAsk` - Ask AI for code suggestions
-- `:AvanteChat` - Open chat with codebase
-- `:AvanteEdit` - Edit selection with AI (Visual mode)
-- `:AvanteToggle` - Toggle Avante sidebar
-- `:AvanteFocus` - Focus on Avante window
-- `:AvanteRefresh` - Refresh current response
-- `:AvanteClear` - Clear chat history
-- `:AvanteStop` - Stop current generation
-- `:AvanteSwitchProvider` - Switch AI provider
-- `:AvanteShowRepoMap` - Show repository map
-
-**Chat & Code Generation:**
-- `<CR>` - Submit prompt (Normal mode)
-- `<C-s>` - Submit prompt (Insert mode)
-
-**Diff Navigation:**
-- `]]` / `[[` - Next/Previous suggestion
-- `]x` / `[x` - Next/Previous conflict
-
-**Apply Changes:**
-- `a` - Apply suggestion at cursor
-- `A` - Apply all suggestions
-- `co` - Choose ours (in conflict)
-- `ct` - Choose theirs (in conflict)
-- `ca` - Choose all theirs
-- `cb` - Choose both
-- `cc` - Choose at cursor
-
-**Window Management:**
-- `<Tab>` - Switch windows
-- `<S-Tab>` - Reverse switch windows
-
-**Auto-suggestions (experimental):**
-- `<M-l>` - Accept suggestion
-- `<M-]>` - Next suggestion
-- `<M-[>` - Previous suggestion
-- `<C-]>` - Dismiss suggestion
-
 #### Visual Mode
 
 - `J` - Move selected lines down
@@ -349,21 +311,7 @@ If you prefer to run the OS-specific script directly:
    nvim +checkhealth
    ```
 
-5. **Configure AI Assistant (Avante.nvim)** (optional):
-
-   Edit `~/.zshrc.local` and add your OpenAI API key:
-   ```bash
-   export OPENAI_API_KEY="sk-your-key-here"
-   ```
-
-   Then reload your shell:
-   ```bash
-   source ~/.zshrc
-   ```
-
-   Get your API key from: https://platform.openai.com/api-keys
-
-6. **For Swift/iOS development** (macOS only):
+5. **For Swift/iOS development** (macOS only):
    - Install Xcode from App Store
    - Configure your project:
      ```bash
@@ -421,7 +369,7 @@ This repository contains no API keys, tokens, or personal credentials. The follo
 
 ### Adding API Keys
 
-For AI tools (Avante.nvim, etc.), create a `~/.zshrc.local` file in your **home directory** (not in `.dotfiles/`):
+For tools that require API keys, create a `~/.zshrc.local` file in your **home directory** (not in `.dotfiles/`):
 
 ```bash
 # Create the file in your HOME directory

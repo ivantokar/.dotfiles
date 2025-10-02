@@ -4,24 +4,27 @@ return {
     config = function()
         require("supermaven-nvim").setup({
             keymaps = {
-                accept_suggestion = "<Tab>",
-                clear_suggestion = "<C-]>",
-                accept_word = "<C-=>",
-                next_completion = "<C-.>",
-                previous_completion = "<C-,>",
+                accept_suggestion = "<M-a>",     -- Accept full suggestion (alternative to Tab)
+                clear_suggestion = "<M-c>",      -- Clear suggestion
+                accept_word = "<M-w>",           -- Accept next word
+                next_completion = "<M-n>",       -- Next suggestion (not needed in cmp integration)
+                previous_completion = "<M-p>",   -- Previous suggestion (not needed in cmp integration)
             },
 
-            -- ignore_filetypes = { cpp = true }, -- or { "cpp", }
+            -- ignore_filetypes = { cpp = true }, -- Disable for specific languages
             color = {
                 suggestion_color = "#6e6a86",
                 cterm = 244,
             },
-            log_level = "info",       -- set to "off" to disable logging completely
-            disable_inline_completion = false, -- disables inline completion for use with cmp
-            disable_keymaps = false,  -- disables built in keymaps for more manual control
+            log_level = "info",                -- "off" to disable logging, "debug" for more verbose
+            disable_inline_completion = false, -- Keep inline suggestions enabled
+            disable_keymaps = false,           -- Keep alt keymaps as fallback
             condition = function()
-                return false
-            end, -- condition to check for stopping supermaven, `true` means to stop supermaven when the condition is true.
+                return false                   -- Supermaven always enabled
+            end,
         })
+
+        -- Set custom highlight for Supermaven suggestions in cmp menu
+        vim.api.nvim_set_hl(0, "CmpItemKindSupermaven", { fg = "#6CC644" })
     end,
 }

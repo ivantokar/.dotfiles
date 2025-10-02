@@ -364,6 +364,13 @@ return {
 
 			require("luasnip.loaders.from_vscode").lazy_load()
 
+			-- Configure lspkind with Supermaven icon
+			lspkind.init({
+				symbol_map = {
+					Supermaven = "",
+				},
+			})
+
 			-- Better tab completion behavior
 			local has_words_before = function()
 				unpack = unpack or table.unpack
@@ -391,14 +398,23 @@ return {
 						behavior = cmp.ConfirmBehavior.Replace,
 						select = true,
 					}),
-					-- Super-Tab like mapping
+					-- Super-Tab with Supermaven inline suggestion support
 					["<Tab>"] = cmp.mapping(function(fallback)
-						if cmp.visible() then
+						local suggestion = require("supermaven-nvim.completion_preview")
+
+						-- Check for Supermaven inline suggestion first (highest priority)
+						if suggestion.has_suggestion() then
+							suggestion.on_accept_suggestion()
+						-- Then check for cmp menu
+						elseif cmp.visible() then
 							cmp.select_next_item()
+						-- Then check for snippet expansion
 						elseif luasnip.expand_or_jumpable() then
 							luasnip.expand_or_jump()
+						-- Trigger completion if we have words before cursor
 						elseif has_words_before() then
 							cmp.complete()
+						-- Fallback to normal Tab
 						else
 							fallback()
 						end
@@ -414,6 +430,7 @@ return {
 					end, { "i", "s" }),
 				}),
 				sources = cmp.config.sources({
+					{ name = "supermaven", priority = 1250 },
 					{ name = "nvim_lsp", priority = 1000 },
 					{ name = "luasnip", priority = 750 },
 					{ name = "buffer", priority = 500 },

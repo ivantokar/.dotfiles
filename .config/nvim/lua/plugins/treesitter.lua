@@ -91,16 +91,4 @@ return {
 			})
 		end,
 	},
-	{
-		"nelsyeung/twig.vim",
-		ft = { "twig", "stencil" },
-
-		config = function()
-			vim.filetype.add({
-				extension = {
-					stencil = "twig",
-				},
-			})
-		end,
-	},
 }
