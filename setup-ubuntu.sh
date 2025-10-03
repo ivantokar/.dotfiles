@@ -177,6 +177,12 @@ stow -v -t ~/ .
 info "Installing Neovim plugins..."
 nvim --headless "+Lazy! sync" +qa
 
+info "Building telescope-fzf-native..."
+if [ -d ~/.local/share/nvim/lazy/telescope-fzf-native.nvim ]; then
+    cd ~/.local/share/nvim/lazy/telescope-fzf-native.nvim && make
+    cd - > /dev/null
+fi
+
 info "Installing tmux plugins..."
 if command -v tmux &> /dev/null; then
     ~/.config/tmux/plugins/tpm/bin/install_plugins

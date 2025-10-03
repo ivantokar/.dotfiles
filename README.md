@@ -102,12 +102,52 @@ If you prefer to run the OS-specific script directly:
 
 #### File Navigation
 
-- `<leader>ff` - Find files (Telescope)
-- `<leader>fg` - Live grep with args (Telescope)
-- `<leader>fb` - Find buffers (Telescope)
-- `<leader>fh` - Help tags (Telescope)
-- `<leader>E` - Toggle file explorer (sidebar, Neo-tree)
-- `<leader>e` - Toggle file explorer (floating, Neo-tree)
+**File Pickers (Telescope):**
+
+- `<leader>ff` - Find files
+- `<leader>fa` - Find all files (ignore .gitignore)
+- `<leader>fg` - Live grep with args
+- `<leader>fw` - Grep current word
+- `<leader>fb` - Find buffers
+- `<leader>fr` - Recent files (oldfiles)
+- `<leader>fo` - Resume last picker
+
+**Vim Pickers (Telescope):**
+
+- `<leader>fh` - Help tags
+- `<leader>fk` - Keymaps
+- `<leader>fc` - Commands
+- `<leader>fm` - Marks
+- `<leader>fR` - Registers
+- `<leader>fj` - Jump list
+- `<leader>fd` - Diagnostics
+
+**Git Pickers (Telescope):**
+
+- `<leader>fgf` - Git files
+- `<leader>fgs` - Git status
+- `<leader>fgc` - Git commits
+- `<leader>fgb` - Git branches
+
+**File Explorer (Neo-tree):**
+
+- `<leader>E` - Toggle sidebar
+- `<leader>e` - Toggle floating
+
+**Telescope Insert Mode Mappings:**
+
+- `<C-j>` / `<C-k>` - Move selection down/up
+- `<C-q>` - Send to quickfix list
+- `<M-q>` - Send selected to quickfix list
+- `<Tab>` / `<S-Tab>` - Toggle selection and move
+- `<C-d>` - Delete buffer (in buffer picker)
+- `<C-h>` - Show which-key help
+
+**Telescope Live Grep Args (Insert Mode):**
+
+- `<C-k>` - Quote prompt
+- `<C-i>` - Add glob pattern (--iglob)
+- `<C-g>` - Add hidden files flag (--hidden)
 
 #### LSP Navigation & Actions
 
@@ -139,6 +179,12 @@ If you prefer to run the OS-specific script directly:
 - `<leader>rn` - Rename symbol (also `grn`)
 - `<leader>f` - Format buffer
 - `<leader>th` - Toggle inlay hints
+
+**TypeScript-specific keymaps:**
+
+- `<leader>io` - Organize imports
+- `<leader>ia` - Add all missing imports
+- `<leader>iu` - Remove unused imports
 
 #### Completion (Insert Mode)
 

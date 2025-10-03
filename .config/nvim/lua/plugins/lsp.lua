@@ -61,7 +61,6 @@ return {
 				local params = {
 					command = "_typescript.organizeImports",
 					arguments = { vim.api.nvim_buf_get_name(0) },
-					title = "",
 				}
 				vim.lsp.buf.execute_command(params)
 			end
@@ -339,6 +338,42 @@ return {
 					end, vim.tbl_extend("force", opts, {
 						desc = "LSP: Toggle inlay hints",
 					}))
+
+					-- TypeScript-specific keymaps
+					if client and client.name == "ts_ls" then
+						-- Organize imports
+						vim.keymap.set("n", "<leader>io", function()
+							organize_imports()
+						end, vim.tbl_extend("force", opts, {
+							desc = "TypeScript: Organize imports",
+						}))
+
+						-- Add missing imports (source action)
+						vim.keymap.set("n", "<leader>ia", function()
+							vim.lsp.buf.code_action({
+								apply = true,
+								context = {
+									only = { "source.addMissingImports.ts" },
+									diagnostics = {},
+								},
+							})
+						end, vim.tbl_extend("force", opts, {
+							desc = "TypeScript: Add missing imports",
+						}))
+
+						-- Remove unused imports
+						vim.keymap.set("n", "<leader>iu", function()
+							vim.lsp.buf.code_action({
+								apply = true,
+								context = {
+									only = { "source.removeUnused.ts" },
+									diagnostics = {},
+								},
+							})
+						end, vim.tbl_extend("force", opts, {
+							desc = "TypeScript: Remove unused imports",
+						}))
+					end
 				end,
 			})
 		end,

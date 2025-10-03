@@ -76,19 +76,6 @@ return {
 					additional_vim_regex_highlighting = false,
 				},
 			})
-
-			require("nvim-treesitter.configs").setup({
-				ensure_installed = {
-					"html",
-					"javascript",
-					"typescript",
-					"tsx",
-					"vue",
-					-- add more filetypes as needed
-				},
-				highlight = { enable = true },
-				indent = { enable = true },
-			})
 		end,
 	},
 }

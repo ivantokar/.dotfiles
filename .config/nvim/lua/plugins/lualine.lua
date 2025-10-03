@@ -48,12 +48,18 @@ return {
 			},
 			sections = {
 				lualine_a = {
-					"mode",
+					{ "mode", icon = "" },
 				},
 				lualine_b = {
-					"branch",
-					"diff",
-					"diagnostics",
+					{ "branch", icon = "" },
+					{
+						"diff",
+						symbols = { added = " ", modified = " ", removed = " " },
+					},
+					{
+						"diagnostics",
+						symbols = { error = " ", warn = " ", info = " ", hint = " " },
+					},
 				},
 				lualine_c = {
 					{

@@ -20,8 +20,8 @@ vim.opt.isfname:append("@-@")                          -- Allow @ in file names
 vim.opt.updatetime = 50                                -- Faster completion
 vim.opt.colorcolumn = "80"                             -- Show a column at 80 characters
 vim.opt.cursorline = true                              -- Highlight the current line
-vim.opt.showmode = true                                -- Show the current mode
-vim.opt.spell = true                                   -- Enable spell check
+vim.opt.showmode = false                               -- Don't show mode (lualine shows it)
+vim.opt.spell = false                                  -- Disable spell check (enable per-filetype if needed)
 vim.opt.spelllang = { "en_us" }                        -- Set spell check language
 
 -- Set leader key

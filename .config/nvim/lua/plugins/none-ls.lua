@@ -8,9 +8,9 @@ return {
 
         null_ls.setup({
             sources = {
-                null_ls.builtins.formatting.stylua,
-                null_ls.builtins.formatting.prettierd,
-                -- Swift formatting removed - handled by xcodebuild.nvim or sourcekit-lsp
+                -- Formatting is handled by conform.nvim
+                -- Add diagnostics and code actions here if needed in the future
+                -- Example: null_ls.builtins.diagnostics.eslint_d
             },
         })
     end,

@@ -22,6 +22,20 @@ return {
 				g = true, -- bindings for prefixed with g
 			},
 		},
+		spec = {
+			-- Define group names with icons
+			{ "<leader>f", group = "  Find", icon = "󰍉" },
+			{ "<leader>fg", group = " Git Files", icon = "" },
+			{ "<leader>g", group = "  LSP", icon = "" },
+			{ "<leader>h", group = "  Git Hunks", icon = "" },
+			{ "<leader>ht", group = "󰔡  Toggle", icon = "󰔡" },
+			{ "<leader>d", group = "  Debug", icon = "" },
+			{ "<leader>x", group = "  Xcode", icon = "" },
+			{ "<leader>i", group = "  Imports", icon = "" },
+			{ "<leader>t", group = "  Trouble/Toggle", icon = "" },
+			{ "<leader>p", group = "  Precognition", icon = "󰁨" },
+			{ "<leader>l", group = "  LazyGit", icon = "" },
+		},
 	},
 	keys = {
 		{
