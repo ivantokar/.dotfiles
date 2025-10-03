@@ -8,10 +8,10 @@ return {
 	config = function()
 		local function xcodebuild_device()
 			if vim.g.xcodebuild_platform == "macOS" then
-				return " macOS"
+				return " macOS"
 			end
 
-			local deviceIcon = ""
+			local deviceIcon = ""
 			if vim.g.xcodebuild_platform:match("watch") then
 				deviceIcon = "􀟤"
 			elseif vim.g.xcodebuild_platform:match("tv") then
@@ -27,11 +27,87 @@ return {
 			return deviceIcon .. " " .. vim.g.xcodebuild_device_name
 		end
 
+		-- LSP server names
+		local function lsp_servers()
+			local buf_clients = vim.lsp.get_clients({ bufnr = 0 })
+			if #buf_clients == 0 then
+				return ""
+			end
+
+			local buf_client_names = {}
+			for _, client in pairs(buf_clients) do
+				if client.name ~= "null-ls" and client.name ~= "copilot" then
+					table.insert(buf_client_names, client.name)
+				end
+			end
+
+			if #buf_client_names > 0 then
+				return "LSP:" .. table.concat(buf_client_names, ", ")
+			end
+			return ""
+		end
+
+		-- Word count for markdown/text files
+		local function word_count()
+			local ft = vim.bo.filetype
+			if ft == "markdown" or ft == "text" or ft == "tex" then
+				local words = vim.fn.wordcount().words
+				return words .. " words"
+			end
+			return ""
+		end
+
+		-- Search count
+		local function search_count()
+			if vim.v.hlsearch == 0 then
+				return ""
+			end
+
+			local ok, result = pcall(vim.fn.searchcount, { maxcount = 999, timeout = 500 })
+			if not ok or result.total == 0 then
+				return ""
+			end
+
+			if result.incomplete == 1 then
+				return "?/?"
+			end
+
+			return string.format("%d/%d", result.current, result.total)
+		end
+
+		-- Macro recording indicator
+		local function macro_recording()
+			local recording_register = vim.fn.reg_recording()
+			if recording_register == "" then
+				return ""
+			else
+				return "Recording @" .. recording_register
+			end
+		end
+
+		-- Lazy.nvim updates indicator
+		local function lazy_updates()
+			local ok, lazy_status = pcall(require, "lazy.status")
+			if ok and lazy_status.has_updates() then
+				return lazy_status.updates()
+			end
+			return ""
+		end
+
+		-- Indent size
+		local function indent_size()
+			if vim.bo.expandtab then
+				return "S:" .. vim.bo.shiftwidth
+			else
+				return "T:" .. vim.bo.tabstop
+			end
+		end
+
 		require("lualine").setup({
 			options = {
 				icons_enabled = true,
-				theme = "auto",
-				section_separators = { left = "", right = "" },
+				theme = "rose-pine",
+				section_separators = { left = "", right = "" },
 				component_separators = { left = "│", right = "│" },
 				disabled_filetypes = {
 					statusline = {},
@@ -49,68 +125,52 @@ return {
 			sections = {
 				lualine_a = {
 					{ "mode", icon = "" },
+					{ macro_recording, color = { fg = "#f38ba8", gui = "bold" } },
 				},
 				lualine_b = {
-					{ "branch", icon = "" },
+					{ "branch", icon = "", color = { fg = "#a6e3a1" } },
 					{
 						"diff",
-						symbols = { added = " ", modified = " ", removed = " " },
+						symbols = { added = "+", modified = "~", removed = "-" },
+						diff_color = {
+							added = { fg = "#a6e3a1" },
+							modified = { fg = "#f9e2af" },
+							removed = { fg = "#f38ba8" },
+						},
 					},
 					{
 						"diagnostics",
-						symbols = { error = " ", warn = " ", info = " ", hint = " " },
+						symbols = { error = " ", warn = " ", info = "ⓘ ", hint = " " },
 					},
 				},
 				lualine_c = {
 					{
 						"filename",
-						show_filename_only = true, -- Shows shortened relative path when set to false.
-						hide_filename_extension = false, -- Hide filename extension when set to true.
-						show_modified_status = true, -- Shows indicator when the buffer is modified.
-
-						mode = 0, -- 0: Shows buffer name
-						-- 1: Shows buffer index
-						-- 2: Shows buffer name + buffer index
-						-- 3: Shows buffer number
-						-- 4: Shows buffer name + buffer number
-
-						max_length = vim.o.columns * 2 / 3, -- Maximum width of buffers component,
-						-- it can also be a function that returns
-						-- the value of `max_length` dynamically.
-						-- filetype_names = {
-						TelescopePrompt = "Telescope",
-						-- 	dashboard = "Dashboard",
-						-- 	packer = "Packer",
-						fzf = "FZF",
-						alpha = "Alpha",
-						-- }, -- Shows specific buffer name for that filetype ( { `filetype` = `buffer_name`, ... } )
-
-						-- Automatically updates active buffer color to match color of other components (will be overidden if buffers_color is set)
-						use_mode_colors = false,
-
-						-- buffers_color = {
-						-- 	-- Same values as the general color option can be used here.
-						-- 	active = "lualine_{section}_normal", -- Color for active buffer.
-						-- 	inactive = "lualine_{section}_inactive", -- Color for inactive buffer.
-						-- },
-
+						path = 1, -- 0 = just filename, 1 = relative path, 2 = absolute path
 						symbols = {
-							modified = " ●", -- Text to show when the buffer is modified
-							alternate_file = "#", -- Text to show to identify the alternate file
-							directory = "", -- Text to show when the buffer is a directory
+							modified = " ●",
+							readonly = " ",
+							unnamed = "[No Name]",
 						},
 					},
+					{ search_count, icon = "", color = { fg = "#89b4fa" } },
 				},
 
 				lualine_x = {
-					{ "' ' .. vim.g.xcodebuild_last_status", color = { fg = "Gray" } },
+					{ lazy_updates, icon = "󰉁", color = { fg = "#f9e2af" } },
+					{ "' ' .. vim.g.xcodebuild_last_status", color = { fg = "Gray" } },
 					{ "'󰙨 ' .. vim.g.xcodebuild_test_plan", color = { fg = "#a6e3a1", bg = "#161622" } },
 					{ xcodebuild_device, color = { fg = "#f9e2af", bg = "#161622" } },
-					"encoding",
-					"filetype",
+					{ lsp_servers, icon = "", color = { fg = "#89dceb" } },
+					{ word_count, icon = "󰈭", color = { fg = "#cba6f7" } },
+					{ indent_size, icon = "󰞔", color = { fg = "#94e2d5" } },
+					{ "encoding", icon = "󰯃" },
+					{ "filetype", icon = "" },
 				},
 				lualine_y = { "progress" },
-				lualine_z = { "location" },
+				lualine_z = {
+					{ "location", icon = "" },
+				},
 			},
 			inactive_sections = {
 				lualine_a = {},
