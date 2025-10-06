@@ -70,7 +70,8 @@ If you prefer to run the OS-specific script directly:
 - **fzf** - Fuzzy finder
 - **ripgrep** - Fast grep alternative
 - **fd** - Fast find alternative
-- **zoxide** - Smart cd replacement
+- **zoxide** - Smart directory jumping (z command)
+- **jq** - JSON processor for weather data
 
 ### Development Tools
 
@@ -298,12 +299,53 @@ If you prefer to run the OS-specific script directly:
 - `Ctrl+s |` - Split horizontally
 - `Ctrl+s -` - Split vertically
 - `Ctrl+s r` - Reload configuration
+- `Ctrl+s Space` - Open which-key menu (keybinding helper)
+- `Ctrl+s ,` - Rename window
+
+### Window Naming
+
+- **Automatic directory-based naming** enabled
+- Windows show current directory name (e.g., "dotfiles", "project-name")
+- Rename manually with `Ctrl+s ,`
+
+### Status Bar
+
+Custom status bar with Rose Pine theme colors:
+
+**Left side:**
+- Session name (green)
+
+**Right side:**
+1. **Weather** - Live weather with OpenWeatherMap API
+   - Material Design Nerd Font icons
+   - Configurable city and units (C/F)
+   - Requires `OPENWEATHER_API_KEY` in `~/.zshrc.local`
+   - Edit: `.config/tmux/scripts/weather.sh`
+
+2. **Date** - Current date (Mon 06 Oct)
+
+3. **World Clock** - Multiple timezones
+   - Default: Kyiv (KYV) and New York (NYC)
+   - Easily add/remove cities
+   - Edit: `.config/tmux/scripts/world_clock.sh`
+
+4. **System Metrics** - CPU, Memory, Battery
+   - Configurable metrics display
+   - Optional disk usage
+   - Nerd Font icons with color coding
+   - Edit: `.config/tmux/scripts/system_metrics.sh`
+
+**Window tabs:**
+- Active: Black text on cyan background (bold)
+- Inactive: Bright black text on black background
+- Rounded corners with powerline separators
 
 ### Plugins
 
 - **vim-tmux-navigator** - Seamless Vim/Tmux navigation
 - **tmux-resurrect** - Save/restore sessions
-- **tmux-continuum** - Auto-save sessions
+- **tmux-continuum** - Auto-save sessions (restore on start)
+- **tmux-which-key** - Keybinding helper menu
 
 ## 🐚 Shell Configuration
 
@@ -312,13 +354,22 @@ If you prefer to run the OS-specific script directly:
 - **Powerlevel10k** - Beautiful prompt
 - **zsh-syntax-highlighting** - Command syntax highlighting
 - **zsh-autosuggestions** - Fish-like autosuggestions
+- **zsh-completions** - Additional completion definitions
 - **fzf-tab** - Tab completion with fzf
+
+### Integrations
+
+- **fzf** - Fuzzy file finder (Ctrl+r for history, Ctrl+t for files)
+- **zoxide** - Smart directory jumping
+  - `z <keyword>` - Jump to frequently used directory
+  - Works with fzf-tab for interactive selection
 
 ### Aliases
 
 - `vim` → `nvim`
 - `c` → `clear`
 - `rr` → `exec zsh` (reload shell)
+- `ls` → `ls --color`
 
 ## 📋 Prerequisites
 
@@ -430,12 +481,15 @@ Add your keys:
 # ~/.zshrc.local
 export OPENAI_API_KEY="sk-your-key-here"
 export ANTHROPIC_API_KEY="sk-ant-your-key-here"
+export OPENWEATHER_API_KEY="your-openweather-api-key"  # For tmux weather
 ```
 
 **Important:**
 - The file must be at `~/.zshrc.local` (in your home directory)
 - **NOT** at `~/.dotfiles/.zshrc.local` (don't put it inside the dotfiles repo)
 - This file is automatically sourced by `.zshrc` but never committed to git
+
+**Get your OpenWeather API key:** https://openweathermap.org/api (free tier available)
 
 ## 🤝 Contributing
 
