@@ -33,7 +33,7 @@ return {
 			})
 
 			-- Set up diagnostic signs (modern API for Neovim 0.11+)
-			local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
+			local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
 			for type, icon in pairs(signs) do
 				local hl = "DiagnosticSign" .. type
 				vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
@@ -257,122 +257,200 @@ return {
 					-- Custom keymaps that aren't built-in or override defaults
 
 					-- Show documentation (K is not mapped by default)
-					vim.keymap.set("n", "K", vim.lsp.buf.hover, vim.tbl_extend("force", opts, {
-						desc = "LSP: Hover documentation",
-					}))
+					vim.keymap.set(
+						"n",
+						"K",
+						vim.lsp.buf.hover,
+						vim.tbl_extend("force", opts, {
+							desc = "LSP: Hover documentation",
+						})
+					)
 
 					-- Go to definition (gd is not mapped by default)
-					vim.keymap.set("n", "gd", vim.lsp.buf.definition, vim.tbl_extend("force", opts, {
-						desc = "LSP: Go to definition",
-					}))
+					vim.keymap.set(
+						"n",
+						"gd",
+						vim.lsp.buf.definition,
+						vim.tbl_extend("force", opts, {
+							desc = "LSP: Go to definition",
+						})
+					)
 
 					-- Go to declaration (gD is not mapped by default)
-					vim.keymap.set("n", "gD", vim.lsp.buf.declaration, vim.tbl_extend("force", opts, {
-						desc = "LSP: Go to declaration",
-					}))
+					vim.keymap.set(
+						"n",
+						"gD",
+						vim.lsp.buf.declaration,
+						vim.tbl_extend("force", opts, {
+							desc = "LSP: Go to declaration",
+						})
+					)
 
 					-- Show diagnostics in floating window (custom binding, <C-W>d is built-in)
-					vim.keymap.set("n", "gl", vim.diagnostic.open_float, vim.tbl_extend("force", opts, {
-						desc = "LSP: Show line diagnostics",
-					}))
+					vim.keymap.set(
+						"n",
+						"gl",
+						vim.diagnostic.open_float,
+						vim.tbl_extend("force", opts, {
+							desc = "LSP: Show line diagnostics",
+						})
+					)
 
 					-- Telescope integration for better UI
-					vim.keymap.set("n", "<leader>gd", function()
-						require("telescope.builtin").lsp_definitions()
-					end, vim.tbl_extend("force", opts, {
-						desc = "LSP: Find definitions (Telescope)",
-					}))
+					vim.keymap.set(
+						"n",
+						"<leader>gd",
+						function()
+							require("telescope.builtin").lsp_definitions()
+						end,
+						vim.tbl_extend("force", opts, {
+							desc = "LSP: Find definitions (Telescope)",
+						})
+					)
 
-					vim.keymap.set("n", "<leader>gr", function()
-						require("telescope.builtin").lsp_references()
-					end, vim.tbl_extend("force", opts, {
-						desc = "LSP: Find references (Telescope)",
-					}))
+					vim.keymap.set(
+						"n",
+						"<leader>gr",
+						function()
+							require("telescope.builtin").lsp_references()
+						end,
+						vim.tbl_extend("force", opts, {
+							desc = "LSP: Find references (Telescope)",
+						})
+					)
 
-					vim.keymap.set("n", "<leader>gi", function()
-						require("telescope.builtin").lsp_implementations()
-					end, vim.tbl_extend("force", opts, {
-						desc = "LSP: Find implementations (Telescope)",
-					}))
+					vim.keymap.set(
+						"n",
+						"<leader>gi",
+						function()
+							require("telescope.builtin").lsp_implementations()
+						end,
+						vim.tbl_extend("force", opts, {
+							desc = "LSP: Find implementations (Telescope)",
+						})
+					)
 
-					vim.keymap.set("n", "<leader>gt", function()
-						require("telescope.builtin").lsp_type_definitions()
-					end, vim.tbl_extend("force", opts, {
-						desc = "LSP: Find type definitions (Telescope)",
-					}))
+					vim.keymap.set(
+						"n",
+						"<leader>gt",
+						function()
+							require("telescope.builtin").lsp_type_definitions()
+						end,
+						vim.tbl_extend("force", opts, {
+							desc = "LSP: Find type definitions (Telescope)",
+						})
+					)
 
-					vim.keymap.set("n", "<leader>gs", function()
-						require("telescope.builtin").lsp_document_symbols()
-					end, vim.tbl_extend("force", opts, {
-						desc = "LSP: Document symbols (Telescope)",
-					}))
+					vim.keymap.set(
+						"n",
+						"<leader>gs",
+						function()
+							require("telescope.builtin").lsp_document_symbols()
+						end,
+						vim.tbl_extend("force", opts, {
+							desc = "LSP: Document symbols (Telescope)",
+						})
+					)
 
-					vim.keymap.set("n", "<leader>gS", function()
-						require("telescope.builtin").lsp_workspace_symbols()
-					end, vim.tbl_extend("force", opts, {
-						desc = "LSP: Workspace symbols (Telescope)",
-					}))
+					vim.keymap.set(
+						"n",
+						"<leader>gS",
+						function()
+							require("telescope.builtin").lsp_workspace_symbols()
+						end,
+						vim.tbl_extend("force", opts, {
+							desc = "LSP: Workspace symbols (Telescope)",
+						})
+					)
 
 					-- Additional custom keymaps
 
-					-- Code action (also available via gra)
-					vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, vim.tbl_extend("force", opts, {
-						desc = "LSP: Code action",
-					}))
-
-					-- Rename (also available via grn)
-					vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, vim.tbl_extend("force", opts, {
-						desc = "LSP: Rename symbol",
-					}))
+					-- -- Code action (also available via gra)
+					-- vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, vim.tbl_extend("force", opts, {
+					-- 	desc = "LSP: Code action",
+					-- }))
+					--
+					-- -- Rename (also available via grn)
+					-- vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, vim.tbl_extend("force", opts, {
+					-- 	desc = "LSP: Rename symbol",
+					-- }))
 
 					-- Format (use conform.nvim if available)
-					vim.keymap.set("n", "<leader>f", function()
-						vim.lsp.buf.format({ async = true })
-					end, vim.tbl_extend("force", opts, {
-						desc = "LSP: Format buffer",
-					}))
+					-- vim.keymap.set(
+					-- 	"n",
+					-- 	"<leader>f",
+					-- 	function()
+					-- 		vim.lsp.buf.format({ async = true })
+					-- 	end,
+					-- 	vim.tbl_extend("force", opts, {
+					-- 		desc = "LSP: Format buffer",
+					-- 	})
+					-- )
 
 					-- Toggle inlay hints
-					vim.keymap.set("n", "<leader>th", function()
-						vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr }), { bufnr = bufnr })
-					end, vim.tbl_extend("force", opts, {
-						desc = "LSP: Toggle inlay hints",
-					}))
+					vim.keymap.set(
+						"n",
+						"<leader>th",
+						function()
+							vim.lsp.inlay_hint.enable(
+								not vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr }),
+								{ bufnr = bufnr }
+							)
+						end,
+						vim.tbl_extend("force", opts, {
+							desc = "LSP: Toggle inlay hints",
+						})
+					)
 
 					-- TypeScript-specific keymaps
 					if client and client.name == "ts_ls" then
 						-- Organize imports
-						vim.keymap.set("n", "<leader>io", function()
-							organize_imports()
-						end, vim.tbl_extend("force", opts, {
-							desc = "TypeScript: Organize imports",
-						}))
+						vim.keymap.set(
+							"n",
+							"<leader>io",
+							function()
+								organize_imports()
+							end,
+							vim.tbl_extend("force", opts, {
+								desc = "TypeScript: Organize imports",
+							})
+						)
 
 						-- Add missing imports (source action)
-						vim.keymap.set("n", "<leader>ia", function()
-							vim.lsp.buf.code_action({
-								apply = true,
-								context = {
-									only = { "source.addMissingImports.ts" },
-									diagnostics = {},
-								},
+						vim.keymap.set(
+							"n",
+							"<leader>ia",
+							function()
+								vim.lsp.buf.code_action({
+									apply = true,
+									context = {
+										only = { "source.addMissingImports.ts" },
+										diagnostics = {},
+									},
+								})
+							end,
+							vim.tbl_extend("force", opts, {
+								desc = "TypeScript: Add missing imports",
 							})
-						end, vim.tbl_extend("force", opts, {
-							desc = "TypeScript: Add missing imports",
-						}))
+						)
 
 						-- Remove unused imports
-						vim.keymap.set("n", "<leader>iu", function()
-							vim.lsp.buf.code_action({
-								apply = true,
-								context = {
-									only = { "source.removeUnused.ts" },
-									diagnostics = {},
-								},
+						vim.keymap.set(
+							"n",
+							"<leader>iu",
+							function()
+								vim.lsp.buf.code_action({
+									apply = true,
+									context = {
+										only = { "source.removeUnused.ts" },
+										diagnostics = {},
+									},
+								})
+							end,
+							vim.tbl_extend("force", opts, {
+								desc = "TypeScript: Remove unused imports",
 							})
-						end, vim.tbl_extend("force", opts, {
-							desc = "TypeScript: Remove unused imports",
-						}))
+						)
 					end
 				end,
 			})
