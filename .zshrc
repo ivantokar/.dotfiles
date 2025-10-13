@@ -90,3 +90,6 @@ if which swiftenv > /dev/null; then eval "$(swiftenv init -)"; fi
 # Source local configuration (API keys, secrets, machine-specific settings)
 # This file is gitignored and should contain sensitive information
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
+
+# opencode
+export PATH=/Users/ivantokar/.opencode/bin:$PATH

@@ -511,15 +511,10 @@ return {
 						behavior = cmp.ConfirmBehavior.Replace,
 						select = true,
 					}),
-					-- Super-Tab with Supermaven inline suggestion support
+					-- Super-Tab for completion menu and snippets
 					["<Tab>"] = cmp.mapping(function(fallback)
-						local suggestion = require("supermaven-nvim.completion_preview")
-
-						-- Check for Supermaven inline suggestion first (highest priority)
-						if suggestion.has_suggestion() then
-							suggestion.on_accept_suggestion()
-						-- Then check for cmp menu
-						elseif cmp.visible() then
+						-- Check for cmp menu first
+						if cmp.visible() then
 							cmp.select_next_item()
 						-- Then check for snippet expansion
 						elseif luasnip.expand_or_jumpable() then

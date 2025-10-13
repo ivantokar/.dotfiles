@@ -3,24 +3,16 @@ return {
 
     config = function()
         require("supermaven-nvim").setup({
-            keymaps = {
-                accept_suggestion = "<M-a>",     -- Accept full suggestion (alternative to Tab)
-                clear_suggestion = "<M-c>",      -- Clear suggestion
-                accept_word = "<M-w>",           -- Accept next word
-                next_completion = "<M-n>",       -- Next suggestion (not needed in cmp integration)
-                previous_completion = "<M-p>",   -- Previous suggestion (not needed in cmp integration)
-            },
+            -- Disable inline completion to avoid messy appearance
+            -- Only show suggestions in the completion menu
+            disable_inline_completion = true,
+            disable_keymaps = true,
+
+            log_level = "info",  -- "off" to disable logging, "debug" for more verbose
 
             -- ignore_filetypes = { cpp = true }, -- Disable for specific languages
-            color = {
-                suggestion_color = "#6e6a86",
-                cterm = 244,
-            },
-            log_level = "info",                -- "off" to disable logging, "debug" for more verbose
-            disable_inline_completion = false, -- Keep inline suggestions enabled
-            disable_keymaps = false,           -- Keep alt keymaps as fallback
             condition = function()
-                return false                   -- Supermaven always enabled
+                return false  -- Supermaven always enabled
             end,
         })
 
