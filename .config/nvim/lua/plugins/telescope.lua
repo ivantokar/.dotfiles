@@ -3,6 +3,8 @@ return {
 		"nvim-telescope/telescope.nvim",
 
 		tag = "0.1.8",
+		lazy = false, -- Load at startup to avoid delay on first use
+		priority = 100, -- Load early
 
 		dependencies = {
 			"nvim-lua/plenary.nvim",
@@ -33,8 +35,33 @@ return {
 						"--line-number",
 						"--column",
 						"--smart-case",
-						"--hidden", -- Search hidden files
-						"--glob=!.git/", -- Exclude .git directory
+						"--max-filesize=1M", -- Skip files larger than 1MB
+						-- Exclude large directories for faster search
+						"--glob=!.git/",
+						"--glob=!node_modules/",
+						"--glob=!dist/",
+						"--glob=!build/",
+						"--glob=!target/",
+						"--glob=!vendor/",
+						"--glob=!.next/",
+						"--glob=!.nuxt/",
+						"--glob=!.cache/",
+						"--glob=!*.min.js",
+						"--glob=!*.min.css",
+						"--glob=!package-lock.json",
+						"--glob=!yarn.lock",
+						"--glob=!pnpm-lock.yaml",
+						-- Swift/iOS/Xcode exclusions
+						"--glob=!*.xcodeproj/",
+						"--glob=!*.xcworkspace/",
+						"--glob=!DerivedData/",
+						"--glob=!.build/",
+						"--glob=!.swiftpm/",
+						"--glob=!Pods/",
+						"--glob=!Carthage/",
+						"--glob=!*.framework/",
+						"--glob=!*.dSYM/",
+						-- Removed --hidden for better performance (use <C-g> in live_grep to add it)
 					},
 
 					-- Better file ignoring
@@ -146,6 +173,40 @@ return {
 					},
 					live_grep_args = {
 						auto_quoting = true,
+						-- Ensure it uses the same vimgrep_arguments
+						vimgrep_arguments = {
+							"rg",
+							"--color=never",
+							"--no-heading",
+							"--with-filename",
+							"--line-number",
+							"--column",
+							"--smart-case",
+							"--max-filesize=1M",
+							"--glob=!.git/",
+							"--glob=!node_modules/",
+							"--glob=!dist/",
+							"--glob=!build/",
+							"--glob=!target/",
+							"--glob=!vendor/",
+							"--glob=!.next/",
+							"--glob=!.nuxt/",
+							"--glob=!.cache/",
+							"--glob=!*.min.js",
+							"--glob=!*.min.css",
+							"--glob=!package-lock.json",
+							"--glob=!yarn.lock",
+							"--glob=!pnpm-lock.yaml",
+							"--glob=!*.xcodeproj/",
+							"--glob=!*.xcworkspace/",
+							"--glob=!DerivedData/",
+							"--glob=!.build/",
+							"--glob=!.swiftpm/",
+							"--glob=!Pods/",
+							"--glob=!Carthage/",
+							"--glob=!*.framework/",
+							"--glob=!*.dSYM/",
+						},
 						mappings = {
 							i = {
 								["<C-k>"] = lga_actions.quote_prompt(),
@@ -165,6 +226,7 @@ return {
 
 			-- Keymaps
 			local opts = { silent = true }
+			local lga_shortcuts = require("telescope-live-grep-args.shortcuts")
 
 			-- File pickers
 			vim.keymap.set("n", "<leader>ff", builtin.find_files, vim.tbl_extend("force", opts, {
@@ -177,9 +239,7 @@ return {
 				desc = "Telescope: Find all files (no ignore)",
 			}))
 
-			vim.keymap.set("n", "<leader>fg", function()
-				require("telescope").extensions.live_grep_args.live_grep_args()
-			end, vim.tbl_extend("force", opts, {
+			vim.keymap.set("n", "<leader>fg", telescope.extensions.live_grep_args.live_grep_args, vim.tbl_extend("force", opts, {
 				desc = "Telescope: Live grep with args",
 			}))
 

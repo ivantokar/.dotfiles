@@ -93,3 +93,4 @@ if which swiftenv > /dev/null; then eval "$(swiftenv init -)"; fi
 
 # opencode
 export PATH=/Users/ivantokar/.opencode/bin:$PATH
+export PATH="$HOME/.local/bin:$PATH"
