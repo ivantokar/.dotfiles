@@ -20,34 +20,23 @@ return {
 			-- Configure diagnostics
 			vim.diagnostic.config({
 				virtual_text = true,
-				signs = true,
+				signs = {
+					text = {
+						[vim.diagnostic.severity.ERROR] = " ",
+						[vim.diagnostic.severity.WARN] = " ",
+						[vim.diagnostic.severity.HINT] = "󰠠 ",
+						[vim.diagnostic.severity.INFO] = " ",
+					},
+				},
 				update_in_insert = false,
 				underline = true,
 				severity_sort = true,
 				float = {
 					border = "rounded",
-					source = "always",
+					source = true,
 					header = "",
 					prefix = "",
 				},
-			})
-
-			-- Set up diagnostic signs (modern API for Neovim 0.11+)
-			local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
-			for type, icon in pairs(signs) do
-				local hl = "DiagnosticSign" .. type
-				vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-			end
-			-- Note: In Neovim 0.12+, diagnostic signs should be configured via vim.diagnostic.config()
-
-			-- Configure LSP handlers
-			vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-				border = "rounded",
-				max_width = 80,
-			})
-
-			vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-				border = "rounded",
 			})
 
 			-- Global LSP configuration
@@ -56,13 +45,26 @@ return {
 				root_markers = { ".git" },
 			})
 
+			-- Set default window options for LSP floating windows
+			local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+			function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+				opts = opts or {}
+				opts.border = opts.border or "rounded"
+				opts.max_width = opts.max_width or 80
+				return orig_util_open_floating_preview(contents, syntax, opts, ...)
+			end
+
 			-- Organize imports for typescript
 			local function organize_imports()
 				local params = {
 					command = "_typescript.organizeImports",
 					arguments = { vim.api.nvim_buf_get_name(0) },
 				}
-				vim.lsp.buf.execute_command(params)
+				local bufnr = vim.api.nvim_get_current_buf()
+				local clients = vim.lsp.get_clients({ bufnr = bufnr, name = "ts_ls" })
+				for _, client in ipairs(clients) do
+					client.request("workspace/executeCommand", params, nil, bufnr)
+				end
 			end
 
 			-- Lua LSP
@@ -392,10 +394,8 @@ return {
 						"n",
 						"<leader>th",
 						function()
-							vim.lsp.inlay_hint.enable(
-								not vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr }),
-								{ bufnr = bufnr }
-							)
+							local enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr })
+							vim.lsp.inlay_hint.enable(not enabled, { bufnr = bufnr })
 						end,
 						vim.tbl_extend("force", opts, {
 							desc = "LSP: Toggle inlay hints",
@@ -421,6 +421,7 @@ return {
 							"n",
 							"<leader>ia",
 							function()
+								---@diagnostic disable-next-line: assign-type-mismatch
 								vim.lsp.buf.code_action({
 									apply = true,
 									context = {
@@ -439,6 +440,7 @@ return {
 							"n",
 							"<leader>iu",
 							function()
+								---@diagnostic disable-next-line: assign-type-mismatch
 								vim.lsp.buf.code_action({
 									apply = true,
 									context = {
@@ -550,7 +552,7 @@ return {
 						maxwidth = 50,
 						ellipsis_char = "...",
 						show_labelDetails = true,
-						before = function(entry, vim_item)
+						before = function(_, vim_item)
 							return vim_item
 						end,
 					}),

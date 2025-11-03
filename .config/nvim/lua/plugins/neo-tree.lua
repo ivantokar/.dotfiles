@@ -22,6 +22,11 @@ return {
 			-- 	},
 			-- },
 			filesystem = {
+				follow_current_file = {
+					enabled = true, -- Focus the current file in the tree when opening a buffer
+					leave_dirs_open = false, -- Close directories when leaving them
+				},
+				use_libuv_file_watcher = true, -- Auto-refresh tree on file system changes
 				filtered_items = {
 					visible = false, -- when true, they will just be displayed differently than normal items
 					-- hide_dotfiles = false,

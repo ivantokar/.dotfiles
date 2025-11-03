@@ -7,6 +7,7 @@ return {
 			"theHamsta/nvim-dap-virtual-text",
 			"wojciech-kulik/xcodebuild.nvim", -- For Swift/iOS debugging
 		},
+
 		config = function()
 			local dap = require("dap")
 			local dapui = require("dapui")
@@ -79,7 +80,9 @@ return {
 				xcodebuild.setup(codelldbPath)
 			else
 				vim.notify(
-					"codelldb not found at " .. codelldbPath .. "\nDownload from: https://github.com/vadimcn/codelldb/releases",
+					"codelldb not found at "
+						.. codelldbPath
+						.. "\nDownload from: https://github.com/vadimcn/codelldb/releases",
 					vim.log.levels.WARN
 				)
 			end
@@ -87,76 +90,156 @@ return {
 			-- General keymaps
 			local opts = { noremap = true, silent = true }
 
-			vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint, vim.tbl_extend("force", opts, {
-				desc = "DAP: Toggle breakpoint",
-			}))
+			vim.keymap.set(
+				"n",
+				"<leader>db",
+				dap.toggle_breakpoint,
+				vim.tbl_extend("force", opts, {
+					desc = "DAP: Toggle breakpoint",
+				})
+			)
 
-			vim.keymap.set("n", "<leader>dB", function()
-				dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
-			end, vim.tbl_extend("force", opts, {
-				desc = "DAP: Set conditional breakpoint",
-			}))
+			vim.keymap.set(
+				"n",
+				"<leader>dB",
+				function()
+					dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
+				end,
+				vim.tbl_extend("force", opts, {
+					desc = "DAP: Set conditional breakpoint",
+				})
+			)
 
-			vim.keymap.set("n", "<leader>dc", dap.continue, vim.tbl_extend("force", opts, {
-				desc = "DAP: Continue",
-			}))
+			vim.keymap.set(
+				"n",
+				"<leader>dc",
+				dap.continue,
+				vim.tbl_extend("force", opts, {
+					desc = "DAP: Continue",
+				})
+			)
 
-			vim.keymap.set("n", "<leader>dC", dap.run_to_cursor, vim.tbl_extend("force", opts, {
-				desc = "DAP: Run to cursor",
-			}))
+			vim.keymap.set(
+				"n",
+				"<leader>dC",
+				dap.run_to_cursor,
+				vim.tbl_extend("force", opts, {
+					desc = "DAP: Run to cursor",
+				})
+			)
 
-			vim.keymap.set("n", "<leader>di", dap.step_into, vim.tbl_extend("force", opts, {
-				desc = "DAP: Step into",
-			}))
+			vim.keymap.set(
+				"n",
+				"<leader>di",
+				dap.step_into,
+				vim.tbl_extend("force", opts, {
+					desc = "DAP: Step into",
+				})
+			)
 
-			vim.keymap.set("n", "<leader>do", dap.step_over, vim.tbl_extend("force", opts, {
-				desc = "DAP: Step over",
-			}))
+			vim.keymap.set(
+				"n",
+				"<leader>do",
+				dap.step_over,
+				vim.tbl_extend("force", opts, {
+					desc = "DAP: Step over",
+				})
+			)
 
-			vim.keymap.set("n", "<leader>dO", dap.step_out, vim.tbl_extend("force", opts, {
-				desc = "DAP: Step out",
-			}))
+			vim.keymap.set(
+				"n",
+				"<leader>dO",
+				dap.step_out,
+				vim.tbl_extend("force", opts, {
+					desc = "DAP: Step out",
+				})
+			)
 
-			vim.keymap.set("n", "<leader>dq", dap.terminate, vim.tbl_extend("force", opts, {
-				desc = "DAP: Terminate",
-			}))
+			vim.keymap.set(
+				"n",
+				"<leader>dq",
+				dap.terminate,
+				vim.tbl_extend("force", opts, {
+					desc = "DAP: Terminate",
+				})
+			)
 
-			vim.keymap.set("n", "<leader>dr", dap.restart, vim.tbl_extend("force", opts, {
-				desc = "DAP: Restart",
-			}))
+			vim.keymap.set(
+				"n",
+				"<leader>dr",
+				dap.restart,
+				vim.tbl_extend("force", opts, {
+					desc = "DAP: Restart",
+				})
+			)
 
-			vim.keymap.set("n", "<leader>du", dapui.toggle, vim.tbl_extend("force", opts, {
-				desc = "DAP: Toggle UI",
-			}))
+			vim.keymap.set(
+				"n",
+				"<leader>du",
+				dapui.toggle,
+				vim.tbl_extend("force", opts, {
+					desc = "DAP: Toggle UI",
+				})
+			)
 
-			vim.keymap.set("n", "<leader>dh", function()
-				require("dap.ui.widgets").hover()
-			end, vim.tbl_extend("force", opts, {
-				desc = "DAP: Hover",
-			}))
+			vim.keymap.set(
+				"n",
+				"<leader>dh",
+				function()
+					require("dap.ui.widgets").hover()
+				end,
+				vim.tbl_extend("force", opts, {
+					desc = "DAP: Hover",
+				})
+			)
 
-			vim.keymap.set("n", "<leader>dp", function()
-				require("dap.ui.widgets").preview()
-			end, vim.tbl_extend("force", opts, {
-				desc = "DAP: Preview",
-			}))
+			vim.keymap.set(
+				"n",
+				"<leader>dp",
+				function()
+					require("dap.ui.widgets").preview()
+				end,
+				vim.tbl_extend("force", opts, {
+					desc = "DAP: Preview",
+				})
+			)
 
 			-- Swift/iOS specific keymaps (integrated with xcodebuild.nvim)
-			vim.keymap.set("n", "<leader>dd", xcodebuild.build_and_debug, vim.tbl_extend("force", opts, {
-				desc = "Xcode: Build & debug",
-			}))
+			vim.keymap.set(
+				"n",
+				"<leader>dd",
+				xcodebuild.build_and_debug,
+				vim.tbl_extend("force", opts, {
+					desc = "Xcode: Build & debug",
+				})
+			)
 
-			vim.keymap.set("n", "<leader>dR", xcodebuild.debug_without_build, vim.tbl_extend("force", opts, {
-				desc = "Xcode: Debug without building",
-			}))
+			vim.keymap.set(
+				"n",
+				"<leader>dR",
+				xcodebuild.debug_without_build,
+				vim.tbl_extend("force", opts, {
+					desc = "Xcode: Debug without building",
+				})
+			)
 
-			vim.keymap.set("n", "<leader>dt", xcodebuild.debug_tests, vim.tbl_extend("force", opts, {
-				desc = "Xcode: Debug tests",
-			}))
+			vim.keymap.set(
+				"n",
+				"<leader>dt",
+				xcodebuild.debug_tests,
+				vim.tbl_extend("force", opts, {
+					desc = "Xcode: Debug tests",
+				})
+			)
 
-			vim.keymap.set("n", "<leader>dT", xcodebuild.debug_class_tests, vim.tbl_extend("force", opts, {
-				desc = "Xcode: Debug class tests",
-			}))
+			vim.keymap.set(
+				"n",
+				"<leader>dT",
+				xcodebuild.debug_class_tests,
+				vim.tbl_extend("force", opts, {
+					desc = "Xcode: Debug class tests",
+				})
+			)
 		end,
 	},
 	{
