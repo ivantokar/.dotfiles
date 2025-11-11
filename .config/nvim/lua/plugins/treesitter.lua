@@ -25,7 +25,26 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
 		config = function()
+			-- Install the parser for stencil
+			local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+			parser_config.stencil = {
+				install_info = {
+					url = "https://github.com/ivantokar/tree-sitter-stencil",
+					files = { "src/parser.c" },
+					branch = "main",
+				},
+				filetype = "stencil",
+			}
+
+			vim.filetype.add({
+				extension = {
+					stencil = "stencil",
+				},
+			})
+
 			require("nvim-treesitter.configs").setup({
+				ignore_install = {},
+				modules = {},
 				-- A list of parser names, or "all"
 				ensure_installed = {
 					"vimdoc",
@@ -43,12 +62,12 @@ return {
 					"css",
 					"norg",
 					"svelte",
+					"stencil",
 					"tsx",
 					"json",
 					"toml",
 					"yaml",
 					"markdown_inline",
-					"markdown",
 					"scss",
 					"typst",
 					"astro",
@@ -76,6 +95,8 @@ return {
 					additional_vim_regex_highlighting = false,
 				},
 			})
+
+			vim.cmd("TSInstallFromGrammar stencil")
 		end,
 	},
 }
