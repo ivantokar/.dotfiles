@@ -96,7 +96,7 @@ return {
 				},
 			})
 
-			vim.cmd("TSInstallFromGrammar stencil")
+			-- vim.cmd("TSInstallFromGrammar stencil")
 		end,
 	},
 }
