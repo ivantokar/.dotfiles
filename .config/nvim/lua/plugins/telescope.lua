@@ -305,6 +305,10 @@ return {
 			vim.keymap.set("n", "<leader>fd", builtin.diagnostics, vim.tbl_extend("force", opts, {
 				desc = "Telescope: Diagnostics",
 			}))
+
+			vim.keymap.set("n", "<leader>fq", builtin.quickfix, vim.tbl_extend("force", opts, {
+				desc = "Telescope: Quickfix list",
+			}))
 		end,
 	},
 	{
