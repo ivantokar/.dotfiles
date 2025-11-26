@@ -73,19 +73,10 @@ return {
 
 			-- Swift/iOS debugging setup
 			local xcodebuild = require("xcodebuild.integrations.dap")
-			local codelldbPath = os.getenv("HOME") .. "/tools/codelldb-aarch64-darwin/extension/adapter/codelldb"
 
-			-- Check if codelldb exists
-			if vim.fn.filereadable(codelldbPath) == 1 then
-				xcodebuild.setup(codelldbPath)
-			else
-				vim.notify(
-					"codelldb not found at "
-						.. codelldbPath
-						.. "\nDownload from: https://github.com/vadimcn/codelldb/releases",
-					vim.log.levels.WARN
-				)
-			end
+			-- Setup xcodebuild DAP integration with new API
+			-- For Xcode 16+, codelldb is no longer required
+			xcodebuild.setup(true) -- loadBreakpoints = true
 
 			-- General keymaps
 			local opts = { noremap = true, silent = true }
