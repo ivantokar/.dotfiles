@@ -24,3 +24,7 @@ _darcs
 .DS_Store
 
 \.*.bak
+
+# Setup scripts (not configuration files)
+^/setup\.sh
+^/setup-.*\.sh

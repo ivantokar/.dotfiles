@@ -1,8 +1,7 @@
 {
   "permissions": {
     "allow": [
-      "WebFetch(domain:github.com)",
-      "WebSearch"
+      "Bash(cat:*)"
     ],
     "deny": [],
     "ask": []
