@@ -130,8 +130,9 @@ if [ -f ~/.zshrc ]; then
     mv ~/.zshrc ~/.zshrc.backup
 fi
 
-# Stow all configs
-stow -v -t ~/ .
+# Stow all configs without folding .config into a single symlink,
+# so local-only ignored paths remain excluded.
+stow --no-folding -v -t ~/ .
 
 info "Installing Neovim plugins..."
 nvim --headless "+Lazy! sync" +qa

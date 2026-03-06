@@ -4,11 +4,23 @@
 CLAUDE.md
 .claude/
 
-# GitHub CLI credentials and tokens
-.config/gh/
+# Local editor/runtime state
+.config/.nvimlog
+.nvim/
+
+# GitHub CLI: keep shareable defaults, ignore auth state
+.config/gh/hosts.yml
 
 # btop config (may contain system info)
 .config/btop/
+
+# Local CLI/tool state
+.config/opencode/
+.config/stripe/
+
+# Generated shell hooks
+.config/fish/conf.d/00_fig_pre.fish
+.config/fish/conf.d/99_fig_post.fish
 
 # Tmux plugins (installed by TPM)
 .config/tmux/plugins/
@@ -26,4 +38,3 @@ CLAUDE.md
 
 # tree-sitter-stencil
 tree-sitter-stencil/
-

@@ -444,7 +444,7 @@ After making changes:
 │   ├── nvim/          # Neovim configuration
 │   ├── tmux/          # Tmux configuration
 │   ├── ghostty/       # Ghostty terminal config
-│   └── gh/            # GitHub CLI config (gitignored)
+│   └── gh/            # GitHub CLI defaults (auth stays local)
 ├── .zshrc             # Zsh configuration
 ├── setup.sh           # Universal setup script
 ├── setup-macos.sh     # macOS-specific setup
@@ -455,14 +455,25 @@ After making changes:
 
 ## 🔒 Privacy
 
-This repository contains no API keys, tokens, or personal credentials. The following are excluded via `.gitignore`:
+This repository is intended to stay public. Secrets, auth state, generated files, and machine-specific runtime state should stay out of both Git and Stow. The following are excluded:
 
 - **Local secrets** (`.zshrc.local`) - For API keys and machine-specific settings
-- **GitHub CLI authentication** (`.config/gh/`)
+- **GitHub CLI authentication** (`.config/gh/hosts.yml`)
 - **System-specific configs** (`.config/btop/`)
+- **Local tool state** (`.config/opencode/`, `.config/stripe/`)
+- **Generated shell hooks** (`.config/fish/conf.d/00_fig_pre.fish`, `.config/fish/conf.d/99_fig_post.fish`)
+- **Editor/runtime state** (`.config/.nvimlog`, `.nvim/`)
 - **Tmux plugins** (`.config/tmux/plugins/`)
+- **Local projects inside the repo** (`tree-sitter-stencil/`)
 - **Environment files** (`.env*`, `*.pem`, `*.key`)
 - **Secrets and credentials** (`*secret*`, `*credential*`)
+
+Safe to commit:
+
+- **GitHub CLI defaults** (`.config/gh/config.yml`) - aliases, editor, and prompt settings
+- **Reusable editor config** (`.config/nvim/**`, `.config/tmux/tmux.conf`, `.config/ghostty/config`) - as long as it does not contain secrets or hardcoded personal paths
+
+If you run Stow manually, use `stow --no-folding -t ~/ .` so ignored local-only paths under `.config/` are not exposed through a folded `.config` symlink.
 
 ### Adding API Keys
 

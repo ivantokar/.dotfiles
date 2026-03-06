@@ -92,16 +92,29 @@ if which swiftenv > /dev/null; then eval "$(swiftenv init -)"; fi
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
 # opencode
-export PATH=/Users/ivantokar/.opencode/bin:$PATH
-export PATH="$HOME/.local/bin:$PATH"
+if [ -d "$HOME/.opencode/bin" ]; then
+  export PATH="$HOME/.opencode/bin:$PATH"
+fi
 
 # pnpm
-export PNPM_HOME="/Users/ivantokar/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
+export PNPM_HOME="$HOME/Library/pnpm"
+if [ -d "$PNPM_HOME" ]; then
+  case ":$PATH:" in
+    *":$PNPM_HOME:"*) ;;
+    *) export PATH="$PNPM_HOME:$PATH" ;;
+  esac
+fi
 # pnpm end
 
 # Added by Antigravity
-export PATH="/Users/ivantokar/.antigravity/antigravity/bin:$PATH"
+if [ -d "$HOME/.antigravity/antigravity/bin" ]; then
+  export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
+fi
+
+# bun completions
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"

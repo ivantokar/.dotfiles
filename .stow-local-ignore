@@ -25,6 +25,27 @@ _darcs
 
 \.*.bak
 
+# Local-only config and runtime state
+^/CLAUDE\.md$
+^/\.claude$
+^/\.claude/
+^/\.config/\.nvimlog$
+^/\.config/btop$
+^/\.config/btop/
+^/\.config/fish/conf\.d/00_fig_pre\.fish$
+^/\.config/fish/conf\.d/99_fig_post\.fish$
+^/\.config/gh/hosts\.yml$
+^/\.config/opencode$
+^/\.config/opencode/
+^/\.config/stripe$
+^/\.config/stripe/
+^/\.config/tmux/plugins$
+^/\.config/tmux/plugins/
+^/\.nvim$
+^/\.nvim/
+^/tree-sitter-stencil$
+^/tree-sitter-stencil/
+
 # Setup scripts (not configuration files)
 ^/setup\.sh
 ^/setup-.*\.sh
