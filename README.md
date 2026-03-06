@@ -7,7 +7,7 @@ Personal dotfiles for macOS and Linux (Ubuntu/Mint/Arch), featuring Neovim, Tmux
 - **Neovim**: Fully configured with LSP, DAP, Treesitter, and lazy.nvim
 - **Tmux**: Custom configuration with plugins (TPM, resurrect, continuum)
 - **Zsh**: Enhanced shell with zinit, Powerlevel10k, and useful plugins
-- **Terminal**: Ghostty configuration with Rose Pine theme
+- **Terminal**: Ghostty configuration with Gruvbox theme
 - **Development**: Support for TypeScript/JavaScript, Lua, Swift/iOS, Tailwind CSS, Astro, and more
 
 ## 🚀 Quick Start
@@ -79,6 +79,14 @@ If you prefer to run the OS-specific script directly:
 - **Ruby** - For gem packages
 - **Python** - For pip packages
 - **Git** - Version control
+
+### OS-Specific Extras
+
+- **Ghostty** - Terminal emulator (macOS and Arch optional install)
+- **xcode-build-server** - Xcode build metadata for editor tooling (macOS)
+- **xcbeautify** - Cleaner Xcode build logs (macOS)
+- **xcodeproj** - Ruby gem used by the Swift/iOS workflow (macOS)
+- **pymobiledevice3** - iOS device tooling via `pipx` (macOS)
 
 ### Language Servers & Formatters
 
@@ -310,7 +318,7 @@ If you prefer to run the OS-specific script directly:
 
 ### Status Bar
 
-Custom status bar with Rose Pine theme colors:
+Custom status bar with a black/cyan/green palette:
 
 **Left side:**
 - Session name (green)
@@ -424,6 +432,7 @@ All configurations are in `~/.dotfiles/.config/`:
 - **Tmux**: `.config/tmux/tmux.conf`
 - **Zsh**: `.zshrc`
 - **Ghostty**: `.config/ghostty/config`
+- **GitHub CLI**: `.config/gh/config.yml`
 
 After making changes:
 
@@ -519,6 +528,5 @@ Built with these amazing tools:
 - [zinit](https://github.com/zdharma-continuum/zinit)
 - [Powerlevel10k](https://github.com/romkatv/powerlevel10k)
 - [xcodebuild.nvim](https://github.com/wojciech-kulik/xcodebuild.nvim)
-- [my R2-D2](https://claude.ai/code)
 
 And many more plugins and tools!

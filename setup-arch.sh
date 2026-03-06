@@ -60,7 +60,8 @@ sudo pacman -S --needed --noconfirm \
     ripgrep \
     fd \
     fzf \
-    zoxide
+    zoxide \
+    jq
 
 info "Installing development tools..."
 sudo pacman -S --needed --noconfirm \

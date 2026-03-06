@@ -63,7 +63,8 @@ info "Installing terminal tools..."
 sudo apt install -y \
     ripgrep \
     fd-find \
-    fzf
+    fzf \
+    jq
 
 # Create symlinks for fd (Ubuntu/Debian package it as fdfind)
 if ! command -v fd &> /dev/null; then

@@ -45,6 +45,7 @@ brew install \
     ripgrep \
     fd \
     zoxide \
+    jq \
     git \
     node \
     ruby \
