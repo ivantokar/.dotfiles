@@ -1,5 +1,6 @@
 # General settings
-theme = dark:Rose Pine,light:Rose Pine Dawn
+# theme = dark:Rose Pine,light:Rose Pine Dawn
+theme = dark:Gruvbox Dark Hard,light:Gruvbox Light Hard
 background-opacity = 0.98
 font-family = "JetBrainsMono Nerd Font"
 

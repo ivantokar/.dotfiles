@@ -10,6 +10,23 @@ return {
 	config = function()
 		require("neo-tree").setup({
 			popup_border_style = "rounded",
+			enable_diagnostics = true,
+			default_component_configs = {
+				diagnostics = {
+					symbols = {
+						error = "",
+						warn = "",
+						info = "ⓘ",
+						hint = "󰠠",
+					},
+					highlights = {
+						error = "DiagnosticError",
+						warn = "DiagnosticWarn",
+						info = "DiagnosticInfo",
+						hint = "DiagnosticHint",
+					},
+				},
+			},
 			-- event_handlers = {
 			-- 	{
 			-- 		event = "file_open_requested",
@@ -24,7 +41,7 @@ return {
 			filesystem = {
 				follow_current_file = {
 					enabled = true, -- Focus the current file in the tree when opening a buffer
-					leave_dirs_open = false, -- Close directories when leaving them
+					leave_dirs_open = true, -- Close directories when leaving them
 				},
 				use_libuv_file_watcher = true, -- Auto-refresh tree on file system changes
 				filtered_items = {
@@ -44,8 +61,13 @@ return {
 					deleted = "",
 				},
 			},
+			-- buffers = {
+			-- 	show_unloaded = true,
+			-- },
 		})
 
+		vim.keymap.set("n", "<leader>B", ":Neotree toggle buffers left<CR>", {})
+		vim.keymap.set("n", "<leader>b", ":Neotree toggle buffers float<CR>", {})
 		vim.keymap.set("n", "<leader>E", ":Neotree toggle filesystem left<CR>", {})
 		vim.keymap.set("n", "<leader>e", ":Neotree toggle filesystem float<CR>", {})
 	end,
