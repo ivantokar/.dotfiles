@@ -1,6 +1,6 @@
 # Dotfiles
 
-Personal dotfiles for macOS and Linux (Ubuntu/Mint/Arch), featuring Neovim, Tmux, Zsh, and more.
+Personal dotfiles for macOS, featuring Neovim, Tmux, Zsh, and more.
 
 ## ✨ Features
 
@@ -32,29 +32,7 @@ git clone https://github.com/ivantokar/.dotfiles.git ~/.dotfiles && cd ~/.dotfil
    ./setup.sh
    ```
 
-The setup script will automatically detect your OS and run the appropriate installation.
-
-### OS-Specific Installation
-
-If you prefer to run the OS-specific script directly:
-
-**macOS:**
-
-```bash
-./setup-macos.sh
-```
-
-**Ubuntu/Linux Mint:**
-
-```bash
-./setup-ubuntu.sh
-```
-
-**Arch Linux:**
-
-```bash
-./setup-arch.sh
-```
+`setup.sh` is the only supported installer and targets macOS.
 
 ## 📦 What Gets Installed
 
@@ -80,9 +58,9 @@ If you prefer to run the OS-specific script directly:
 - **Python** - For pip packages
 - **Git** - Version control
 
-### OS-Specific Extras
+### macOS Extras
 
-- **Ghostty** - Terminal emulator (macOS and Arch optional install)
+- **Ghostty** - Terminal emulator (optional)
 - **xcode-build-server** - Xcode build metadata for editor tooling (macOS)
 - **xcbeautify** - Cleaner Xcode build logs (macOS)
 - **xcodeproj** - Ruby gem used by the Swift/iOS workflow (macOS)
@@ -94,7 +72,7 @@ If you prefer to run the OS-specific script directly:
 - **lua-language-server** - Lua LSP
 - **tailwindcss-language-server** - Tailwind CSS LSP
 - **astro-language-server** - Astro framework LSP
-- **sourcekit-lsp** - Swift/iOS LSP (macOS only)
+- **sourcekit-lsp** - Swift/iOS LSP
 - **prettierd** - Fast Prettier formatter
 - **stylua** - Lua formatter
 
@@ -381,20 +359,8 @@ Custom status bar with a black/cyan/green palette:
 
 ## 📋 Prerequisites
 
-### macOS
-
 - macOS 14+ (earlier versions may work but untested)
 - Xcode Command Line Tools: `xcode-select --install`
-
-### Ubuntu/Mint
-
-- Ubuntu 20.04+ or Linux Mint 20+
-- `sudo` access
-
-### Arch Linux
-
-- Arch Linux, Manjaro, or EndeavourOS
-- `sudo` access
 
 ## 🔍 Post-Installation
 
@@ -416,7 +382,7 @@ Custom status bar with a black/cyan/green palette:
    nvim +checkhealth
    ```
 
-5. **For Swift/iOS development** (macOS only):
+5. **For Swift/iOS development**:
    - Install Xcode from App Store
    - Configure your project:
      ```bash
@@ -455,10 +421,7 @@ After making changes:
 │   ├── ghostty/       # Ghostty terminal config
 │   └── gh/            # GitHub CLI defaults (auth stays local)
 ├── .zshrc             # Zsh configuration
-├── setup.sh           # Universal setup script
-├── setup-macos.sh     # macOS-specific setup
-├── setup-ubuntu.sh    # Ubuntu/Mint setup
-├── setup-arch.sh      # Arch Linux setup
+├── setup.sh           # macOS setup script
 └── README.md          # This file
 ```
 
