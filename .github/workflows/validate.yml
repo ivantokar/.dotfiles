@@ -1,0 +1,44 @@
+name: validate
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  shell:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Shell syntax checks
+        run: |
+          set -euo pipefail
+          mapfile -t scripts < <(find . -type f -name "*.sh" -not -path "./.git/*")
+
+          if [ "${#scripts[@]}" -eq 0 ]; then
+            echo "No shell scripts found."
+            exit 0
+          fi
+
+          bash -n "${scripts[@]}"
+          echo "bash -n passed for ${#scripts[@]} script(s)."
+
+      - name: Optional formatting checks
+        run: |
+          set -euo pipefail
+          mapfile -t scripts < <(find . -type f -name "*.sh" -not -path "./.git/*")
+
+          if command -v shfmt >/dev/null 2>&1; then
+            shfmt -d "${scripts[@]}"
+          else
+            echo "shfmt not installed on runner, skipping."
+          fi
+
+          if command -v stylua >/dev/null 2>&1; then
+            stylua --check .config/nvim/init.lua .config/nvim/lua
+          else
+            echo "stylua not installed on runner, skipping."
+          fi

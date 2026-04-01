@@ -1,495 +1,104 @@
 # Dotfiles
 
-Personal dotfiles for macOS, featuring Neovim, Tmux, Zsh, and more.
+Personal dotfiles for daily development, optimized for fast setup on a new machine.
 
-## ✨ Features
+## What is configured
 
-- **Neovim**: Fully configured with LSP, DAP, Treesitter, and lazy.nvim
-- **Tmux**: Custom configuration with plugins (TPM, resurrect, continuum)
-- **Zsh**: Enhanced shell with zinit, Powerlevel10k, and useful plugins
-- **Terminal**: Ghostty configuration with Gruvbox theme
-- **Development**: Support for TypeScript/JavaScript, Lua, Swift/iOS, Tailwind CSS, Astro, and more
+- `zsh` (`.zshrc`)
+- `neovim` (`.config/nvim`)
+- `tmux` (`.config/tmux/tmux.conf` + status scripts)
+- `ghostty` (`.config/ghostty/config`)
+- `git` global ignore defaults (`.config/git/ignore`)
+- `gh` defaults (`.config/gh/config.yml`)
 
-## 🚀 Quick Start
+## Bootstrap
 
-### One-Line Install
+### New machine (one command)
 
 ```bash
 git clone https://github.com/ivantokar/.dotfiles.git ~/.dotfiles && cd ~/.dotfiles && ./setup.sh
 ```
 
-### Manual Install
+### Linux note
 
-1. Clone the repository:
+On Linux, `setup.sh` links dotfiles by default. To also install packages:
 
-   ```bash
-   git clone https://github.com/ivantokar/.dotfiles.git ~/.dotfiles
-   cd ~/.dotfiles
-   ```
-
-2. Run the setup script:
-   ```bash
-   ./setup.sh
-   ```
-
-`setup.sh` is the only supported installer and targets macOS.
-
-## 📦 What Gets Installed
-
-### Core Tools
-
-- **Neovim** (0.11+) - Modern text editor
-- **Tmux** - Terminal multiplexer
-- **Zsh** - Shell with zinit plugin manager
-- **Stow** - Dotfiles symlink manager
-
-### Terminal Utilities
-
-- **fzf** - Fuzzy finder
-- **ripgrep** - Fast grep alternative
-- **fd** - Fast find alternative
-- **zoxide** - Smart directory jumping (z command)
-- **jq** - JSON processor for weather data
-
-### Development Tools
-
-- **Node.js** - JavaScript runtime
-- **Ruby** - For gem packages
-- **Python** - For pip packages
-- **Git** - Version control
-
-### macOS Extras
-
-- **Ghostty** - Terminal emulator (optional)
-- **xcode-build-server** - Xcode build metadata for editor tooling (macOS)
-- **xcbeautify** - Cleaner Xcode build logs (macOS)
-- **xcodeproj** - Ruby gem used by the Swift/iOS workflow (macOS)
-- **pymobiledevice3** - iOS device tooling via `pipx` (macOS)
-
-### Language Servers & Formatters
-
-- **typescript-language-server** - TypeScript/JavaScript LSP
-- **lua-language-server** - Lua LSP
-- **tailwindcss-language-server** - Tailwind CSS LSP
-- **astro-language-server** - Astro framework LSP
-- **sourcekit-lsp** - Swift/iOS LSP
-- **prettierd** - Fast Prettier formatter
-- **stylua** - Lua formatter
-
-### Debugging
-
-- **codelldb** - LLDB-based debugger for Swift/C/C++/Rust
-- **vscode-js-debug** - JavaScript/TypeScript debugger (auto-installed)
-
-## 🎨 Neovim Configuration
-
-### Keybindings
-
-**Leader key:** `Space`
-
-#### File Navigation
-
-**File Pickers (Telescope):**
-
-- `<leader>ff` - Find files
-- `<leader>fa` - Find all files (ignore .gitignore)
-- `<leader>fg` - Live grep with args
-- `<leader>fw` - Grep current word
-- `<leader>fb` - Find buffers
-- `<leader>fr` - Recent files (oldfiles)
-- `<leader>fo` - Resume last picker
-
-**Vim Pickers (Telescope):**
-
-- `<leader>fh` - Help tags
-- `<leader>fk` - Keymaps
-- `<leader>fc` - Commands
-- `<leader>fm` - Marks
-- `<leader>fR` - Registers
-- `<leader>fj` - Jump list
-- `<leader>fd` - Diagnostics
-
-**Git Pickers (Telescope):**
-
-- `<leader>fgf` - Git files
-- `<leader>fgs` - Git status
-- `<leader>fgc` - Git commits
-- `<leader>fgb` - Git branches
-
-**File Explorer (Neo-tree):**
-
-- `<leader>E` - Toggle sidebar
-- `<leader>e` - Toggle floating
-
-**Telescope Insert Mode Mappings:**
-
-- `<C-j>` / `<C-k>` - Move selection down/up
-- `<C-q>` - Send to quickfix list
-- `<M-q>` - Send selected to quickfix list
-- `<Tab>` / `<S-Tab>` - Toggle selection and move
-- `<C-d>` - Delete buffer (in buffer picker)
-- `<C-h>` - Show which-key help
-
-**Telescope Live Grep Args (Insert Mode):**
-
-- `<C-k>` - Quote prompt
-- `<C-i>` - Add glob pattern (--iglob)
-- `<C-g>` - Add hidden files flag (--hidden)
-
-#### LSP Navigation & Actions
-
-**Built-in Neovim 0.11+ keymaps:**
-
-- `grn` - Rename symbol
-- `grr` - Show references
-- `gri` - Go to implementation
-- `grt` - Go to type definition
-- `gra` - Code actions (normal and visual mode)
-- `gO` - Document symbols
-- `[d` / `]d` - Previous/next diagnostic
-- `[D` / `]D` - First/last diagnostic
-- `<C-W>d` - Show diagnostics in floating window
-
-**Custom LSP keymaps:**
-
-- `K` - Hover documentation
-- `gd` - Go to definition
-- `gD` - Go to declaration
-- `gl` - Show diagnostics in floating window
-- `<leader>gd` - Find definitions (Telescope)
-- `<leader>gr` - Find references (Telescope)
-- `<leader>gi` - Find implementations (Telescope)
-- `<leader>gt` - Find type definitions (Telescope)
-- `<leader>gs` - Document symbols (Telescope)
-- `<leader>gS` - Workspace symbols (Telescope)
-- `<leader>ca` - Code actions (also `gra`)
-- `<leader>rn` - Rename symbol (also `grn`)
-- `<leader>f` - Format buffer
-- `<leader>th` - Toggle inlay hints
-
-**TypeScript-specific keymaps:**
-
-- `<leader>io` - Organize imports
-- `<leader>ia` - Add all missing imports
-- `<leader>iu` - Remove unused imports
-
-#### Completion (Insert Mode)
-
-- `<C-Space>` - Trigger completion
-- `<Tab>` - Accept AI suggestion (Supermaven) → Navigate completion menu → Expand snippet
-- `<S-Tab>` - Previous completion item / jump back in snippet
-- `<CR>` - Confirm completion
-- `<C-b>` / `<C-f>` - Scroll documentation up/down
-- `<C-e>` - Abort completion
-
-**Note:** Supermaven suggestions appear both as **inline ghost text** (accept with Tab) and in the **completion menu** (highest priority).
-
-#### AI-Powered Completions (Supermaven - Alternative Keymaps)
-
-- `<M-a>` - Accept full suggestion (alternative to Tab)
-- `<M-c>` - Clear suggestion
-- `<M-w>` - Accept next word
-- `<M-n>` - Next suggestion
-- `<M-p>` - Previous suggestion
-
-#### Debugging (DAP)
-
-**General debugging:**
-
-- `<leader>db` - Toggle breakpoint
-- `<leader>dB` - Set conditional breakpoint
-- `<leader>dc` - Continue/Start debugging
-- `<leader>dC` - Run to cursor
-- `<leader>di` - Step into
-- `<leader>do` - Step over
-- `<leader>dO` - Step out
-- `<leader>dq` - Terminate
-- `<leader>dr` - Restart
-- `<leader>du` - Toggle DAP UI
-- `<leader>dh` - Hover (show variable value)
-- `<leader>dp` - Preview variable
-
-**Swift/iOS debugging (macOS only):**
-
-- `<leader>dd` - Build & debug (Xcode)
-- `<leader>dR` - Debug without building (Xcode)
-- `<leader>dt` - Debug tests (Xcode)
-- `<leader>dT` - Debug class tests (Xcode)
-
-#### Git
-
-**LazyGit:**
-- `<leader>lg` - Open LazyGit
-
-**Diffview:**
-- `<leader>gdo` - Open diff view (uncommitted changes)
-- `<leader>gdc` - Close diff view
-- `<leader>gdh` - File history (all files)
-- `<leader>gdH` - Current file history
-- `<leader>gdf` - Toggle file panel
-- `<leader>gdr` - Refresh diff
-
-**Gitsigns (Hunk operations):**
-- `]c` - Next hunk
-- `[c` - Previous hunk
-- `<leader>hp` - Preview hunk
-- `<leader>hs` - Stage hunk
-- `<leader>hr` - Reset hunk
-- `<leader>hS` - Stage buffer
-- `<leader>hR` - Reset buffer
-- `<leader>hu` - Undo stage hunk
-- `<leader>hb` - Blame line
-- `<leader>htb` - Toggle line blame
-- `<leader>hd` - Diff this file
-- `<leader>htd` - Toggle deleted lines
-
-#### Trouble (Diagnostics)
-
-- `<leader>tt` - Toggle Trouble
-- `<leader>tw` - Workspace diagnostics
-- `<leader>td` - Document diagnostics
-- `<leader>tl` - Location list
-- `<leader>tq` - Quickfix list
-- `gR` - LSP references (Trouble)
-
-#### Xcode/iOS Development (macOS only)
-
-- `<leader>xb` - Build project
-- `<leader>xr` - Build & run project
-- `<leader>xt` - Run tests
-- `<leader>xT` - Run test class
-- `<leader>x.` - Repeat last test
-- `<leader>xl` - Toggle logs
-- `<leader>xc` - Toggle code coverage
-- `<leader>xC` - Show coverage report
-- `<leader>xd` - Select device
-- `<leader>xp` - Select test plan
-- `<leader>xs` - Select scheme
-- `<leader>xq` - Quickfix line
-- `<leader>xa` - Code actions
-- `<leader>xX` - Clean project
-- `<leader>xx` - Show all Xcode commands
-
-#### Visual Mode
-
-- `J` - Move selected lines down
-- `K` - Move selected lines up
-- `<leader>p` - Paste without yanking (preserves clipboard)
-
-## 🔧 Tmux Configuration
-
-**Prefix key:** `Ctrl+s` (not default Ctrl+b)
-
-### Key Bindings
-
-- `Ctrl+s |` - Split horizontally
-- `Ctrl+s -` - Split vertically
-- `Ctrl+s r` - Reload configuration
-- `Ctrl+s Space` - Open which-key menu (keybinding helper)
-- `Ctrl+s ,` - Rename window
-
-### Window Naming
-
-- **Automatic directory-based naming** enabled
-- Windows show current directory name (e.g., "dotfiles", "project-name")
-- Rename manually with `Ctrl+s ,`
-
-### Status Bar
-
-Custom status bar with a black/cyan/green palette:
-
-**Left side:**
-- Session name (green)
-
-**Right side:**
-1. **Weather** - Live weather with OpenWeatherMap API
-   - Material Design Nerd Font icons
-   - Configurable city and units (C/F)
-   - Requires `OPENWEATHER_API_KEY` in `~/.zshrc.local`
-   - Edit: `.config/tmux/scripts/weather.sh`
-
-2. **Date** - Current date (Mon 06 Oct)
-
-3. **World Clock** - Multiple timezones
-   - Default: Kyiv (KYV) and New York (NYC)
-   - Easily add/remove cities
-   - Edit: `.config/tmux/scripts/world_clock.sh`
-
-4. **System Metrics** - CPU, Memory, Battery
-   - Configurable metrics display
-   - Optional disk usage
-   - Nerd Font icons with color coding
-   - Edit: `.config/tmux/scripts/system_metrics.sh`
-
-**Window tabs:**
-- Active: Black text on cyan background (bold)
-- Inactive: Bright black text on black background
-- Rounded corners with powerline separators
-
-### Plugins
-
-- **vim-tmux-navigator** - Seamless Vim/Tmux navigation
-- **tmux-resurrect** - Save/restore sessions
-- **tmux-continuum** - Auto-save sessions (restore on start)
-- **tmux-which-key** - Keybinding helper menu
-
-## 🐚 Shell Configuration
-
-### Zsh Plugins (via zinit)
-
-- **Powerlevel10k** - Beautiful prompt
-- **zsh-syntax-highlighting** - Command syntax highlighting
-- **zsh-autosuggestions** - Fish-like autosuggestions
-- **zsh-completions** - Additional completion definitions
-- **fzf-tab** - Tab completion with fzf
-
-### Integrations
-
-- **fzf** - Fuzzy file finder (Ctrl+r for history, Ctrl+t for files)
-- **zoxide** - Smart directory jumping
-  - `z <keyword>` - Jump to frequently used directory
-  - Works with fzf-tab for interactive selection
-
-### Aliases
-
-- `vim` → `nvim`
-- `c` → `clear`
-- `rr` → `exec zsh` (reload shell)
-- `ls` → `ls --color`
-
-## 📋 Prerequisites
-
-- macOS 14+ (earlier versions may work but untested)
-- Xcode Command Line Tools: `xcode-select --install`
-
-## 🔍 Post-Installation
-
-1. **Restart your terminal** or run: `exec zsh`
-
-2. **Configure Powerlevel10k** (first run):
-
-   ```bash
-   p10k configure
-   ```
-
-3. **Install tmux plugins**:
-   - Open tmux: `tmux`
-   - Press `Ctrl+s` then `I` (capital i)
-
-4. **Check Neovim health**:
-
-   ```bash
-   nvim +checkhealth
-   ```
-
-5. **For Swift/iOS development**:
-   - Install Xcode from App Store
-   - Configure your project:
-     ```bash
-     cd /path/to/your/xcode-project
-     xcode-build-server config -project YourProject.xcodeproj -scheme YourScheme
-     ```
-
-## 🛠️ Customization
-
-All configurations are in `~/.dotfiles/.config/`:
-
-- **Neovim**: `.config/nvim/`
-- **Tmux**: `.config/tmux/tmux.conf`
-- **Zsh**: `.zshrc`
-- **Ghostty**: `.config/ghostty/config`
-- **GitHub CLI**: `.config/gh/config.yml`
-
-After making changes:
-
-- Zsh: Run `rr` or `exec zsh`
-- Tmux: Press `Ctrl+s` then `r`
-- Neovim: Restart or `:source $MYVIMRC`
-
-## 📚 Documentation
-
-- **Plugin docs**: Use `:help <plugin-name>` in Neovim
-- **Keybindings**: Press `<leader>?` or `:Telescope keymaps` in Neovim
-
-## 🗂️ Structure
-
+```bash
+./setup.sh --install-packages
 ```
+
+## Setup script behavior
+
+`setup.sh` is the single entry point.
+
+It will:
+
+1. Detect OS (`macOS` / `Linux`)
+2. Optionally install dependencies
+3. Create symlinks into `$HOME`
+4. Backup existing conflicting files into `~/dotfiles_backup/<timestamp>/`
+5. Run post-setup steps (zinit, TPM, Neovim plugins)
+
+## Safe modes
+
+```bash
+# Preview only (no changes)
+./setup.sh --dry-run
+
+# Link dotfiles only, skip package install + post-setup
+./setup.sh --link-only
+
+# Skip dependency installation
+./setup.sh --skip-packages
+```
+
+## Update on an existing machine
+
+```bash
+cd ~/.dotfiles
+git pull
+./setup.sh --skip-packages
+```
+
+## Manual post-install checks
+
+```bash
+exec zsh
+tmux   # then press Prefix + I (Prefix is Ctrl+s)
+nvim +checkhealth
+```
+
+For Swift/iOS workflows (macOS):
+
+- Install Xcode from App Store
+- Configure build metadata per project:
+
+```bash
+xcode-build-server config -project YourProject.xcodeproj -scheme YourScheme
+```
+
+## Validation (CI)
+
+GitHub Actions runs on push/PR and checks:
+
+- shell syntax (`bash -n` on `*.sh`)
+- optional formatting checks when tools are available (`shfmt`, `stylua`)
+
+Workflow file:
+
+- `.github/workflows/validate.yml`
+
+## Repo layout
+
+```text
 .dotfiles/
+├── setup.sh
+├── .zshrc
 ├── .config/
-│   ├── nvim/          # Neovim configuration
-│   ├── tmux/          # Tmux configuration
-│   ├── ghostty/       # Ghostty terminal config
-│   └── gh/            # GitHub CLI defaults (auth stays local)
-├── .zshrc             # Zsh configuration
-├── setup.sh           # macOS setup script
-└── README.md          # This file
+│   ├── nvim/
+│   ├── tmux/
+│   ├── ghostty/
+│   ├── git/
+│   └── gh/
+└── .github/workflows/validate.yml
 ```
-
-## 🔒 Privacy
-
-This repository is intended to stay public. Secrets, auth state, generated files, and machine-specific runtime state should stay out of both Git and Stow. The following are excluded:
-
-- **Local secrets** (`.zshrc.local`) - For API keys and machine-specific settings
-- **GitHub CLI authentication** (`.config/gh/hosts.yml`)
-- **System-specific configs** (`.config/btop/`)
-- **Local tool state** (`.config/opencode/`, `.config/stripe/`)
-- **Generated shell hooks** (`.config/fish/conf.d/00_fig_pre.fish`, `.config/fish/conf.d/99_fig_post.fish`)
-- **Editor/runtime state** (`.config/.nvimlog`, `.nvim/`)
-- **Tmux plugins** (`.config/tmux/plugins/`)
-- **Local projects inside the repo** (`tree-sitter-stencil/`)
-- **Environment files** (`.env*`, `*.pem`, `*.key`)
-- **Secrets and credentials** (`*secret*`, `*credential*`)
-
-Safe to commit:
-
-- **GitHub CLI defaults** (`.config/gh/config.yml`) - aliases, editor, and prompt settings
-- **Reusable editor config** (`.config/nvim/**`, `.config/tmux/tmux.conf`, `.config/ghostty/config`) - as long as it does not contain secrets or hardcoded personal paths
-
-If you run Stow manually, use `stow --no-folding -t ~/ .` so ignored local-only paths under `.config/` are not exposed through a folded `.config` symlink.
-
-### Adding API Keys
-
-For tools that require API keys, create a `~/.zshrc.local` file in your **home directory** (not in `.dotfiles/`):
-
-```bash
-# Create the file in your HOME directory
-touch ~/.zshrc.local
-
-# Edit it and add your API keys
-vim ~/.zshrc.local
-```
-
-Add your keys:
-```bash
-# ~/.zshrc.local
-export OPENAI_API_KEY="sk-your-key-here"
-export ANTHROPIC_API_KEY="sk-ant-your-key-here"
-export OPENWEATHER_API_KEY="your-openweather-api-key"  # For tmux weather
-```
-
-**Important:**
-- The file must be at `~/.zshrc.local` (in your home directory)
-- **NOT** at `~/.dotfiles/.zshrc.local` (don't put it inside the dotfiles repo)
-- This file is automatically sourced by `.zshrc` but never committed to git
-
-**Get your OpenWeather API key:** https://openweathermap.org/api (free tier available)
-
-## 🤝 Contributing
-
-Feel free to fork and customize for your own use!
-
-## 📄 License
-
-MIT License - feel free to use and modify as you wish.
-
-## 🙏 Acknowledgments
-
-Built with these amazing tools:
-
-- [lazy.nvim](https://github.com/folke/lazy.nvim)
-- [tmux](https://github.com/tmux/tmux)
-- [zinit](https://github.com/zdharma-continuum/zinit)
-- [Powerlevel10k](https://github.com/romkatv/powerlevel10k)
-- [xcodebuild.nvim](https://github.com/wojciech-kulik/xcodebuild.nvim)
-
-And many more plugins and tools!
