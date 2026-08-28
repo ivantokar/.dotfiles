@@ -22,9 +22,6 @@ CLAUDE.md
 .config/fish/conf.d/00_fig_pre.fish
 .config/fish/conf.d/99_fig_post.fish
 
-# Tmux plugins (installed by TPM)
-.config/tmux/plugins/
-
 # Environment files
 .env
 .env.*

@@ -100,7 +100,6 @@ install_macos_packages() {
   info "Installing core packages (macOS)"
   run brew install \
     neovim \
-    tmux \
     fzf \
     ripgrep \
     fd \
@@ -135,7 +134,6 @@ install_linux_packages() {
         git \
         curl \
         neovim \
-        tmux \
         zsh \
         fzf \
         ripgrep \
@@ -147,7 +145,6 @@ install_linux_packages() {
         git \
         curl \
         neovim \
-        tmux \
         zsh \
         fzf \
         ripgrep \
@@ -160,7 +157,6 @@ install_linux_packages() {
         git \
         curl \
         neovim \
-        tmux \
         zsh \
         fzf \
         ripgrep \
@@ -169,7 +165,7 @@ install_linux_packages() {
       ;;
     *)
       warn "No supported package manager detected. Skipping package installation."
-      warn "Install dependencies manually: git curl neovim tmux zsh fzf ripgrep fd jq"
+      warn "Install dependencies manually: git curl neovim zsh fzf ripgrep fd jq"
       ;;
   esac
 }
@@ -234,12 +230,13 @@ ensure_symlink() {
 link_dotfiles() {
   local -a mappings=(
     ".zshrc:.zshrc"
+    ".gitconfig:.gitconfig"
     ".config/nvim:.config/nvim"
-    ".config/tmux/tmux.conf:.config/tmux/tmux.conf"
-    ".config/tmux/scripts/weather.sh:.config/tmux/scripts/weather.sh"
-    ".config/tmux/scripts/system_metrics.sh:.config/tmux/scripts/system_metrics.sh"
-    ".config/tmux/scripts/world_clock.sh:.config/tmux/scripts/world_clock.sh"
+    ".config/atuin/config.toml:.config/atuin/config.toml"
     ".config/ghostty/config:.config/ghostty/config"
+    ".config/herdr/config.toml:.config/herdr/config.toml"
+    ".config/hunk/config.toml:.config/hunk/config.toml"
+    ".config/zed/settings.json:.config/zed/settings.json"
     ".config/git/ignore:.config/git/ignore"
     ".config/gh/config.yml:.config/gh/config.yml"
   )
@@ -272,22 +269,6 @@ setup_zinit() {
   run git clone https://github.com/zdharma-continuum/zinit.git "$zinit_home"
 }
 
-setup_tpm() {
-  local tpm_dir="${HOME}/.config/tmux/plugins/tpm"
-  if [[ -d "$tpm_dir" ]]; then
-    info "TPM already installed"
-    return 0
-  fi
-
-  if ! command -v git >/dev/null 2>&1; then
-    warn "git not found, skipping TPM install"
-    return 0
-  fi
-
-  info "Installing tmux plugin manager (TPM)"
-  run git clone https://github.com/tmux-plugins/tpm "$tpm_dir"
-}
-
 setup_neovim_plugins() {
   if ! command -v nvim >/dev/null 2>&1; then
     warn "nvim not found, skipping Neovim plugin sync"
@@ -308,23 +289,11 @@ setup_neovim_plugins() {
   fi
 }
 
-setup_tmux_plugins() {
-  local tpm_install="${HOME}/.config/tmux/plugins/tpm/bin/install_plugins"
-  if [[ -x "$tpm_install" ]] && command -v tmux >/dev/null 2>&1; then
-    info "Installing tmux plugins"
-    run_or_warn "$tpm_install"
-  else
-    warn "tmux/TPM not ready, skipping tmux plugin install"
-  fi
-}
-
 run_post_setup() {
   info "Running post-setup tasks"
   run mkdir -p "${HOME}/.vim/undodir" "${HOME}/.config"
   setup_zinit
-  setup_tpm
   setup_neovim_plugins
-  setup_tmux_plugins
 }
 
 parse_args() {
@@ -406,8 +375,7 @@ main() {
   echo "Done."
   echo "Next:"
   echo "  1) Restart shell: exec zsh"
-  echo "  2) Open tmux and press Prefix + I"
-  echo "  3) Open Neovim and run :checkhealth"
+  echo "  2) Open Neovim and run :checkhealth"
 }
 
 main "$@"

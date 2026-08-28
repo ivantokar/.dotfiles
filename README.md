@@ -5,10 +5,13 @@ Personal dotfiles for daily development, optimized for fast setup on a new machi
 ## What is configured
 
 - `zsh` (`.zshrc`)
+- `git` (`.gitconfig` + `.config/git/ignore`)
 - `neovim` (`.config/nvim`)
-- `tmux` (`.config/tmux/tmux.conf` + status scripts)
+- `atuin` (`.config/atuin/config.toml`)
 - `ghostty` (`.config/ghostty/config`)
-- `git` global ignore defaults (`.config/git/ignore`)
+- `herdr` (`.config/herdr/config.toml`)
+- `hunk` (`.config/hunk/config.toml`)
+- `zed` (`.config/zed/settings.json`)
 - `gh` defaults (`.config/gh/config.yml`)
 
 ## Bootstrap
@@ -37,7 +40,7 @@ It will:
 2. Optionally install dependencies
 3. Create symlinks into `$HOME`
 4. Backup existing conflicting files into `~/dotfiles_backup/<timestamp>/`
-5. Run post-setup steps (zinit, TPM, Neovim plugins)
+5. Run post-setup steps (zinit and Neovim plugins)
 
 ## Safe modes
 
@@ -64,7 +67,6 @@ git pull
 
 ```bash
 exec zsh
-tmux   # then press Prefix + I (Prefix is Ctrl+s)
 nvim +checkhealth
 ```
 
@@ -94,10 +96,14 @@ Workflow file:
 .dotfiles/
 ├── setup.sh
 ├── .zshrc
+├── .gitconfig
 ├── .config/
+│   ├── atuin/
 │   ├── nvim/
-│   ├── tmux/
 │   ├── ghostty/
+│   ├── herdr/
+│   ├── hunk/
+│   ├── zed/
 │   ├── git/
 │   └── gh/
 └── .github/workflows/validate.yml

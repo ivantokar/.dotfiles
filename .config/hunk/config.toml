@@ -1,0 +1,2 @@
+# Keep Hunk visually aligned with the terminal's Gruvbox Dark Hard palette.
+theme = "gruvbox-dark-hard"

@@ -39,8 +39,6 @@ _darcs
 ^/\.config/opencode/
 ^/\.config/stripe$
 ^/\.config/stripe/
-^/\.config/tmux/plugins$
-^/\.config/tmux/plugins/
 ^/\.nvim$
 ^/\.nvim/
 ^/tree-sitter-stencil$

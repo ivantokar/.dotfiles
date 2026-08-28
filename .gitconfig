@@ -1,0 +1,20 @@
+[core]
+	excludesfile = ~/.config/git/ignore
+[user]
+	name = Ivan Tokar
+	email = i.j.tokar@gmail.com
+[init]
+	defaultBranch = main
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[http]
+	postBuffer = 524288000
+[credential "https://github.com"]
+	helper =
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper =
+	helper = !/opt/homebrew/bin/gh auth git-credential

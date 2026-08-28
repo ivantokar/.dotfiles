@@ -1,0 +1,30 @@
+// Keep Zed's portable editor and terminal preferences under version control.
+{
+  "diff_view_style": "split",
+  "proxy": "",
+  "minimap": {
+    "show": "always"
+  },
+  "vim_mode": false,
+  "terminal": {
+    "toolbar": {
+      "breadcrumbs": false
+    },
+    "font_weight": 100.0,
+    "font_size": 12.0,
+    "font_family": "JetBrainsMono Nerd Font",
+    "shell": "system"
+  },
+  "project_panel": {
+    "default_width": 240.0,
+    "dock": "left"
+  },
+  "icon_theme": {
+    "mode": "system",
+    "light": "Zed (Default)",
+    "dark": "Catppuccin Frappé"
+  },
+  "ui_font_size": 15.0,
+  "buffer_font_size": 13.0,
+  "theme": "Gruvbox Dark",
+}

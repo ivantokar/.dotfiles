@@ -1,0 +1,39 @@
+onboarding = false
+
+# Herdr retains the familiar terminal-workflow settings in a native config.
+
+[theme]
+name = "gruvbox"
+
+auto_switch = false
+[theme.custom]
+panel_bg = "black"
+accent = "cyan"
+text = "white"
+
+[terminal]
+default_shell = "/bin/zsh"
+shell_mode = "login"
+# New panes and tabs inherit the focused pane's directory.
+new_cwd = "follow"
+
+[keys]
+# Use Ctrl-S as the pane-management prefix.
+prefix = "ctrl+s"
+# Use familiar split bindings.
+split_vertical = "prefix+shift+backslash"
+split_horizontal = "prefix+minus"
+# Herdr reloads its TOML configuration with the closest safe equivalent.
+reload_config = "prefix+r"
+
+[ui]
+# Keep tabs at the top.
+tab_bar_position = "top"
+pane_borders = true
+pane_gaps = false
+sidebar_start_collapsed = true
+agent_panel_sort = "spaces"
+show_agent_labels_on_pane_borders = false
+
+[ui.toast]
+delivery = "herdr"
