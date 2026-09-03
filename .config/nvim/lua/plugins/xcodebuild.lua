@@ -1,107 +1,50 @@
+-- Restore the Xcode build, test, simulator, and log workflow.
 return {
-	"wojciech-kulik/xcodebuild.nvim",
-	dependencies = {
-		"nvim-telescope/telescope.nvim",
-		"MunifTanjim/nui.nvim",
-		"nvim-neo-tree/neo-tree.nvim", -- optional, for integration
-	},
-	config = function()
-		require("xcodebuild").setup({
-			-- Automatically save files before building
-			restore_on_start = true,
-			-- Show build progress
-			show_build_progress_bar = true,
-			-- Logs settings
-			logs = {
-				auto_open_on_success_tests = false,
-				auto_open_on_failed_tests = true,
-				auto_open_on_success_build = false,
-				auto_open_on_failed_build = true,
-				auto_close_on_success = false,
-				auto_focus = true,
-				only_summary = false,
-				show_warnings = true,
-				notify = function(message, severity)
-					vim.notify(message, severity)
-				end,
-			},
-			-- Console settings
-			console_logs = {
-				enabled = true,
-				format_line = function(line)
-					return line
-				end,
-				filter_line = function(line)
-					return true
-				end,
-			},
-			-- Code coverage
-			code_coverage = {
-				enabled = false,
-			},
-		})
-
-		-- Keymaps
-		local opts = { noremap = true, silent = true }
-
-		vim.keymap.set("n", "<leader>xb", "<cmd>XcodebuildBuild<cr>", vim.tbl_extend("force", opts, {
-			desc = "Xcode: Build project",
-		}))
-
-		vim.keymap.set("n", "<leader>xr", "<cmd>XcodebuildBuildRun<cr>", vim.tbl_extend("force", opts, {
-			desc = "Xcode: Build & run project",
-		}))
-
-		vim.keymap.set("n", "<leader>xt", "<cmd>XcodebuildTest<cr>", vim.tbl_extend("force", opts, {
-			desc = "Xcode: Run tests",
-		}))
-
-		vim.keymap.set("n", "<leader>xT", "<cmd>XcodebuildTestClass<cr>", vim.tbl_extend("force", opts, {
-			desc = "Xcode: Run test class",
-		}))
-
-		vim.keymap.set("n", "<leader>x.", "<cmd>XcodebuildTestRepeat<cr>", vim.tbl_extend("force", opts, {
-			desc = "Xcode: Repeat last test",
-		}))
-
-		vim.keymap.set("n", "<leader>xl", "<cmd>XcodebuildToggleLogs<cr>", vim.tbl_extend("force", opts, {
-			desc = "Xcode: Toggle logs",
-		}))
-
-		vim.keymap.set("n", "<leader>xc", "<cmd>XcodebuildToggleCodeCoverage<cr>", vim.tbl_extend("force", opts, {
-			desc = "Xcode: Toggle code coverage",
-		}))
-
-		vim.keymap.set("n", "<leader>xC", "<cmd>XcodebuildShowCodeCoverageReport<cr>", vim.tbl_extend("force", opts, {
-			desc = "Xcode: Show coverage report",
-		}))
-
-		vim.keymap.set("n", "<leader>xd", "<cmd>XcodebuildSelectDevice<cr>", vim.tbl_extend("force", opts, {
-			desc = "Xcode: Select device",
-		}))
-
-		vim.keymap.set("n", "<leader>xp", "<cmd>XcodebuildSelectTestPlan<cr>", vim.tbl_extend("force", opts, {
-			desc = "Xcode: Select test plan",
-		}))
-
-		vim.keymap.set("n", "<leader>xs", "<cmd>XcodebuildSelectScheme<cr>", vim.tbl_extend("force", opts, {
-			desc = "Xcode: Select scheme",
-		}))
-
-		vim.keymap.set("n", "<leader>xq", "<cmd>XcodebuildQuickfixLine<cr>", vim.tbl_extend("force", opts, {
-			desc = "Xcode: Quickfix line",
-		}))
-
-		vim.keymap.set("n", "<leader>xa", "<cmd>XcodebuildCodeActions<cr>", vim.tbl_extend("force", opts, {
-			desc = "Xcode: Code actions",
-		}))
-
-		vim.keymap.set("n", "<leader>xX", "<cmd>XcodebuildCleanProject<cr>", vim.tbl_extend("force", opts, {
-			desc = "Xcode: Clean project",
-		}))
-
-		vim.keymap.set("n", "<leader>xx", "<cmd>XcodebuildPicker<cr>", vim.tbl_extend("force", opts, {
-			desc = "Xcode: Show all commands",
-		}))
-	end,
+  {
+    "wojciech-kulik/xcodebuild.nvim",
+    dependencies = {
+      "nvim-telescope/telescope.nvim",
+      "MunifTanjim/nui.nvim",
+    },
+    opts = {
+      restore_on_start = true,
+      show_build_progress_bar = true,
+      logs = {
+        auto_open_on_success_tests = false,
+        auto_open_on_failed_tests = true,
+        auto_open_on_success_build = false,
+        auto_open_on_failed_build = true,
+        auto_close_on_success = false,
+        auto_focus = true,
+        only_summary = false,
+        show_warnings = true,
+        notify = function(message, severity)
+          vim.notify(message, severity)
+        end,
+      },
+      console_logs = {
+        enabled = true,
+      },
+      code_coverage = {
+        enabled = false,
+      },
+    },
+    keys = {
+      { "<leader>Xb", "<cmd>XcodebuildBuild<cr>", desc = "Xcode: Build project" },
+      { "<leader>Xr", "<cmd>XcodebuildBuildRun<cr>", desc = "Xcode: Build and run" },
+      { "<leader>Xt", "<cmd>XcodebuildTest<cr>", desc = "Xcode: Run tests" },
+      { "<leader>XT", "<cmd>XcodebuildTestClass<cr>", desc = "Xcode: Test class" },
+      { "<leader>X.", "<cmd>XcodebuildTestRepeat<cr>", desc = "Xcode: Repeat test" },
+      { "<leader>Xl", "<cmd>XcodebuildToggleLogs<cr>", desc = "Xcode: Toggle logs" },
+      { "<leader>Xc", "<cmd>XcodebuildToggleCodeCoverage<cr>", desc = "Xcode: Toggle coverage" },
+      { "<leader>XC", "<cmd>XcodebuildShowCodeCoverageReport<cr>", desc = "Xcode: Coverage report" },
+      { "<leader>Xd", "<cmd>XcodebuildSelectDevice<cr>", desc = "Xcode: Select device" },
+      { "<leader>Xp", "<cmd>XcodebuildSelectTestPlan<cr>", desc = "Xcode: Select test plan" },
+      { "<leader>Xs", "<cmd>XcodebuildSelectScheme<cr>", desc = "Xcode: Select scheme" },
+      { "<leader>Xq", "<cmd>XcodebuildQuickfixLine<cr>", desc = "Xcode: Quickfix line" },
+      { "<leader>Xa", "<cmd>XcodebuildCodeActions<cr>", desc = "Xcode: Code actions" },
+      { "<leader>XX", "<cmd>XcodebuildCleanProject<cr>", desc = "Xcode: Clean project" },
+      { "<leader>Xx", "<cmd>XcodebuildPicker<cr>", desc = "Xcode: Show commands" },
+    },
+  },
 }

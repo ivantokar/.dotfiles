@@ -6,7 +6,9 @@ CLAUDE.md
 
 # Local editor/runtime state
 .config/.nvimlog
+.nvimlog
 .nvim/
+.config/nvim/lazyvim.json
 
 # GitHub CLI: keep shareable defaults, ignore auth state
 .config/gh/hosts.yml

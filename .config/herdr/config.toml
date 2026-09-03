@@ -26,6 +26,27 @@ split_horizontal = "prefix+minus"
 # Herdr reloads its TOML configuration with the closest safe equivalent.
 reload_config = "prefix+r"
 
+# Hand directional navigation to the Herdr-aware Neovim action at pane edges.
+[[keys.command]]
+key = "ctrl+h"
+type = "plugin_action"
+command = "herdr-nvim-nav.left"
+
+[[keys.command]]
+key = "ctrl+j"
+type = "plugin_action"
+command = "herdr-nvim-nav.down"
+
+[[keys.command]]
+key = "ctrl+k"
+type = "plugin_action"
+command = "herdr-nvim-nav.up"
+
+[[keys.command]]
+key = "ctrl+l"
+type = "plugin_action"
+command = "herdr-nvim-nav.right"
+
 [ui]
 # Keep tabs at the top.
 tab_bar_position = "top"
