@@ -6,13 +6,15 @@ Personal dotfiles for daily development, optimized for fast setup on a new machi
 
 - `zsh` (`.zshrc`)
 - `git` (`.gitconfig` + `.config/git/ignore`)
-- `neovim` (`.config/nvim`)
+- `neovim` / LazyVim (`.config/nvim`)
 - `atuin` (`.config/atuin/config.toml`)
 - `ghostty` (`.config/ghostty/config`)
 - `herdr` (`.config/herdr/config.toml`)
 - `hunk` (`.config/hunk/config.toml`)
 - `zed` (`.config/zed/settings.json`)
 - `gh` defaults (`.config/gh/config.yml`)
+
+`tmux` is intentionally not managed here. Herdr provides the managed terminal-pane navigation configuration.
 
 ## Bootstrap
 
@@ -69,6 +71,22 @@ git pull
 exec zsh
 nvim +checkhealth
 ```
+
+## Neovim
+
+Neovim uses a minimal LazyVim setup with a Gruvbox Material hard theme, four-space indentation, and no Copilot-style completion plugins.
+
+Formatting is configured for Lua (Stylua), JavaScript/JSX/TypeScript/TSX (Prettierd), and Swift (`swift format`). The setup script installs the required Neovim, Node, TypeScript, Prettierd, and Stylua dependencies on macOS; install Xcode separately for Swift support.
+
+Useful mappings:
+
+- `<leader>e` opens the file explorer; `<leader>E` uses the current working directory.
+- `<leader>lg` opens LazyGit.
+- `<leader>sg` opens grep; press `Ctrl-q` in the picker to send results to Quickfix.
+- `<leader>xq` toggles Quickfix; `[q` and `]q` move through its entries.
+- Xcodebuild uses uppercase `<leader>X` to avoid LazyVim's diagnostic mappings: `<leader>Xb` builds and `<leader>Xr` builds and runs.
+
+Generated Neovim state, including `lazyvim.json` and plugin caches, is deliberately ignored.
 
 For Swift/iOS workflows (macOS):
 
