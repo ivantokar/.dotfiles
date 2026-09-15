@@ -76,7 +76,7 @@ nvim +checkhealth
 
 Neovim uses a minimal LazyVim setup with a Gruvbox Material hard theme, four-space indentation, and no Copilot-style completion plugins.
 
-Formatting is configured for Lua (Stylua), JavaScript/JSX/TypeScript/TSX (Prettierd), and Swift (`swift format`). The setup script installs the required Neovim, Node, TypeScript, Prettierd, and Stylua dependencies on macOS; install Xcode separately for Swift support.
+Formatting is configured for Lua (Stylua), JavaScript/JSX/TypeScript/TSX/MDX (Prettierd), and Swift (`swift format`). MDX files receive their own filetype and Tree-sitter parser. The setup script installs the required Neovim, Node, TypeScript, Prettierd, and Stylua dependencies on macOS; install Xcode separately for Swift support.
 
 Useful mappings:
 

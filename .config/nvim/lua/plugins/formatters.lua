@@ -7,6 +7,12 @@ return {
     },
   },
   {
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      ensure_installed = { "mdx" },
+    },
+  },
+  {
     "stevearc/conform.nvim",
     opts = {
       formatters_by_ft = {
@@ -15,6 +21,7 @@ return {
         typescriptreact = { "prettierd" },
         javascript = { "prettierd" },
         javascriptreact = { "prettierd" },
+        mdx = { "prettierd" },
         swift = { "swift" },
       },
       formatters = {

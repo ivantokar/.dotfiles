@@ -122,3 +122,5 @@ export PATH="$HOME/.local/bin:$PATH"
 . "$HOME/.atuin/bin/env"
 
 eval "$(atuin init zsh)"
+## Let GPG route terminal signing requests to this shell; Codex uses pinentry-mac.
+export GPG_TTY="$(tty)"
