@@ -6,6 +6,7 @@ CLAUDE.md
 
 # Local editor/runtime state
 .config/.nvimlog
+nvim.log
 .nvimlog
 .nvim/
 .config/nvim/lazyvim.json
