@@ -42,3 +42,53 @@ jobs:
           else
             echo "stylua not installed on runner, skipping."
           fi
+
+  secrets:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Scan for secrets
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  configs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate JSON and TOML
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json, subprocess, sys, tomllib
+
+          # Zed's settings.json is JSONC (comments allowed), so it is skipped.
+          skip = (".config/zed/",)
+          files = subprocess.check_output(["git", "ls-files"], text=True).splitlines()
+          failed = False
+
+          for path in files:
+              if path.startswith(skip):
+                  continue
+              try:
+                  if path.endswith(".json"):
+                      with open(path) as f:
+                          json.load(f)
+                  elif path.endswith(".toml"):
+                      with open(path, "rb") as f:
+                          tomllib.load(f)
+                  else:
+                      continue
+                  print(f"ok    {path}")
+              except Exception as exc:
+                  failed = True
+                  print(f"FAIL  {path}: {exc}")
+
+          sys.exit(1 if failed else 0)
+          PY
