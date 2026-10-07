@@ -1,7 +1,0 @@
-# General settings
-# Keep Ghostty dark regardless of the macOS appearance setting.
-theme = Gruvbox Dark Hard
-background-opacity = 0.98
-font-family = "JetBrainsMono Nerd Font"
-
-keybind = shift+enter=text:\x1b\r
