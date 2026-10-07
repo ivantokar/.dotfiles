@@ -1,0 +1,82 @@
+{
+  "model": "sonnet",
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "atuin hook claude-code",
+            "shell": "bash"
+          }
+        ]
+      }
+    ],
+    "PostToolUseFailure": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "atuin hook claude-code",
+            "shell": "bash"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "atuin hook claude-code",
+            "shell": "bash"
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "bash /Users/ivantokar/.claude/statusline-command.sh"
+  },
+  "enabledPlugins": {
+    "therealme-agent-evals@therealme-ai-skills": true,
+    "therealme-agent-orchestration@therealme-ai-skills": true,
+    "therealme-api-ops@therealme-ai-skills": true,
+    "therealme-apollo-client-patterns@therealme-ai-skills": true,
+    "therealme-codex-ops@therealme-ai-skills": true,
+    "therealme-graphql-contracts@therealme-ai-skills": true,
+    "therealme-infra-ops@therealme-ai-skills": true,
+    "therealme-platform-core@therealme-ai-skills": true,
+    "therealme-react-component-standards@therealme-ai-skills": true,
+    "therealme-release-manager@therealme-ai-skills": true,
+    "therealme-soc2-audit-ops@therealme-ai-skills": true,
+    "therealme-vapor-ddd@therealme-ai-skills": true,
+    "therealme-web-feature-architecture@therealme-ai-skills": true,
+    "therealme-web-ops@therealme-ai-skills": true,
+    "tmux-agent-sidebar@hiroppy": true
+  },
+  "extraKnownMarketplaces": {
+    "therealme-ai-skills": {
+      "source": {
+        "source": "directory",
+        "path": "/Users/ivantokar/Work/therealme/therealme-ai-skills"
+      }
+    },
+    "hiroppy": {
+      "source": {
+        "source": "directory",
+        "path": "/Users/ivantokar/.config/tmux/plugins/tmux-agent-sidebar"
+      }
+    }
+  },
+  "effortLevel": "medium",
+  "tui": "fullscreen",
+  "editorMode": "vim",
+  "autoCompactEnabled": false,
+  "agentPushNotifEnabled": true,
+  "skipAutoPermissionPrompt": true
+}
