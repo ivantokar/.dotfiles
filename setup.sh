@@ -234,6 +234,9 @@ link_dotfiles() {
     ".config/nvim:.config/nvim"
     ".config/atuin/config.toml:.config/atuin/config.toml"
     ".config/ghostty/config:.config/ghostty/config"
+    ".config/kitty/kitty.conf:.config/kitty/kitty.conf"
+    ".config/kitty/current-theme.conf:.config/kitty/current-theme.conf"
+    ".config/borders/bordersrc:.config/borders/bordersrc"
     ".config/herdr/config.toml:.config/herdr/config.toml"
     ".config/hunk/config.toml:.config/hunk/config.toml"
     ".config/zed/settings.json:.config/zed/settings.json"
@@ -242,11 +245,6 @@ link_dotfiles() {
   )
 
   info "Linking dotfiles into ${HOME}"
-    ".config/kitty/kitty.conf:.config/kitty/kitty.conf"
-    ".config/kitty/current-theme.conf:.config/kitty/current-theme.conf"
-    ".config/borders/bordersrc:.config/borders/bordersrc"
-    ".config/kitty/kitty.conf:.config/kitty/kitty.conf"
-    ".config/kitty/current-theme.conf:.config/kitty/current-theme.conf"
   local mapping src_rel dst_rel src_abs dst_abs
   for mapping in "${mappings[@]}"; do
     src_rel="${mapping%%:*}"
