@@ -1,5 +1,9 @@
 {
   "model": "sonnet",
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
   "hooks": {
     "PostToolUse": [
       {
