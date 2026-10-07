@@ -1,0 +1,22 @@
+{
+  "language" : "uk",
+  "audioInputDeviceID" : 80,
+  "hotkey" : {
+    "keyCode" : 54,
+    "modifiers" : [
+
+    ]
+  },
+  "audioInputDeviceUID" : "BuiltInMicrophoneDevice",
+  "spokenPunctuation" : false,
+  "modelSize" : "large-v3-turbo",
+  "toggleMode" : false,
+  "hotkeys" : [
+    {
+      "keyCode" : 54,
+      "modifiers" : [
+
+      ]
+    }
+  ]
+}
