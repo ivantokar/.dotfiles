@@ -6,15 +6,11 @@ Personal dotfiles for daily development, optimized for fast setup on a new machi
 
 - `zsh` (`.zshrc`)
 - `git` (`.gitconfig` + `.config/git/ignore`)
-- `neovim` / LazyVim (`.config/nvim`)
+- `neovim` (`.config/nvim`)
 - `atuin` (`.config/atuin/config.toml`)
-- `ghostty` (`.config/ghostty/config`)
-- `herdr` (`.config/herdr/config.toml`)
 - `hunk` (`.config/hunk/config.toml`)
 - `zed` (`.config/zed/settings.json`)
 - `gh` defaults (`.config/gh/config.yml`)
-
-`tmux` is intentionally not managed here. Herdr provides the managed terminal-pane navigation configuration.
 
 ## Bootstrap
 
@@ -74,7 +70,7 @@ nvim +checkhealth
 
 ## Neovim
 
-Neovim uses a minimal LazyVim setup with a Gruvbox Material hard theme, four-space indentation, and no Copilot-style completion plugins.
+Neovim uses a standalone `lazy.nvim` setup with the Gruvbox Material hard theme and four-space indentation. It targets Neovim 0.12+, uses native `vim.lsp` with Mason-managed language servers, and uses the current Tree-sitter parser/query API.
 
 Formatting is configured for Lua (Stylua), JavaScript/JSX/TypeScript/TSX/MDX (Prettierd), and Swift (`swift format`). MDX files receive their own filetype and Tree-sitter parser. The setup script installs the required Neovim, Node, TypeScript, Prettierd, and Stylua dependencies on macOS; install Xcode separately for Swift support.
 
@@ -84,9 +80,9 @@ Useful mappings:
 - `<leader>lg` opens LazyGit.
 - `<leader>sg` opens grep; press `Ctrl-q` in the picker to send results to Quickfix.
 - `<leader>xq` toggles Quickfix; `[q` and `]q` move through its entries.
-- Xcodebuild uses uppercase `<leader>X` to avoid LazyVim's diagnostic mappings: `<leader>Xb` builds and `<leader>Xr` builds and runs.
+- `<leader>Xb` builds an Xcode project; `<leader>Xr` builds and runs it.
 
-Generated Neovim state, including `lazyvim.json` and plugin caches, is deliberately ignored.
+Generated Neovim state and plugin caches are deliberately ignored.
 
 For Swift/iOS workflows (macOS):
 
@@ -118,8 +114,6 @@ Workflow file:
 ├── .config/
 │   ├── atuin/
 │   ├── nvim/
-│   ├── ghostty/
-│   ├── herdr/
 │   ├── hunk/
 │   ├── zed/
 │   ├── git/
