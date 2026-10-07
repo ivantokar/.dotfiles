@@ -244,6 +244,9 @@ link_dotfiles() {
   info "Linking dotfiles into ${HOME}"
     ".config/kitty/kitty.conf:.config/kitty/kitty.conf"
     ".config/kitty/current-theme.conf:.config/kitty/current-theme.conf"
+    ".config/borders/bordersrc:.config/borders/bordersrc"
+    ".config/kitty/kitty.conf:.config/kitty/kitty.conf"
+    ".config/kitty/current-theme.conf:.config/kitty/current-theme.conf"
   local mapping src_rel dst_rel src_abs dst_abs
   for mapping in "${mappings[@]}"; do
     src_rel="${mapping%%:*}"
