@@ -16,6 +16,7 @@ return {
 				"emmet_language_server",
 				"graphql",
 				"lua_ls",
+				"sqls",
 				"tailwindcss",
 				"ts_ls",
 			},
@@ -231,6 +232,17 @@ return {
 				},
 			})
 
+			-- SQL LSP (connections are read from a project-local .sqls.yml or ~/.config/sqls/config.yml)
+			vim.lsp.config("sqls", {
+				filetypes = { "sql", "mysql" },
+				root_markers = { ".sqls.yml", ".git" },
+				on_attach = function(client)
+					-- Use sql-formatter via conform.nvim
+					client.server_capabilities.documentFormattingProvider = false
+					client.server_capabilities.documentRangeFormattingProvider = false
+				end,
+			})
+
 			-- Enable all configured LSP servers
 			vim.lsp.enable("lua_ls")
 			vim.lsp.enable("ts_ls")
@@ -239,6 +251,7 @@ return {
 			vim.lsp.enable("graphql")
 			vim.lsp.enable("tailwindcss")
 			vim.lsp.enable("astro")
+			vim.lsp.enable("sqls")
 
 			-- LspAttach autocmd for buffer-local keymaps and settings
 			vim.api.nvim_create_autocmd("LspAttach", {

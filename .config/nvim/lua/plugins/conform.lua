@@ -16,6 +16,7 @@ return {
 				javascript = { "prettierd" },
 				javascriptreact = { "prettierd" },
 				mdx = { "prettierd" },
+				sql = { "sql_formatter" },
 				-- Swift formatting handled by xcodebuild.nvim or sourcekit-lsp
 			},
 			format_on_save = {

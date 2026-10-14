@@ -13,6 +13,7 @@ local parsers = {
 	"markdown",
 	"markdown_inline",
 	"scss",
+	"sql",
 	"swift",
 	"tsx",
 	"typescript",
