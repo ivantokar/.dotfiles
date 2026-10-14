@@ -40,7 +40,6 @@ One command bootstraps a new machine, and everything is symlinked from this repo
 | Git | [git](https://git-scm.com), [GitHub CLI](https://cli.github.com), [LazyGit](https://github.com/jesseduffield/lazygit), [git-lfs](https://git-lfs.com) | `.gitconfig`, `.config/git/`, `.config/gh/` |
 | Diff viewer | [Hunk](https://www.npmjs.com/package/hunkdiff) | `.config/hunk/config.toml` |
 | Tiling window manager | [AeroSpace](https://github.com/nikitabobko/AeroSpace) | `.config/aerospace/aerospace.toml` |
-| Window borders | [JankyBorders](https://github.com/FelixKratz/JankyBorders) | `.config/borders/bordersrc` |
 | Voice dictation | [open-wispr](https://github.com/human37/open-wispr) | `.config/open-wispr/config.json` |
 | AI agents | [Claude Code](https://github.com/anthropics/claude-code), [Codex](https://github.com/openai/codex) | `.config/claude/` |
 | Packages | [Homebrew](https://brew.sh) | `Brewfile` |
@@ -327,10 +326,9 @@ The kitten writes `current-theme.conf` (tracked here) and adds an `include curre
 
 ## Window management
 
-[AeroSpace](https://github.com/nikitabobko/AeroSpace) is an i3-style tiling window manager (4 px gaps, none at the top) and [JankyBorders](https://github.com/FelixKratz/JankyBorders) draws a faint white border around the active window only. Borders run as a Homebrew service:
+[AeroSpace](https://github.com/nikitabobko/AeroSpace) is an i3-style tiling window manager (4 px gaps, none at the top). Reload its config with:
 
 ```bash
-brew services restart borders
 aerospace reload-config
 ```
 
@@ -363,7 +361,6 @@ Nothing sensitive is tracked. API keys live in `~/.zshrc.local` (`OPENAI_API_KEY
 ├── .config/
 │   ├── aerospace/        # tiling window manager
 │   ├── atuin/            # shell history
-│   ├── borders/          # JankyBorders
 │   ├── claude/           # Claude Code settings + statusline
 │   ├── gh/               # GitHub CLI defaults
 │   ├── git/              # global gitignore

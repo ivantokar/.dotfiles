@@ -1,5 +1,4 @@
 tap "aws/tap"
-tap "felixkratz/formulae", "https://github.com/FelixKratz/homebrew-formulae"
 tap "getsentry/xcodebuildmcp"
 tap "human37/open-wispr"
 tap "ivantokar/tap", trusted: true
@@ -105,8 +104,6 @@ brew "zellij"
 brew "zig@0.15", link: true
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
-# A window border system for macOS
-brew "felixkratz/formulae/borders", trusted: true
 # Push-to-talk voice dictation for macOS using Whisper
 brew "human37/open-wispr/open-wispr", trusted: true
 # First-party CLI for Hokusai image operations and benchmarks

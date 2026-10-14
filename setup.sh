@@ -248,7 +248,6 @@ link_dotfiles() {
     ".config/atuin/config.toml:.config/atuin/config.toml"
     ".config/kitty/kitty.conf:.config/kitty/kitty.conf"
     ".config/kitty/current-theme.conf:.config/kitty/current-theme.conf"
-    ".config/borders/bordersrc:.config/borders/bordersrc"
     ".config/aerospace/aerospace.toml:.config/aerospace/aerospace.toml"
     ".config/hunk/config.toml:.config/hunk/config.toml"
     ".config/zed/settings.json:.config/zed/settings.json"
