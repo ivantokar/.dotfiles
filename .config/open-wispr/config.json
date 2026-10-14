@@ -1,4 +1,14 @@
 {
+  "spokenPunctuation" : false,
+  "hotkeys" : [
+    {
+      "keyCode" : 54,
+      "modifiers" : [
+
+      ]
+    }
+  ],
+  "toggleMode" : false,
   "language" : "uk",
   "audioInputDeviceID" : 80,
   "hotkey" : {
@@ -8,15 +18,5 @@
     ]
   },
   "audioInputDeviceUID" : "BuiltInMicrophoneDevice",
-  "spokenPunctuation" : false,
-  "modelSize" : "large-v3-turbo",
-  "toggleMode" : false,
-  "hotkeys" : [
-    {
-      "keyCode" : 54,
-      "modifiers" : [
-
-      ]
-    }
-  ]
+  "modelSize" : "large-v3-turbo"
 }
