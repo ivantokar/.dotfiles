@@ -78,6 +78,29 @@ return {
 			-- For Xcode 16+, codelldb is no longer required
 			xcodebuild.setup(true) -- loadBreakpoints = true
 
+			-- C/C++ debugging via codelldb (install with :MasonInstall codelldb)
+			dap.adapters.codelldb = {
+				type = "server",
+				port = "${port}",
+				executable = {
+					command = vim.fn.stdpath("data") .. "/mason/bin/codelldb",
+					args = { "--port", "${port}" },
+				},
+			}
+			dap.configurations.cpp = {
+				{
+					name = "Launch executable",
+					type = "codelldb",
+					request = "launch",
+					program = function()
+						return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/build/", "file")
+					end,
+					cwd = "${workspaceFolder}",
+					stopOnEntry = false,
+				},
+			}
+			dap.configurations.c = dap.configurations.cpp
+
 			-- General keymaps
 			local opts = { noremap = true, silent = true }
 

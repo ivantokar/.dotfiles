@@ -17,6 +17,8 @@ return {
 				javascriptreact = { "prettierd" },
 				mdx = { "prettierd" },
 				sql = { "sql_formatter" },
+				c = { "clang-format" },
+				cpp = { "clang-format" },
 				-- Swift formatting handled by xcodebuild.nvim or sourcekit-lsp
 			},
 			format_on_save = {

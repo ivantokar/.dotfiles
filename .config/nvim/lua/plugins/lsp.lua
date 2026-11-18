@@ -13,9 +13,11 @@ return {
 		opts = {
 			ensure_installed = {
 				"astro",
+				"clangd",
 				"emmet_language_server",
 				"graphql",
 				"lua_ls",
+				"neocmake",
 				"sqls",
 				"tailwindcss",
 				"ts_ls",
@@ -140,16 +142,51 @@ return {
 				},
 			})
 
-			-- Swift / C++ LSP
+			-- Swift LSP (C/C++ is handled by clangd; sourcekit-lsp lacks semantic tokens there)
 			vim.lsp.config("sourcekit", {
 				cmd = { "sourcekit-lsp" },
-				filetypes = { "swift", "c", "cpp", "objective-c", "objective-cpp" },
+				filetypes = { "swift" },
 				root_markers = {
 					"Package.swift",
 					".git",
+				},
+			})
+
+			-- C / C++ LSP (needs compile_commands.json; cmake-tools.nvim generates and links it)
+			vim.lsp.config("clangd", {
+				cmd = {
+					"clangd",
+					"--background-index",
+					"--clang-tidy",
+					"--header-insertion=iwyu",
+					"--completion-style=detailed",
+					"--function-arg-placeholders",
+					"--fallback-style=llvm",
+				},
+				filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
+				root_markers = {
+					".clangd",
+					".clang-tidy",
+					".clang-format",
 					"compile_commands.json",
 					"compile_flags.txt",
+					"CMakeLists.txt",
+					".git",
 				},
+				init_options = {
+					usePlaceholders = true,
+					completeUnimported = true,
+					clangdFileStatus = true,
+				},
+				capabilities = vim.tbl_deep_extend("force", capabilities, {
+					offsetEncoding = { "utf-16" },
+				}),
+			})
+
+			-- CMake LSP
+			vim.lsp.config("neocmake", {
+				filetypes = { "cmake" },
+				root_markers = { "CMakeLists.txt", "cmake", ".git" },
 			})
 
 			-- Emmet LSP
@@ -247,6 +284,8 @@ return {
 			vim.lsp.enable("lua_ls")
 			vim.lsp.enable("ts_ls")
 			vim.lsp.enable("sourcekit")
+			vim.lsp.enable("clangd")
+			vim.lsp.enable("neocmake")
 			vim.lsp.enable("emmet_language_server")
 			vim.lsp.enable("graphql")
 			vim.lsp.enable("tailwindcss")
@@ -424,6 +463,13 @@ return {
 							desc = "LSP: Toggle inlay hints",
 						})
 					)
+
+					-- C/C++: switch between header and source
+					if client and client.name == "clangd" then
+						vim.keymap.set("n", "<leader>ch", "<cmd>LspClangdSwitchSourceHeader<cr>", vim.tbl_extend("force", opts, {
+							desc = "C++: Switch header/source",
+						}))
+					end
 
 					-- TypeScript-specific keymaps
 					if client and client.name == "ts_ls" then

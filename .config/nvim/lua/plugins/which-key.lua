@@ -31,6 +31,7 @@ return {
 			{ "<leader>ht", group = "󰔡  Toggle", icon = "󰔡" },
 			{ "<leader>d", group = "  Debug", icon = "" },
 			{ "<leader>x", group = "  Xcode", icon = "" },
+			{ "<leader>c", group = "  C++/CMake", icon = "" },
 			{ "<leader>i", group = "  Imports", icon = "" },
 			{ "<leader>t", group = "  Trouble/Toggle", icon = "" },
 			{ "<leader>p", group = "  Precognition", icon = "󰁨" },

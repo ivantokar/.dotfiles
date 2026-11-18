@@ -2,6 +2,8 @@ local parsers = {
 	"astro",
 	"bash",
 	"c",
+	"cmake",
+	"cpp",
 	"css",
 	"graphql",
 	"html",
